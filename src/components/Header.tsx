@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Phone, Mail, Menu, X } from 'lucide-react';
+import apolloLogo from '@/assets/apollo-logo.png';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -31,11 +32,11 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-              <div className="w-6 h-6 bg-primary-foreground rounded-full relative">
-                <div className="absolute inset-1 bg-primary rounded-full"></div>
-              </div>
-            </div>
+            <img 
+              src={apolloLogo} 
+              alt="Apollo Partners Logo" 
+              className="w-10 h-10 object-contain"
+            />
             <div>
               <h1 className="text-xl font-bold text-primary">Apollo Partners</h1>
               <p className="text-xs text-muted-foreground">Healthcare Excellence</p>
