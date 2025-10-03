@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Apolo Partners - Contact Us</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+        />
+        <style>
+            body {
+                margin: 0;
+                font-family: "Arial", sans-serif;
+                background: #f5f5f5;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+            header {
+                background-color: #0080ff; /* Navy blue for Apolo Partners */
+                color: white;
+                padding: 10px 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            header .right {
+                font-size: 14px;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+            .container {
+                display: flex;
+                flex: 1;
+            }
+            aside {
+                width: 220px;
+                background-color: #f4f4f4;
+                border-right: 1px solid #ddd;
+                height: 100%;
+            }
+            aside ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            aside ul li {
+                padding: 10px 20px;
+                border-bottom: 1px solid #ddd;
+                cursor: pointer;
+            }
+            aside ul li:hover,
+            aside ul li.active {
+                background-color: #ffd700; /* Gold accent for hover/active */
+                color: #0080ff;
+            }
+            aside ul li a {
+                color: inherit;
+                text-decoration: none;
+                display: block;
+            }
+            aside ul li:hover a,
+            aside ul li.active a {
+                color: #0080ff;
+            }
+            main {
+                flex: 1;
+                padding: 20px;
+            }
+            .faq-contact {
+                background-color: white;
+                padding: 20px;
+                border: 1px solid #ddd;
+            }
+             {
+                margin-bottom: 20px;
+                color: #0080ff;
+            }
+            .faq-section {
+                margin-bottom: 30px;
+            }
+            .faq-section h3 {
+                margin-bottom: 15px;
+                color: #0080ff;
+            }
+            .faq-item {
+                margin-bottom: 15px;
+            }
+            .faq-item summary {
+                cursor: pointer;
+                font-weight: bold;
+                padding: 10px;
+                background-color: #f9f9f9;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+            .faq-item summary:hover {
+                background-color: #f0f0f0;
+            }
+            .faq-item p {
+                padding: 10px;
+                margin: 0;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-top: none;
+                border-radius: 0 0 4px 4px;
+            }
+            .btn {
+                display: inline-block;
+                margin-top: 10px;
+                padding: 8px 16px;
+                background-color: #ffd700; /* Gold for buttons */
+                color: #0080ff;
+                border-radius: 4px;
+                text-decoration: none;
+                cursor: pointer;
+                border: none;
+                font-size: 14px;
+            }
+            .contact-form {
+                max-width: 500px;
+            }
+            .contact-form label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+                color: #0080ff;
+            }
+            .contact-form input,
+            .contact-form textarea {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 14px;
+            }
+            .contact-form button {
+                background-color: #0080ff;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            .contact-form button:hover {
+                background-color: #0080ff; /* Darker navy for hover */
+            }
+            .search-container {
+                position: relative;
+                display: inline-block;
+                width: 100%;
+                max-width: 500px;
+            }
+            .form-controll.search-form {
+                width: 100%;
+                padding: 10px 10px 10px 35px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 14px;
+                box-sizing: border-box;
+            }
+            .form-controll.search-form:focus {
+                outline: none;
+                border-color: #0080ff;
+            }
+            .search-icon {
+                position: absolute;
+                left: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 16px;
+                color: #666;
+            }
+            .faq-topics {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+                gap: 20px;
+            }
+            .faq-topics-column {
+                flex: 1;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            .faq-topics-column a {
+                color: #0080ff;
+                text-decoration: none;
+                font-size: 14px;
+                display: block;
+                padding: 8px 12px;
+                border-radius: 4px;
+                transition: background-color 0.2s, color 0.2s;
+            }
+            .faq-topics-column a:hover {
+                background-color: #ffd700;
+                color: #0080ff;
+            }
+            .contact-options {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 30px;
+                gap: 20px;
+            }
+            .contact-left,
+            .contact-right {
+                flex: 1;
+                padding: 15px;
+                background-color: #f9f9f9;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+            .contact-left h4,
+            .contact-right h4 {
+                color: #0080ff;
+                margin-bottom: 15px;
+                font-size: 16px;
+            }
+            .contact-left p,
+            .contact-right p {
+                font-size: 14px;
+                margin: 10px 0;
+                line-height: 1.5;
+            }
+            .contact-left ul,
+            .contact-right ul {
+                list-style: none;
+                padding: 0;
+                margin: 10px 0;
+            }
+            .contact-left ul li,
+            .contact-right ul li {
+                font-size: 14px;
+                margin-bottom: 8px;
+                position: relative;
+                padding-left: 15px;
+            }
+            .contact-left ul li:before,
+            .contact-right ul li:before {
+                content: "・";
+                position: absolute;
+                left: 0;
+                color: #0080ff;
+            }
+            .contact-right a {
+                color: #0080ff;
+                text-decoration: none;
+                font-size: 14px;
+                display: inline-block;
+                padding: 8px 12px;
+                border-radius: 4px;
+                transition: background-color 0.2s, color 0.2s;
+            }
+            .contact-right a:hover {
+                background-color: #ffd700;
+                color: #0080ff;
+            }
+            footer {
+                background-color: #0080ff;
+                color: #ccc;
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+            .footer-container {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+            .footer-nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            .footer-nav a {
+                color: #ccc;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            @media (max-width: 768px) {
+                .container {
+                    flex-direction: column;
+                }
+                aside {
+                    width: 100%;
+                    display: flex;
+                    overflow-x: auto;
+                    border-right: none;
+                    border-bottom: 1px solid #ddd;
+                }
+                aside ul {
+                    display: flex;
+                    flex-direction: row;
+                    width: 100%;
+                }
+                aside ul li {
+                    flex: 1;
+                    text-align: center;
+                    border-bottom: none;
+                    border-right: 1px solid #ddd;
+                }
+                aside ul li:last-child {
+                    border-right: none;
+                }
+                main {
+                    padding: 10px;
+                }
+                .faq-header {
+                    border-bottom: 2px solid #0080ff;
+                }
+                .search-container {
+                    max-width: 100%;
+                }
+                .faq-topics {
+                    flex-direction: column;
+                    gap: 10px;
+                }
+                .contact-options {
+                    flex-direction: column;
+                    gap: 10px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div>
+                <img
+                    src="https://www.apolopartners.com/images/logo.png"
+                    alt="Apolo Partners"
+                    style="height: 30px"
+                />
+            </div>
+            <div class="right">
+                <i class="bi bi-person-fill"></i>
+            </div>
+        </header>
+
+        <div class="container">
+            <main>
+                <div class="faq-contact">
+                    <h2>
+                        <i
+                            class="bi bi-envelope-fill"
+                            style="margin-right: 10px"
+                        ></i
+                        >Contact Us
+                    </h2>
+                    <div class="faq-section">
+                        <h3>Have questions about our services?</h3>
+                        <small
+                            >Apolo Partners provides expert financial advisory
+                            and investment solutions. Reach out to us for
+                            personalized support.</small
+                        >
+                        <h2
+                            style="
+                                border-bottom: 2px solid #0080ff;
+                                padding-bottom: 5px;
+                            "
+                        >
+                            Frequently Asked Questions
+                        </h2>
+                        <p>・Click here to schedule a consultation</p>
+                        <p>
+                            ・Click here to request information about our
+                            services
+                        </p>
+                        <p>・Click here to update your account details</p>
+                        <h2
+                            class="faq-header"
+                            style="
+                                border-bottom: 2px solid #0080ff;
+                                padding-bottom: 5px;
+                            "
+                        >
+                            Search FAQs by Category
+                        </h2>
+                        <p>Enter keywords to search for related FAQs.</p>
+                        <div class="search-container">
+                            <i class="bi bi-search search-icon"></i>
+                            <input
+                                name=""
+                                type="search"
+                                id="searchForm"
+                                class="form-controll search-form"
+                                autocomplete="off"
+                                placeholder="For example, 'investment,' 'consultation,' 'portfolio,' etc."
+                                aria-label="Search FAQs by keyword"
+                            />
+                        </div>
+                        <div class="faq-topics">
+                            <ul class="faq-topics-column">
+                                <li><a href="#">Opening an Account</a></li>
+                                <li><a href="#">Investment Options</a></li>
+                                <li><a href="#">Portfolio Management</a></li>
+                                <li><a href="#">Financial Planning</a></li>
+                                <li><a href="#">Risk Assessment</a></li>
+                                <li><a href="#">Retirement Planning</a></li>
+                            </ul>
+                            <ul class="faq-topics-column">
+                                <li><a href="#">Tax Advisory</a></li>
+                                <li><a href="#">Wealth Management</a></li>
+                                <li><a href="#">Market Insights</a></li>
+                                <li><a href="#">Client Onboarding</a></li>
+                                <li><a href="#">Fees and Charges</a></li>
+                                <li><a href="#">Contact Support</a></li>
+                            </ul>
+                        </div>
+                        <div class="contact-options">
+                            <div class="contact-left">
+                                <h4>
+                                    <i
+                                        class="bi bi-telephone-fill"
+                                        style="margin-right: 8px"
+                                    ></i
+                                    >Telephone Inquiries
+                                </h4>
+                                <p>
+                                    For inquiries, please call
+                                    <a href="tel:+1234567890"
+                                        >+1 (234) 567-890</a
+                                    >
+                                </p>
+                                <ul>
+                                    <li>
+                                        Support hours: 9:00 AM - 5:00 PM, Monday
+                                        to Friday.
+                                    </li>
+                                    <li>
+                                        Calls may be recorded for quality
+                                        assurance.
+                                    </li>
+                                    <li>
+                                        English and Spanish support available.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="contact-right">
+                                <h4>
+                                    <i
+                                        class="bi bi-envelope-fill"
+                                        style="margin-right: 8px"
+                                    ></i
+                                    >Contact Form
+                                </h4>
+                                <p>
+                                    Please submit your inquiry below. Our team
+                                    will respond within 1-2 business days.
+                                </p>
+                                <form class="contact-form">
+                                    <label for="name">Name</label>
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        required
+                                    />
+                                    <label for="email">Email</label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        required
+                                    />
+                                    <label for="inquiry">Inquiry</label>
+                                    <textarea
+                                        id="inquiry"
+                                        name="inquiry"
+                                        rows="5"
+                                        required
+                                    ></textarea>
+                                    <button type="submit">Submit</button>
+                                </form>
+                                <p>
+                                    <a href="#"
+                                        >Schedule a consultation with our
+                                        advisors</a
+                                    >
+                                </p>
+                                <h4>Other Inquiries</h4>
+                                <ul>
+                                    <li>
+                                        Support hours: 9:00 AM - 5:00 PM, Monday
+                                        to Friday.
+                                    </li>
+                                    <li>
+                                        English inquiries only via the form.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const links = document.querySelectorAll("aside ul li");
+                links.forEach((link) => {
+                    link.addEventListener("click", () => {
+                        links.forEach((l) => l.classList.remove("active"));
+                        link.classList.add("active");
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
