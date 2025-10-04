@@ -103,24 +103,6 @@ const Doctors = () => {
               </Button>
             </div>
           </div>
-
-          {/* Doctors Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {doctors.map((doctor) => (
-              <div key={doctor.id} className="text-center p-4 bg-card rounded-lg shadow-md border">
-                <img
-                  src={doctor.image}
-                  alt={doctor.name}
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
-                />
-                <div className="bg-primary text-primary-foreground px-3 py-1 rounded-full inline-block mb-2 text-sm font-semibold">
-                  {doctor.specialty}
-                </div>
-                <h4 className="text-lg font-semibold mb-2 text-primary">{doctor.name}</h4>
-                <p className="text-sm text-muted-foreground">{doctor.bio}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </main>
     </div>
