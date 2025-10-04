@@ -70,11 +70,9 @@ const Header = () => {
             <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               Get Quote
             </Button>
-            {/* <Button className="bg-accent hover:bg-accent/90">
-              Book Consultation
-            </Button> */}
-                          <Link to="/book" className={mobileNavLinkClass('/book')}>Book Consultation</Link>
-
+            <Button className="bg-accent hover:bg-accent/90" asChild>
+              <Link to="/book">Book Consultation</Link>
+            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -102,11 +100,9 @@ const Header = () => {
               <Button variant="outline" size="sm" className="border-primary text-primary">
                 Get Quote
               </Button>
-              {/* <Button size="sm" className="bg-accent hover:bg-accent/90">
-                Book Consultation
-              </Button> */}
-              <Link to="/book" className={mobileNavLinkClass('/book')}>Book Consultation</Link>
-
+              <Button size="sm" className="bg-accent hover:bg-accent/90" asChild>
+                <Link to="/book">Book Consultation</Link>
+              </Button>
             </div>
           </div>
         )}
