@@ -67,9 +67,9 @@ const Header = () => {
 
           {/* Action Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+            {/* <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               Get Quote
-            </Button>
+            </Button> */}
             <Button className="bg-accent hover:bg-accent/90" asChild>
               <Link to="/book">Book Consultation</Link>
             </Button>
@@ -97,9 +97,9 @@ const Header = () => {
             <Link to="/blog" className={mobileNavLinkClass('/blog')}>Blog</Link>
             <Link to="/contact" className={mobileNavLinkClass('/contact')}>Contact</Link>
             <div className="flex gap-3 mt-4">
-              <Button variant="outline" size="sm" className="border-primary text-primary">
+              {/* <Button variant="outline" size="sm" className="border-primary text-primary">
                 Get Quote
-              </Button>
+              </Button> */}
               <Button size="sm" className="bg-accent hover:bg-accent/90" asChild>
                 <Link to="/book">Book Consultation</Link>
               </Button>
