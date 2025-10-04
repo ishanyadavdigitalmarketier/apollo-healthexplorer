@@ -1,10 +1,15 @@
+// Header.tsx
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Phone, Mail, Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import apolloLogo from '@/assets/apollo-logo.png';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <header className="w-full bg-background border-b">
@@ -45,13 +50,13 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="/" className="text-primary font-medium">Home</a>
-            <a href="/treatments" className="text-foreground hover:text-primary transition-colors">Treatments</a>
-            <a href="/hospitals" className="text-foreground hover:text-primary transition-colors">Hospitals</a>
-            <a href="/doctors" className="text-foreground hover:text-primary transition-colors">Doctors</a>
-            <a href="/about" className="text-foreground hover:text-primary transition-colors">About</a>
-            <a href="/blog" className="text-foreground hover:text-primary transition-colors">Blog</a>
-            <a href="/contact" className="text-foreground hover:text-primary transition-colors">Contact</a>
+            <Link to="/" className={`font-medium ${isActive('/') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Home</Link>
+            <Link to="/treatments" className={`font-medium ${isActive('/treatments') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Treatments</Link>
+            <Link to="/hospitals" className={`font-medium ${isActive('/hospitals') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Hospitals</Link>
+            <Link to="/doctors" className={`font-medium ${isActive('/doctors') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Doctors</Link>
+            <Link to="/about" className={`font-medium ${isActive('/about') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>About</Link>
+            <Link to="/blog" className={`font-medium ${isActive('/blog') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Blog</Link>
+            <Link to="/contact" className={`font-medium ${isActive('/contact') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Contact</Link>
           </div>
 
           {/* Action Buttons */}
@@ -78,13 +83,13 @@ const Header = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4">
-            <a href="/" className="block text-primary font-medium">Home</a>
-            <a href="/treatments" className="block text-foreground hover:text-primary transition-colors">Treatments</a>
-            <a href="/hospitals" className="block text-foreground hover:text-primary transition-colors">Hospitals</a>
-            <a href="/doctors" className="block text-foreground hover:text-primary transition-colors">Doctors</a>
-            <a href="/about" className="block text-foreground hover:text-primary transition-colors">About</a>
-            <a href="/blog" className="block text-foreground hover:text-primary transition-colors">Blog</a>
-            <a href="/contact" className="block text-foreground hover:text-primary transition-colors">Contact</a>
+            <Link to="/" className={`block font-medium ${isActive('/') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Home</Link>
+            <Link to="/treatments" className={`block font-medium ${isActive('/treatments') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Treatments</Link>
+            <Link to="/hospitals" className={`block font-medium ${isActive('/hospitals') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Hospitals</Link>
+            <Link to="/doctors" className={`block font-medium ${isActive('/doctors') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Doctors</Link>
+            <Link to="/about" className={`block font-medium ${isActive('/about') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>About</Link>
+            <Link to="/blog" className={`block font-medium ${isActive('/blog') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Blog</Link>
+            <Link to="/contact" className={`block font-medium ${isActive('/contact') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Contact</Link>
             <div className="flex gap-3 mt-4">
               <Button variant="outline" size="sm" className="border-primary text-primary">
                 Get Quote
