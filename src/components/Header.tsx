@@ -70,9 +70,11 @@ const Header = () => {
             <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               Get Quote
             </Button>
-            <Button className="bg-accent hover:bg-accent/90">
+            {/* <Button className="bg-accent hover:bg-accent/90">
               Book Consultation
-            </Button>
+            </Button> */}
+                          <Link to="/book" className={mobileNavLinkClass('/book')}>Book Consultation</Link>
+
           </div>
 
           {/* Mobile menu button */}
