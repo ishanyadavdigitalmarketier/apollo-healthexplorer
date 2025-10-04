@@ -51,7 +51,7 @@ const Header = () => {
             <a href="/doctors" className="text-foreground hover:text-primary transition-colors">Doctors</a>
             <a href="/about" className="text-foreground hover:text-primary transition-colors">About</a>
             <a href="/blog" className="text-foreground hover:text-primary transition-colors">Blog</a>
-            <a href="contact.html" className="text-foreground hover:text-primary transition-colors">Contact</a>
+            <a href="/contact.html" className="text-foreground hover:text-primary transition-colors">Contact</a>
           </div>
 
           {/* Action Buttons */}
@@ -84,7 +84,7 @@ const Header = () => {
             <a href="/doctors" className="block text-foreground hover:text-primary transition-colors">Doctors</a>
             <a href="/about" className="block text-foreground hover:text-primary transition-colors">About</a>
             <a href="/blog" className="block text-foreground hover:text-primary transition-colors">Blog</a>
-            <a href="contact.html" className="block text-foreground hover:text-primary transition-colors">Contact</a>
+            <a href="/contact.html" className="block text-foreground hover:text-primary transition-colors">Contact</a>
             <div className="flex gap-3 mt-4">
               <Button variant="outline" size="sm" className="border-primary text-primary">
                 Get Quote
