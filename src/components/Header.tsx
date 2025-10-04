@@ -11,6 +11,12 @@ const Header = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
+  const navLinkClass = (path: string) =>
+    `font-medium ${isActive(path) ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`;
+
+  const mobileNavLinkClass = (path: string) =>
+    `block font-medium ${isActive(path) ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`;
+
   return (
     <header className="w-full bg-background border-b">
       {/* Top contact bar */}
@@ -36,7 +42,7 @@ const Header = () => {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3">
             <img 
               src={apolloLogo} 
               alt="Apollo Partners Logo" 
@@ -46,17 +52,17 @@ const Header = () => {
               <h1 className="text-xl font-bold text-primary">Apollo Partners</h1>
               <p className="text-xs text-muted-foreground">Healthcare Excellence</p>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <Link to="/" className={`font-medium ${isActive('/') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Home</Link>
-            <Link to="/treatments" className={`font-medium ${isActive('/treatments') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Treatments</Link>
-            <Link to="/hospitals" className={`font-medium ${isActive('/hospitals') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Hospitals</Link>
-            <Link to="/doctors" className={`font-medium ${isActive('/doctors') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Doctors</Link>
-            <Link to="/about" className={`font-medium ${isActive('/about') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>About</Link>
-            <Link to="/blog" className={`font-medium ${isActive('/blog') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Blog</Link>
-            <Link to="/contact" className={`font-medium ${isActive('/contact') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Contact</Link>
+            <Link to="/" className={navLinkClass('/')}>Home</Link>
+            <Link to="/treatments" className={navLinkClass('/treatments')}>Treatments</Link>
+            <Link to="/hospitals" className={navLinkClass('/hospitals')}>Hospitals</Link>
+            <Link to="/doctors" className={navLinkClass('/doctors')}>Doctors</Link>
+            <Link to="/about" className={navLinkClass('/about')}>About</Link>
+            <Link to="/blog" className={navLinkClass('/blog')}>Blog</Link>
+            <Link to="/contact" className={navLinkClass('/contact')}>Contact</Link>
           </div>
 
           {/* Action Buttons */}
@@ -83,13 +89,13 @@ const Header = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4">
-            <Link to="/" className={`block font-medium ${isActive('/') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Home</Link>
-            <Link to="/treatments" className={`block font-medium ${isActive('/treatments') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Treatments</Link>
-            <Link to="/hospitals" className={`block font-medium ${isActive('/hospitals') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Hospitals</Link>
-            <Link to="/doctors" className={`block font-medium ${isActive('/doctors') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Doctors</Link>
-            <Link to="/about" className={`block font-medium ${isActive('/about') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>About</Link>
-            <Link to="/blog" className={`block font-medium ${isActive('/blog') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Blog</Link>
-            <Link to="/contact" className={`block font-medium ${isActive('/contact') ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`}>Contact</Link>
+            <Link to="/" className={mobileNavLinkClass('/')}>Home</Link>
+            <Link to="/treatments" className={mobileNavLinkClass('/treatments')}>Treatments</Link>
+            <Link to="/hospitals" className={mobileNavLinkClass('/hospitals')}>Hospitals</Link>
+            <Link to="/doctors" className={mobileNavLinkClass('/doctors')}>Doctors</Link>
+            <Link to="/about" className={mobileNavLinkClass('/about')}>About</Link>
+            <Link to="/blog" className={mobileNavLinkClass('/blog')}>Blog</Link>
+            <Link to="/contact" className={mobileNavLinkClass('/contact')}>Contact</Link>
             <div className="flex gap-3 mt-4">
               <Button variant="outline" size="sm" className="border-primary text-primary">
                 Get Quote
