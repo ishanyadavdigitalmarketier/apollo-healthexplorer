@@ -1,4 +1,4 @@
-// Updated BlogSection.tsx - Link featured article to /article without ID
+// Updated BlogSection.tsx - With links for Read More buttons
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
@@ -156,8 +156,8 @@ const BlogSection = () => {
                   </div>
                 </div>
 
-                <Button variant="outline" size="sm" className="w-full">
-                  Read More
+                <Button asChild variant="outline" size="sm" className="w-full">
+                  <Link to="/article">Read More</Link>
                 </Button>
               </CardContent>
             </Card>
