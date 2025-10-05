@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Phone, MessageCircle, Mail, Shield, Users, Clock, Link } from 'lucide-react';
+import { Phone, MessageCircle, Mail, Shield, Users, Clock, Link as LucideLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const CTASection = () => {
