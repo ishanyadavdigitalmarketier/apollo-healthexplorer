@@ -1,16 +1,15 @@
-// Article.tsx - Full featured article page without ID parameter
+// Article.tsx - Full article page without ID parameter
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Clock, Calendar, Share2, Bookmark, BookOpen, Eye } from 'lucide-react';
 import articleImage from '@/assets/article-medical-tourism.jpg';
 
 const Article = () => {
-  // Hardcoded featured article data
+  // Hardcoded featured article data for the full page
   const featuredArticle = {
-    id: '1',
     category: 'Featured Article',
     title: 'Complete Guide to Medical Tourism: What You Need to Know',
     description: 'Everything you need to know about getting medical treatment abroad, from choosing the right hospital to post-operative care and recovery.',
@@ -59,21 +58,18 @@ const Article = () => {
     image: articleImage,
     relatedArticles: [
       {
-        id: '2',
         title: 'Heart Surgery Abroad: Cost Comparison and Quality Insights',
         description: 'Detailed analysis of heart surgery costs and quality standards across top medical tourism destinations.',
         category: 'Cardiology',
         readTime: '6 min read',
       },
       {
-        id: '3',
         title: 'Dental Tourism: Transform Your Smile While Saving Money',
         description: 'How to get world-class dental treatments at a fraction of home country costs.',
         category: 'Dentistry',
         readTime: '5 min read',
       },
       {
-        id: '4',
         title: 'IVF Success Stories: Hope Through Medical Tourism',
         description: 'Real stories of couples who achieved their dream of parenthood through fertility treatments abroad.',
         category: 'Fertility',
@@ -153,42 +149,44 @@ const Article = () => {
 
           {/* Full Content */}
           <div 
-            className="prose prose-lg max-w-none"
+            className="prose prose-lg max-w-none mb-16"
             dangerouslySetInnerHTML={{ __html: featuredArticle.fullContent }}
           />
 
           {/* Related Articles */}
-          <Card className="mt-16">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <BookOpen className="w-5 h-5" />
-                Related Articles
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {featuredArticle.relatedArticles.map((relArticle) => (
-                  <div key={relArticle.id} className="flex items-center gap-4 p-4 border rounded-lg hover:bg-muted transition-colors">
-                    <div className="flex-1">
-                      <Badge variant="outline" className="mb-2">{relArticle.category}</Badge>
-                      <h4 className="font-semibold mb-1">{relArticle.title}</h4>
-                      <p className="text-sm text-muted-foreground mb-2">{relArticle.description}</p>
-                      <div className="text-xs text-muted-foreground">
-                        {relArticle.readTime}
+          {featuredArticle.relatedArticles.length > 0 && (
+            <Card className="mb-12">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <BookOpen className="w-5 h-5" />
+                  Related Articles
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {featuredArticle.relatedArticles.map((relArticle, index) => (
+                    <div key={index} className="flex items-center gap-4 p-4 border rounded-lg hover:bg-muted transition-colors">
+                      <div className="flex-1">
+                        <Badge variant="outline" className="mb-2">{relArticle.category}</Badge>
+                        <h4 className="font-semibold mb-1">{relArticle.title}</h4>
+                        <p className="text-sm text-muted-foreground mb-2">{relArticle.description}</p>
+                        <div className="text-xs text-muted-foreground">
+                          {relArticle.readTime}
+                        </div>
                       </div>
+                      <Button variant="outline" size="sm">
+                        Read More
+                      </Button>
                     </div>
-                    <Button asChild variant="outline" size="sm">
-                      <Link to={`/blog#${relArticle.id}`}>Read More</Link>
-                    </Button>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          )}
         </article>
 
         {/* Newsletter Signup */}
-        <Card className="mt-12 bg-primary text-primary-foreground border-0 shadow-lg">
+        <Card className="bg-primary text-primary-foreground border-0 shadow-lg">
           <CardContent className="p-8 text-center">
             <h3 className="text-2xl font-bold mb-4">Loved This Article?</h3>
             <p className="mb-6 opacity-90">
