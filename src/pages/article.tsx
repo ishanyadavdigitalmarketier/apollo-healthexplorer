@@ -1,13 +1,15 @@
-// Article.tsx - Full article page without ID parameter
+// Article.tsx - Updated with placeholder image
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Clock, Calendar, Share2, Bookmark, BookOpen, Eye } from 'lucide-react';
-import articleImage from '@/assets/article-medical-tourism.jpg';
 
 const Article = () => {
+  // Use a placeholder image URL instead of local file
+  const placeholderImage = 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80';
+
   // Hardcoded featured article data for the full page
   const featuredArticle = {
     category: 'Featured Article',
@@ -55,7 +57,7 @@ const Article = () => {
     date: 'Mar 15, 2024',
     readTime: '8 min read',
     views: '15.2K',
-    image: articleImage,
+    image: placeholderImage, // Use placeholder image
     relatedArticles: [
       {
         title: 'Heart Surgery Abroad: Cost Comparison and Quality Insights',
