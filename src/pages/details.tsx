@@ -1,8 +1,9 @@
-import { useParams } from 'react-router-dom';
+// TreatmentDetails.tsx - Details page component
+import { useParams, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardDescription, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, Clock, Shield, Users, CheckCircle, ArrowLeft, Phone, Mail, MapPin } from 'lucide-react';
+import { Star, Clock, Shield, Users, CheckCircle, ArrowLeft, Phone, Mail, MapPin, Building2, UserCheck } from 'lucide-react';
 import treatmentIcon from '@/assets/treatment-icon.jpg';
 
 interface Treatment {
@@ -66,7 +67,6 @@ const mockTreatments: Treatment[] = [
       },
     ],
   },
-  // Add more mock treatments as needed
   {
     id: '2',
     category: 'Orthopedics', 
@@ -100,20 +100,166 @@ const mockTreatments: Treatment[] = [
       },
     ],
   },
-  // ... (other treatments can be added similarly)
+  {
+    id: '3',
+    category: 'Plastic Surgery',
+    savings: 'Up to 60% savings',
+    title: 'Cosmetic Surgery',
+    description: 'Comprehensive cosmetic procedures by board-certified plastic surgeons. Achieve your desired look with safe and effective treatments.',
+    rating: 4.7,
+    reviews: 3156,
+    price: '$1,400',
+    duration: '3-5 days',
+    features: ['Board Certified', 'Natural Results', 'Recovery Support', 'Personalized Plans'],
+    image: treatmentIcon,
+    hospital: 'Max Super Speciality, India',
+    doctor: 'Dr. Amit Patel',
+    location: 'India',
+    contact: {
+      phone: '+91 456 789 0123',
+      email: 'info@maxhealth.com',
+      address: 'Delhi, India',
+    },
+    testimonials: [
+      {
+        name: 'Emily Brown',
+        text: 'Transformative experience with amazing results. Staff was supportive.',
+        rating: 4.9,
+      },
+      {
+        name: 'David Lee',
+        text: 'Professional and discreet. Very satisfied with the outcome.',
+        rating: 4.6,
+      },
+    ],
+  },
+  {
+    id: '4',
+    category: 'Dentistry',
+    savings: 'Up to 80% savings', 
+    title: 'Dental Implants',
+    description: 'Premium dental implants with immediate loading and aesthetic excellence. Restore your smile with durable and natural-looking solutions.',
+    rating: 4.9,
+    reviews: 4521,
+    price: '$800',
+    duration: '2-3 days',
+    features: ['Same Day Implants', 'Digital Planning', 'Lifetime Guarantee', 'Painless Procedure'],
+    image: treatmentIcon,
+    hospital: 'Bumrungrad International, Thailand',
+    doctor: 'Dr. Somchai Lee',
+    location: 'Thailand',
+    contact: {
+      phone: '+66 2 066 8888',
+      email: 'info@bumrungrad.com',
+      address: 'Bangkok, Thailand',
+    },
+    testimonials: [
+      {
+        name: 'Lisa Chen',
+        text: 'Perfect smile now! Quick and comfortable procedure.',
+        rating: 5,
+      },
+      {
+        name: 'Robert Kim',
+        text: 'High quality at a fraction of the cost. Excellent service.',
+        rating: 4.9,
+      },
+    ],
+  },
+  {
+    id: '5',
+    category: 'Ophthalmology',
+    savings: 'Up to 70% savings',
+    title: 'LASIK Eye Surgery',
+    description: 'Bladeless LASIK surgery for permanent vision correction with latest technology. Say goodbye to glasses with precise and safe laser treatment.',
+    rating: 4.8,
+    reviews: 2734,
+    price: '$1,200',
+    duration: '1 day',
+    features: ['Bladeless Technology', 'Quick Recovery', 'Vision Guarantee', 'Custom Mapping'],
+    image: treatmentIcon,
+    hospital: 'Mount Elizabeth Hospital, Singapore',
+    doctor: 'Dr. Lim Wei',
+    location: 'Singapore',
+    contact: {
+      phone: '+65 6737 2666',
+      email: 'info@mounte.com',
+      address: 'Singapore',
+    },
+    testimonials: [
+      {
+        name: 'Anna Taylor',
+        text: '20/20 vision the next day! Life-changing.',
+        rating: 5,
+      },
+      {
+        name: 'Tom Harris',
+        text: 'Safe and effective. No more contacts for me.',
+        rating: 4.8,
+      },
+    ],
+  },
+  {
+    id: '6',
+    category: 'Fertility',
+    savings: 'Up to 65% savings',
+    title: 'IVF Treatment',
+    description: 'Advanced fertility treatments with high success rates and personalized care. Journey to parenthood with expert guidance and modern techniques.',
+    rating: 4.7,
+    reviews: 1867,
+    price: '$1,350',
+    duration: '4-6 weeks',
+    features: ['High Success Rate', 'Genetic Testing', 'Emotional Support', 'Multiple Cycles Option'],
+    image: treatmentIcon,
+    hospital: 'Acibadem Healthcare, Turkey',
+    doctor: 'Dr. Ahmet Oz',
+    location: 'Turkey',
+    contact: {
+      phone: '+90 212 414 44 44',
+      email: 'info@acibadem.com',
+      address: 'Istanbul, Turkey',
+    },
+    testimonials: [
+      {
+        name: 'Maria Gonzalez',
+        text: 'Finally pregnant after years of trying. Grateful team.',
+        rating: 4.9,
+      },
+      {
+        name: 'Carlos Ruiz',
+        text: 'Compassionate care throughout the process.',
+        rating: 4.7,
+      },
+    ],
+  },
 ];
 
 const Details = () => {
   const { id } = useParams<{ id: string }>();
   const treatment = mockTreatments.find(t => t.id === id) || mockTreatments[0];
 
+  if (!treatment) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">Treatment Not Found</h1>
+          <Button asChild variant="outline">
+            <Link to="/treatments">Back to Treatments</Link>
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header with Back Button */}
       <div className="container mx-auto px-4 py-8">
-        <Button variant="ghost" className="mb-8 flex items-center gap-2">
-          <ArrowLeft size={20} />
-          Back to Treatments
+        <Button asChild variant="ghost" className="mb-8 flex items-center gap-2">
+          <Link to="/treatments">
+            <ArrowLeft size={20} />
+            Back to Treatments
+          </Link>
         </Button>
 
         {/* Hero Image and Basic Info */}
@@ -121,12 +267,14 @@ const Details = () => {
           <img 
             src={treatment.image} 
             alt={treatment.title}
-            className="w-full h-96 object-cover rounded-lg"
+            className="w-full h-96 object-cover rounded-lg shadow-lg"
           />
-          <div className="space-y-4">
-            <Badge variant="secondary">{treatment.category}</Badge>
-            <Badge className="bg-accent text-accent-foreground ml-2">{treatment.savings}</Badge>
-            <h1 className="text-3xl font-bold">{treatment.title}</h1>
+          <div className="space-y-6">
+            <div className="flex gap-2">
+              <Badge variant="secondary">{treatment.category}</Badge>
+              <Badge className="bg-accent text-accent-foreground">{treatment.savings}</Badge>
+            </div>
+            <h1 className="text-3xl md:text-4xl font-bold">{treatment.title}</h1>
             <p className="text-muted-foreground text-lg leading-relaxed">{treatment.description}</p>
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
@@ -136,7 +284,7 @@ const Details = () => {
                 </div>
                 <span className="text-muted-foreground">({treatment.reviews.toLocaleString()} reviews)</span>
               </div>
-              <div className="text-right">
+              <div className="text-right space-y-1">
                 <div className="text-2xl font-bold text-primary">Starting at {treatment.price}</div>
                 <div className="flex items-center gap-1 text-sm text-muted-foreground">
                   <Clock className="w-4 h-4" />
@@ -145,7 +293,7 @@ const Details = () => {
               </div>
             </div>
             <Button size="lg" className="w-full bg-primary hover:bg-primary/90">
-              Book Consultation
+              Book Consultation Now
             </Button>
           </div>
         </div>
@@ -153,14 +301,17 @@ const Details = () => {
         {/* Features */}
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle>Key Features</CardTitle>
+            <CardTitle className="flex items-center gap-2">
+              <Shield className="w-5 h-5" />
+              Key Features
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-2 gap-4">
               {treatment.features.map((feature, idx) => (
-                <div key={idx} className="flex items-center gap-2">
+                <div key={idx} className="flex items-center gap-3 p-3 bg-muted rounded-md">
                   <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
-                  <span>{feature}</span>
+                  <span className="text-sm">{feature}</span>
                 </div>
               ))}
             </div>
@@ -168,40 +319,50 @@ const Details = () => {
         </Card>
 
         {/* Hospital and Doctor Info */}
-        <div className="grid md:grid-cols-2 gap-8 mb-8">
+        <div className="grid lg:grid-cols-2 gap-8 mb-8">
           <Card>
             <CardHeader>
-              <CardTitle>Hospital</CardTitle>
+              <CardTitle className="flex items-center gap-2">
+                <Building2 className="w-5 h-5" />
+                Hospital Information
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <h3 className="font-semibold">{treatment.hospital}</h3>
+              <h3 className="font-semibold text-lg">{treatment.hospital}</h3>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4" />
                 <span>{treatment.location}</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Shield className="w-4 h-4" />
-                <span>JCI Accredited</span>
+                <span>JCI Accredited Facility</span>
               </div>
-              <Button variant="outline" className="w-full mt-4">View Hospital</Button>
+              <Button asChild variant="outline" className="w-full mt-4">
+                <Link to={`/hospitals/${treatment.id}`}>View Hospital Details</Link>
+              </Button>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle>Lead Doctor</CardTitle>
+              <CardTitle className="flex items-center gap-2">
+                <UserCheck className="w-5 h-5" />
+                Lead Specialist
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <h3 className="font-semibold">{treatment.doctor}</h3>
+              <h3 className="font-semibold text-lg">{treatment.doctor}</h3>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                <span>4.9 Rating</span>
+                <span>4.9 Patient Rating</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Users className="w-4 h-4" />
-                <span>20+ Years Experience</span>
+                <span>20+ Years of Experience</span>
               </div>
-              <Button variant="outline" className="w-full mt-4">View Doctor Profile</Button>
+              <Button asChild variant="outline" className="w-full mt-4">
+                <Link to={`/doctors/${treatment.id}`}>View Doctor Profile</Link>
+              </Button>
             </CardContent>
           </Card>
         </div>
@@ -209,20 +370,23 @@ const Details = () => {
         {/* Contact Info */}
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle>Contact Information</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2">
               <Phone className="w-5 h-5" />
-              <span>{treatment.contact.phone}</span>
+              Contact Details
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 pt-0">
+            <div className="flex items-center gap-3 p-3 bg-muted rounded-md">
+              <Phone className="w-5 h-5 text-muted-foreground" />
+              <span className="text-sm">{treatment.contact.phone}</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Mail className="w-5 h-5" />
-              <span>{treatment.contact.email}</span>
+            <div className="flex items-center gap-3 p-3 bg-muted rounded-md">
+              <Mail className="w-5 h-5 text-muted-foreground" />
+              <span className="text-sm">{treatment.contact.email}</span>
             </div>
-            <div className="flex items-center gap-2">
-              <MapPin className="w-5 h-5" />
-              <span>{treatment.contact.address}</span>
+            <div className="flex items-center gap-3 p-3 bg-muted rounded-md">
+              <MapPin className="w-5 h-5 text-muted-foreground" />
+              <span className="text-sm">{treatment.contact.address}</span>
             </div>
           </CardContent>
         </Card>
@@ -230,29 +394,42 @@ const Details = () => {
         {/* Testimonials */}
         <Card>
           <CardHeader>
-            <CardTitle>What Our Patients Say</CardTitle>
+            <CardTitle className="flex items-center gap-2">
+              <Users className="w-5 h-5" />
+              Patient Testimonials
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-6">
               {treatment.testimonials.map((testimonial, idx) => (
-                <div key={idx} className="border-l-4 border-accent pl-4">
-                  <div className="flex items-center gap-2 mb-2">
+                <div key={idx} className="border-l-4 border-accent pl-4 bg-muted/50 p-4 rounded-md">
+                  <div className="flex items-center gap-2 mb-3">
                     <div className="flex items-center gap-1">
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
-                          className={`w-4 h-4 ${i < testimonial.rating ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
+                          className={`w-4 h-4 ${i < Math.floor(testimonial.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
                         />
                       ))}
                     </div>
+                    <span className="text-sm font-medium">{testimonial.rating}</span>
                   </div>
-                  <p className="text-muted-foreground mb-2">"{testimonial.text}"</p>
-                  <p className="font-semibold">- {testimonial.name}</p>
+                  <p className="text-muted-foreground mb-3 italic">"{testimonial.text}"</p>
+                  <p className="font-semibold text-sm">- {testimonial.name}</p>
                 </div>
               ))}
             </div>
           </CardContent>
         </Card>
+
+        {/* CTA Section */}
+        <div className="text-center mt-12">
+          <h2 className="text-2xl font-bold mb-4">Ready to Get Started?</h2>
+          <p className="text-muted-foreground mb-6">Contact us for a free consultation and personalized treatment plan.</p>
+          <Button size="lg" className="bg-primary hover:bg-primary/90 px-8">
+            Schedule Free Consultation
+          </Button>
+        </div>
       </div>
     </div>
   );

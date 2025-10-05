@@ -1,12 +1,15 @@
+// TreatmentsSection.tsx - Updated to include IDs and dynamic links
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, Clock, Shield, Users, CheckCircle, Link } from 'lucide-react';
+import { Star, Clock, Shield, Users, CheckCircle } from 'lucide-react';
 import treatmentIcon from '@/assets/treatment-icon.jpg';
 
 const TreatmentsSection = () => {
   const treatments = [
     {
+      id: '1',
       category: 'Cardiology',
       savings: 'Up to 70% savings',
       title: 'Heart Bypass Surgery',
@@ -19,6 +22,7 @@ const TreatmentsSection = () => {
       image: treatmentIcon,
     },
     {
+      id: '2',
       category: 'Orthopedics', 
       savings: 'Up to 75% savings',
       title: 'Knee Replacement',
@@ -31,6 +35,7 @@ const TreatmentsSection = () => {
       image: treatmentIcon,
     },
     {
+      id: '3',
       category: 'Plastic Surgery',
       savings: 'Up to 60% savings',
       title: 'Cosmetic Surgery',
@@ -43,6 +48,7 @@ const TreatmentsSection = () => {
       image: treatmentIcon,
     },
     {
+      id: '4',
       category: 'Dentistry',
       savings: 'Up to 80% savings', 
       title: 'Dental Implants',
@@ -55,6 +61,7 @@ const TreatmentsSection = () => {
       image: treatmentIcon,
     },
     {
+      id: '5',
       category: 'Ophthalmology',
       savings: 'Up to 70% savings',
       title: 'LASIK Eye Surgery',
@@ -67,6 +74,7 @@ const TreatmentsSection = () => {
       image: treatmentIcon,
     },
     {
+      id: '6',
       category: 'Fertility',
       savings: 'Up to 65% savings',
       title: 'IVF Treatment',
@@ -91,8 +99,8 @@ const TreatmentsSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {treatments.map((treatment, index) => (
-            <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg overflow-hidden">
+          {treatments.map((treatment) => (
+            <Card key={treatment.id} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg overflow-hidden">
               <div className="relative">
                 <img 
                   src={treatment.image} 
@@ -151,9 +159,8 @@ const TreatmentsSection = () => {
                   ))}
                 </div>
 
-                <Button className="w-full mt-4" variant="outline">
-                  {/* View Details */}
-                  <Link to="/details">View Details</Link>
+                <Button asChild className="w-full mt-4" variant="outline">
+                  <Link to={`/details/${treatment.id}`}>View Details</Link>
                 </Button>
               </CardContent>
             </Card>
