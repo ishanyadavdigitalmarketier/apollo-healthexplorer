@@ -1,3 +1,5 @@
+// Article.tsx - Updated Featured Article component with dynamic Link
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -72,10 +74,10 @@ const Article = () => {
             {/* CTA */}
             <div className="flex justify-end">
               <Button asChild size="lg" className="group">
-                <a href="/articles/medical-tourism-guide" className="flex items-center gap-2 group-hover:underline">
+                <Link to="/article/1" className="flex items-center gap-2 group-hover:underline">
                   Read Full Article
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </a>
+                </Link>
               </Button>
             </div>
           </CardContent>
@@ -83,9 +85,11 @@ const Article = () => {
 
         {/* More Articles Teaser */}
         <div className="text-center mt-12">
-          <Button variant="outline" className="gap-2">
-            <Clock className="w-4 h-4" />
-            Explore More Articles
+          <Button asChild variant="outline" className="gap-2">
+            <Link to="/blog">
+              <Clock className="w-4 h-4" />
+              Explore More Articles
+            </Link>
           </Button>
         </div>
       </div>
