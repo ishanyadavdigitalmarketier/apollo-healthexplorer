@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { BookOpen, Clock, Eye } from 'lucide-react';
+import { BookOpen, Clock, Eye, Link } from 'lucide-react';
 
 const BlogSection = () => {
   const categories = [
@@ -112,7 +112,7 @@ const BlogSection = () => {
                       <span>{featuredArticle.readTime}</span>
                     </div>
                   </div>
-                  <Button>Read Full Article</Button>
+                  <Link to="/article">Read Full Article</Link>
                 </div>
               </div>
             </div>
