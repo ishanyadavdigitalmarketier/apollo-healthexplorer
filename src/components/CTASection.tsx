@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Phone, MessageCircle, Mail, Shield, Users, Clock } from 'lucide-react';
+import { Phone, MessageCircle, Mail, Shield, Users, Clock, Link } from 'lucide-react';
 
 const CTASection = () => {
   const contactMethods = [
@@ -73,7 +73,8 @@ const CTASection = () => {
               Get Free Quote
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-              Book Consultation
+              {/* Book Consultation */}
+              <Link to="/book">Book Consultation</Link>
             </Button>
           </div>
         </div>
