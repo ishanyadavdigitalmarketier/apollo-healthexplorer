@@ -124,7 +124,7 @@ const BlogSection = () => {
         </Card>
 
         {/* Articles Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {articles.map((article, index) => (
             <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-white overflow-hidden">
               <CardHeader className="pb-3">
@@ -155,14 +155,13 @@ const BlogSection = () => {
                     <span>{article.readTime}</span>
                   </div>
                 </div>
-
                 <Button variant="outline" size="sm" className="w-full">
                   Read More
                 </Button>
               </CardContent>
             </Card>
           ))}
-        </div>
+        </div> */}
 
         {/* Newsletter Signup */}
         <Card className="bg-primary text-primary-foreground border-0 shadow-lg mb-8">
