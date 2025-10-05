@@ -89,9 +89,13 @@ const CTASection = () => {
                 <p className="text-muted-foreground mb-4">{method.description}</p>
                 <p className="font-semibold text-lg mb-4">{method.action}</p>
                 <Button asChild className="w-full">
-                  <a href={method.href}>
-                    {method.buttonText}
-                  </a>
+                  {method.href.startsWith('http') || method.href.startsWith('tel') || method.href.startsWith('mailto') ? (
+                    <a href={method.href} target={method.href.startsWith('http') ? '_blank' : '_self'}>
+                      {method.buttonText}
+                    </a>
+                  ) : (
+                    <Link to={method.href}>{method.buttonText}</Link>
+                  )}
                 </Button>
               </CardContent>
             </Card>
@@ -132,7 +136,9 @@ const CTASection = () => {
                   <a href="tel:+1-800-AFYAWELL">Call Now: +1-800-AFYAWELL</a>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">
-                  <a href="https://wa.me/1234567890">WhatsApp Chat</a>
+                  <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+                    WhatsApp Chat
+                  </a>
                 </Button>
               </div>
             </div>
