@@ -1,3 +1,4 @@
+// App.tsx - Updated to remove /article/:id route
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,7 +15,6 @@ import Treatments from "./pages/treatments";
 import Book from "./pages/book";
 import Details from "./pages/details";
 import Article from "./pages/article";
-
 
 const queryClient = new QueryClient();
 

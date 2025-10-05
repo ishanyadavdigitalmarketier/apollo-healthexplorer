@@ -1,7 +1,9 @@
+// Updated BlogSection.tsx - Link featured article to /article without ID
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { BookOpen, Clock, Eye, Link } from 'lucide-react';
+import { BookOpen, Clock, Eye } from 'lucide-react';
 
 const BlogSection = () => {
   const categories = [
@@ -112,7 +114,9 @@ const BlogSection = () => {
                       <span>{featuredArticle.readTime}</span>
                     </div>
                   </div>
-                  <Link to="/article">Read Full Article</Link>
+                  <Button asChild variant="link" className="p-0 h-auto">
+                    <Link to="/article">Read Full Article</Link>
+                  </Button>
                 </div>
               </div>
             </div>
