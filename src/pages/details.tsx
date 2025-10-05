@@ -234,7 +234,7 @@ const mockTreatments: Treatment[] = [
   },
 ];
 
-const Details = () => {
+const TreatmentDetails = () => {
   const { id } = useParams<{ id: string }>();
   const treatment = mockTreatments.find(t => t.id === id) || mockTreatments[0];
 
@@ -435,4 +435,4 @@ const Details = () => {
   );
 };
 
-export default Details;
+export default TreatmentDetails;
