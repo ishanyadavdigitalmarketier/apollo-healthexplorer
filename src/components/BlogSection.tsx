@@ -1,9 +1,7 @@
-// Updated BlogSection.tsx to include IDs and dynamic links
-import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { BookOpen, Clock, Eye } from 'lucide-react';
+import { BookOpen, Clock, Eye, Link } from 'lucide-react';
 
 const BlogSection = () => {
   const categories = [
@@ -12,7 +10,6 @@ const BlogSection = () => {
   ];
 
   const featuredArticle = {
-    id: '1',
     category: 'Featured Article',
     title: 'Complete Guide to Medical Tourism: What You Need to Know',
     description: 'Everything you need to know about getting medical treatment abroad, from choosing the right hospital to post-operative care and recovery.',
@@ -24,7 +21,6 @@ const BlogSection = () => {
 
   const articles = [
     {
-      id: '2',
       category: 'Cardiology',
       views: '8.7K',
       title: 'Heart Surgery Abroad: Cost Comparison and Quality Insights',
@@ -34,7 +30,6 @@ const BlogSection = () => {
       icon: '📄',
     },
     {
-      id: '3',
       category: 'Dentistry',
       views: '12.1K',
       title: 'Dental Tourism: Transform Your Smile While Saving Money',
@@ -44,7 +39,6 @@ const BlogSection = () => {
       icon: '📄',
     },
     {
-      id: '4',
       category: 'Fertility',
       views: '9.3K',
       title: 'IVF Success Stories: Hope Through Medical Tourism',
@@ -54,7 +48,6 @@ const BlogSection = () => {
       icon: '📄',
     },
     {
-      id: '5',
       category: 'Recovery',
       views: '6.8K',
       title: 'Recovery and Aftercare: Your Medical Tourism Journey',
@@ -64,7 +57,6 @@ const BlogSection = () => {
       icon: '📄',
     },
     {
-      id: '6',
       category: 'Insurance',
       views: '5.2K',
       title: 'Medical Tourism Insurance: Protecting Your Investment',
@@ -120,9 +112,7 @@ const BlogSection = () => {
                       <span>{featuredArticle.readTime}</span>
                     </div>
                   </div>
-                  <Button asChild variant="link" className="p-0 h-auto">
-                    <Link to={`/article/${featuredArticle.id}`}>Read Full Article</Link>
-                  </Button>
+                  <Link to="/article">Read Full Article</Link>
                 </div>
               </div>
             </div>
@@ -131,8 +121,8 @@ const BlogSection = () => {
 
         {/* Articles Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {articles.map((article) => (
-            <Card key={article.id} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-white overflow-hidden">
+          {articles.map((article, index) => (
+            <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-white overflow-hidden">
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between mb-3">
                   <div className="text-2xl">{article.icon}</div>
@@ -162,8 +152,8 @@ const BlogSection = () => {
                   </div>
                 </div>
 
-                <Button asChild variant="outline" size="sm" className="w-full">
-                  <Link to={`/article/${article.id}`}>Read More</Link>
+                <Button variant="outline" size="sm" className="w-full">
+                  Read More
                 </Button>
               </CardContent>
             </Card>
