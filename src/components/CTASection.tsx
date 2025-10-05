@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Phone, MessageCircle, Mail, Shield, Users, Clock, Link } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const CTASection = () => {
   const contactMethods = [
@@ -72,8 +73,7 @@ const CTASection = () => {
             <Button size="lg" className="bg-accent hover:bg-accent/90 text-lg px-8 py-6">
               Get Free Quote
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-              {/* Book Consultation */}
+            <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               <Link to="/book">Book Consultation</Link>
             </Button>
           </div>
