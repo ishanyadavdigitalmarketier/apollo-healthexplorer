@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, MapPin, Users, Clock, Shield, CheckCircle, Link } from 'lucide-react';
+import { Star, MapPin, Users, Clock, Shield, CheckCircle } from 'lucide-react';
 import hospitalIcon from '@/assets/hospital-icon.jpg';
 
 const HospitalsSection = () => {
@@ -159,9 +160,8 @@ const HospitalsSection = () => {
                     {/* <Button size="sm" variant="outline" className="flex-1">
                       View Details
                     </Button> */}
-                    <Button size="sm" className="flex-1 bg-accent hover:bg-accent/90">
-                      {/* Get Quote */}
-                     <Link to="/book"> Get Quote</Link>    
+                    <Button asChild size="sm" className="flex-1 bg-accent hover:bg-accent/90">
+                      <Link to="/book">Get Quote</Link>
                     </Button>
                   </div>
                 </div>
