@@ -174,8 +174,8 @@ const Article = () => {
                           {relArticle.readTime}
                         </div>
                       </div>
-                      <Button variant="outline" size="sm">
-                        Read More
+                      <Button asChild variant="outline" size="sm">
+                        <Link to="/article">Read More</Link>
                       </Button>
                     </div>
                   ))}
