@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, Clock, Shield, Users, CheckCircle } from 'lucide-react';
+import { Star, Clock, Shield, Users, CheckCircle, Link } from 'lucide-react';
 import treatmentIcon from '@/assets/treatment-icon.jpg';
 
 const TreatmentsSection = () => {
@@ -152,7 +152,7 @@ const TreatmentsSection = () => {
                 </div>
 
                 <Button className="w-full mt-4" variant="outline">
-                  View Details
+                  <Link to="details">View Details</Link>
                 </Button>
               </CardContent>
             </Card>
