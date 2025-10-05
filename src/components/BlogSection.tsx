@@ -21,53 +21,53 @@ const BlogSection = () => {
     icon: '📖',
   };
 
-  const articles = [
-    {
-      category: 'Cardiology',
-      views: '8.7K',
-      title: 'Heart Surgery Abroad: Cost Comparison and Quality Insights',
-      description: 'Detailed analysis of heart surgery costs and quality standards across top medical tourism destinations including India, Thailand, and Singapore.',
-      author: 'Dr. Michael Chen',
-      readTime: '6 min read',
-      icon: '📄',
-    },
-    {
-      category: 'Dentistry',
-      views: '12.1K',
-      title: 'Dental Tourism: Transform Your Smile While Saving Money',
-      description: 'How to get world-class dental treatments at a fraction of home country costs. Compare destinations, procedures, and recovery timelines.',
-      author: 'Dr. Amanda Rodriguez',
-      readTime: '5 min read',
-      icon: '📄',
-    },
-    {
-      category: 'Fertility',
-      views: '9.3K',
-      title: 'IVF Success Stories: Hope Through Medical Tourism',
-      description: 'Real stories of couples who achieved their dream of parenthood through fertility treatments abroad. Success rates, costs, and emotional support.',
-      author: 'Dr. Lisa Thompson',
-      readTime: '7 min read',
-      icon: '📄',
-    },
-    {
-      category: 'Recovery',
-      views: '6.8K',
-      title: 'Recovery and Aftercare: Your Medical Tourism Journey',
-      description: 'Essential tips for post-operative care, follow-up appointments, and ensuring the best outcomes from your medical tourism experience.',
-      author: 'Dr. James Wilson',
-      readTime: '6 min read',
-      icon: '📄',
-    },
-    {
-      category: 'Insurance',
-      views: '5.2K',
-      title: 'Medical Tourism Insurance: Protecting Your Investment',
-      description: 'Understanding medical tourism insurance options, what\'s covered, and how to choose the right policy for international medical treatments.',
-      author: 'Sarah Johnson',
-      readTime: '4 min read',
-      icon: '📄',
-    },
-  ];
+  // const articles = [
+  //   {
+  //     category: 'Cardiology',
+  //     views: '8.7K',
+  //     title: 'Heart Surgery Abroad: Cost Comparison and Quality Insights',
+  //     description: 'Detailed analysis of heart surgery costs and quality standards across top medical tourism destinations including India, Thailand, and Singapore.',
+  //     author: 'Dr. Michael Chen',
+  //     readTime: '6 min read',
+  //     icon: '📄',
+  //   },
+  //   {
+  //     category: 'Dentistry',
+  //     views: '12.1K',
+  //     title: 'Dental Tourism: Transform Your Smile While Saving Money',
+  //     description: 'How to get world-class dental treatments at a fraction of home country costs. Compare destinations, procedures, and recovery timelines.',
+  //     author: 'Dr. Amanda Rodriguez',
+  //     readTime: '5 min read',
+  //     icon: '📄',
+  //   },
+  //   {
+  //     category: 'Fertility',
+  //     views: '9.3K',
+  //     title: 'IVF Success Stories: Hope Through Medical Tourism',
+  //     description: 'Real stories of couples who achieved their dream of parenthood through fertility treatments abroad. Success rates, costs, and emotional support.',
+  //     author: 'Dr. Lisa Thompson',
+  //     readTime: '7 min read',
+  //     icon: '📄',
+  //   },
+  //   {
+  //     category: 'Recovery',
+  //     views: '6.8K',
+  //     title: 'Recovery and Aftercare: Your Medical Tourism Journey',
+  //     description: 'Essential tips for post-operative care, follow-up appointments, and ensuring the best outcomes from your medical tourism experience.',
+  //     author: 'Dr. James Wilson',
+  //     readTime: '6 min read',
+  //     icon: '📄',
+  //   },
+  //   {
+  //     category: 'Insurance',
+  //     views: '5.2K',
+  //     title: 'Medical Tourism Insurance: Protecting Your Investment',
+  //     description: 'Understanding medical tourism insurance options, what\'s covered, and how to choose the right policy for international medical treatments.',
+  //     author: 'Sarah Johnson',
+  //     readTime: '4 min read',
+  //     icon: '📄',
+  //   },
+  // ];
 
   return (
     <section className="py-20 bg-muted/30">
@@ -123,8 +123,8 @@ const BlogSection = () => {
           </CardContent>
         </Card>
 
-        {/* Articles Grid */}
-        {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        {/* Articles Grid
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {articles.map((article, index) => (
             <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-white overflow-hidden">
               <CardHeader className="pb-3">
