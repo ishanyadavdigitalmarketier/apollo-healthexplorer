@@ -1,4 +1,4 @@
-// Updated BlogSection.tsx - With links for Read More buttons
+// Updated BlogSection.tsx
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
@@ -184,8 +184,8 @@ const BlogSection = () => {
         </Card>
 
         <div className="text-center">
-          <Button size="lg" variant="outline">
-            View All Articles
+          <Button asChild size="lg" variant="outline">
+            <Link to="/blog">View All Articles</Link>
           </Button>
         </div>
       </div>
