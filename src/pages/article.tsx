@@ -1,4 +1,4 @@
-// Article.tsx - Full article page without ID parameter (unchanged, as it's already set up correctly)
+// Article.tsx - Full article page without ID parameter
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -174,8 +174,8 @@ const Article = () => {
                           {relArticle.readTime}
                         </div>
                       </div>
-                      <Button asChild variant="outline" size="sm">
-                        <Link to="/article">Read More</Link>
+                      <Button variant="outline" size="sm">
+                        Read More
                       </Button>
                     </div>
                   ))}
