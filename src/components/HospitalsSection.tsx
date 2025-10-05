@@ -156,9 +156,9 @@ const HospitalsSection = () => {
                   </div>
 
                   <div className="flex gap-2">
-                    <Button size="sm" variant="outline" className="flex-1">
+                    {/* <Button size="sm" variant="outline" className="flex-1">
                       View Details
-                    </Button>
+                    </Button> */}
                     <Button size="sm" className="flex-1 bg-accent hover:bg-accent/90">
                       Get Quote
                     </Button>
