@@ -184,7 +184,7 @@ const BlogSection = () => {
 
         <div className="text-center">
           <Button size="lg" variant="outline">
-            View All Articles
+            <Link to="/article"> View All Articles</Link>
           </Button>
         </div>
       </div>
