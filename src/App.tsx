@@ -15,6 +15,7 @@ import Treatments from "./pages/treatments";
 import Book from "./pages/book";
 import Details from "./pages/details";
 import Article from "./pages/article";
+import Read from "./pages/read";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/book" element={<Book />} />
           <Route path="/details" element={<Details />} />
           <Route path="/article" element={<Article />} />
+          <Route path="/read" element={<Read />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
