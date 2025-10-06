@@ -1,4 +1,4 @@
-// Read.tsx - Component for reading a specific article (e.g., Heart Surgery Abroad)
+// Read.tsx - Component for reading the Heart Surgery Abroad article
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,7 +10,7 @@ const Read = () => {
   // Use the same placeholder image URL
   const placeholderImage = 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80';
 
-  // Hardcoded article data for the Heart Surgery page
+  // Hardcoded article data for the Heart Surgery page, updated with recent cost data
   const article = {
     category: 'Cardiology',
     title: 'Heart Surgery Abroad: Cost Comparison and Quality Insights',
@@ -21,14 +21,14 @@ const Read = () => {
 
       <h2>Cost Comparison Across Destinations</h2>
       <ul>
-        <li><strong>India:</strong> Coronary artery bypass grafting (CABG) costs $5,000–$10,000, compared to $70,000–$150,000 in the US. Valve replacement: $8,000–$15,000.</li>
+        <li><strong>India:</strong> Coronary artery bypass grafting (CABG) costs $2,000–$5,000, compared to $50,000–$150,000 in the US. Valve replacement: $8,000–$15,000.</li>
         <li><strong>Thailand:</strong> Known for minimally invasive techniques, CABG: $12,000–$20,000. Excellent for international patients with English-speaking staff.</li>
-        <li><strong>Singapore:</strong> Premium option with costs at $20,000–$35,000 for CABG, offering state-of-the-art facilities and short recovery times.</li>
+        <li><strong>Singapore:</strong> Premium option with costs at $15,000–$30,000 for CABG, offering state-of-the-art facilities and short recovery times.</li>
       </ul>
       <p>These savings—up to 80%—include hospital stays, surgeon fees, and medications, but exclude travel.</p>
 
       <h2>Quality Standards and Accreditation</h2>
-      <p>All three destinations feature JCI-accredited hospitals. India's Apollo Hospitals and Fortis are renowned for cardiac expertise. Thailand's Bumrungrad International Hospital reports success rates comparable to the US (95%+ for CABG). Singapore's Mount Elizabeth Hospital emphasizes precision robotics, with mortality rates under 2%.</p>
+      <p>All three destinations feature JCI-accredited hospitals. India's Apollo Hospitals and Fortis are renowned for cardiac expertise, with success rates around 98% for CABG. Thailand's Bumrungrad International Hospital reports success rates comparable to the US (95%+ for CABG). Singapore's Mount Elizabeth Hospital emphasizes precision robotics, with mortality rates under 2%.</p>
 
       <h2>Patient Considerations</h2>
       <h3>Choosing the Right Destination</h3>
@@ -64,6 +64,12 @@ const Read = () => {
         description: 'Essential tips for post-operative care, follow-up appointments, and ensuring the best outcomes from your medical tourism experience.',
         category: 'Recovery',
         readTime: '6 min read',
+      },
+      {
+        title: 'Medical Tourism Insurance: Protecting Your Investment',
+        description: 'Understanding medical tourism insurance options, what\'s covered, and how to choose the right policy for international medical treatments.',
+        category: 'Insurance',
+        readTime: '4 min read',
       },
     ],
   };
