@@ -170,7 +170,8 @@ const TreatmentsSection = () => {
 
         <div className="text-center">
           <Button size="lg" className="bg-primary hover:bg-primary/90">
-            View All Treatments
+            {/* View All Treatments */}
+            <Link to="/treatments">View All Treatments</Link>
           </Button>
         </div>
       </div>
