@@ -305,20 +305,20 @@ const HeroSection = () => {
             {/* Tabs */}
             <div className="flex gap-2 mb-6">
               <Button
-                variant={activeTab === 'treatments' ? 'default' : 'outline'}
-                onClick={() => setActiveTab('treatments')}
-                className="flex items-center gap-2"
-              >
-                <Stethoscope size={16} />
-                Treatments
-              </Button>
-              <Button
                 variant={activeTab === 'hospitals' ? 'default' : 'outline'}
                 onClick={() => setActiveTab('hospitals')}
                 className="flex items-center gap-2"
               >
                 <Building2 size={16} />
                 Hospitals
+              </Button>
+              <Button
+                variant={activeTab === 'treatments' ? 'default' : 'outline'}
+                onClick={() => setActiveTab('treatments')}
+                className="flex items-center gap-2"
+              >
+                <Stethoscope size={16} />
+                Treatments
               </Button>
               <Button
                 variant={activeTab === 'doctors' ? 'default' : 'outline'}
