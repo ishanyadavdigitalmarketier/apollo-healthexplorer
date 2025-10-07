@@ -9,6 +9,7 @@ import heroImage from '@/assets/hero-medical.jpg';
 const HeroSection = () => {
   const [activeTab, setActiveTab] = useState('treatments');
   const [selectedLocation, setSelectedLocation] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [searchTriggered, setSearchTriggered] = useState(false);
 
   // Mock data for treatments, hospitals, and doctors per location
@@ -155,16 +156,29 @@ const HeroSection = () => {
       );
     }
 
+    const locationName = selectedLocation.charAt(0).toUpperCase() + selectedLocation.slice(1);
+    const query = searchQuery.toLowerCase();
+
     switch (activeTab) {
       case 'treatments':
+        const filteredTreatments = currentData.treatments.filter(treatment =>
+          treatment.name.toLowerCase().includes(query)
+        );
+        if (filteredTreatments.length === 0) {
+          return (
+            <div className="text-center py-8 text-muted-foreground">
+              No treatments found for "{searchQuery}" in {locationName}.
+            </div>
+          );
+        }
         return (
           <div className="space-y-4">
             <h3 className="text-xl font-semibold flex items-center gap-2">
               <MapPin size={20} />
-              Treatments in {selectedLocation.charAt(0).toUpperCase() + selectedLocation.slice(1)}
+              Treatments matching "{searchQuery}" in {locationName}
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
-              {currentData.treatments.map((treatment, index) => (
+              {filteredTreatments.map((treatment, index) => (
                 <div key={index} className="border rounded-lg p-4 bg-card">
                   <h4 className="font-medium">{treatment.name}</h4>
                   <div className="flex justify-between text-sm text-muted-foreground mt-2">
@@ -178,14 +192,25 @@ const HeroSection = () => {
           </div>
         );
       case 'hospitals':
+        const filteredHospitals = currentData.hospitals.filter(hospital =>
+          hospital.name.toLowerCase().includes(query) ||
+          hospital.specialties.some(specialty => specialty.toLowerCase().includes(query))
+        );
+        if (filteredHospitals.length === 0) {
+          return (
+            <div className="text-center py-8 text-muted-foreground">
+              No hospitals found for "{searchQuery}" in {locationName}.
+            </div>
+          );
+        }
         return (
           <div className="space-y-4">
             <h3 className="text-xl font-semibold flex items-center gap-2">
               <Building2 size={20} />
-              Hospitals in {selectedLocation.charAt(0).toUpperCase() + selectedLocation.slice(1)}
+              Hospitals matching "{searchQuery}" in {locationName}
             </h3>
             <div className="space-y-3">
-              {currentData.hospitals.map((hospital, index) => (
+              {filteredHospitals.map((hospital, index) => (
                 <div key={index} className="flex items-center gap-4 p-4 border rounded-lg bg-card">
                   <div className="flex-1">
                     <h4 className="font-medium">{hospital.name}</h4>
@@ -199,14 +224,25 @@ const HeroSection = () => {
           </div>
         );
       case 'doctors':
+        const filteredDoctors = currentData.doctors.filter(doctor =>
+          doctor.name.toLowerCase().includes(query) ||
+          doctor.specialty.toLowerCase().includes(query)
+        );
+        if (filteredDoctors.length === 0) {
+          return (
+            <div className="text-center py-8 text-muted-foreground">
+              No doctors found for "{searchQuery}" in {locationName}.
+            </div>
+          );
+        }
         return (
           <div className="space-y-4">
             <h3 className="text-xl font-semibold flex items-center gap-2">
               <UserCheck size={20} />
-              Doctors in {selectedLocation.charAt(0).toUpperCase() + selectedLocation.slice(1)}
+              Doctors matching "{searchQuery}" in {locationName}
             </h3>
             <div className="space-y-3">
-              {currentData.doctors.map((doctor, index) => (
+              {filteredDoctors.map((doctor, index) => (
                 <div key={index} className="flex items-center gap-4 p-4 border rounded-lg bg-card">
                   <div className="flex-1">
                     <h4 className="font-medium">{doctor.name}</h4>
@@ -300,6 +336,8 @@ const HeroSection = () => {
                 <label className="block text-sm font-medium mb-2">What are you looking for?</label>
                 <Input 
                   placeholder={`Search ${activeTab}...`} 
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   className="h-12"
                 />
               </div>
