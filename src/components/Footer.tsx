@@ -62,23 +62,23 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
                 <Phone size={16} />
+                <a href="tel:+911066502502">Call Now</a>
                 <span>+91-1066-502-502</span>
                 <Button asChild size="sm" className="ml-2 bg-primary hover:bg-primary/90 text-primary-foreground text-xs">
-                  <a href="tel:+911066502502">Call Now</a>
                 </Button>
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={16} />
+                <a href="mailto:info@apollohospitals.com">Send Email</a>
                 <span>info@apollohospitals.com</span>
                 <Button asChild size="sm" className="ml-2 bg-primary hover:bg-primary/90 text-primary-foreground text-xs">
-                  <a href="mailto:info@apollohospitals.com">Send Email</a>
                 </Button>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin size={16} />
+                <a href="https://www.google.com/maps/search/?api=1&query=21%2C%20Greams%20Lane%2C%20Off%20Greams%20Road%2C%20Chennai%20%E2%80%93%20600%20006" target="_blank" rel="noopener noreferrer">View Map</a>
                 <span className="leading-relaxed">21, Greams Lane, Off Greams Road, Chennai – 600 006</span>
                 <Button asChild size="sm" className="ml-2 bg-primary hover:bg-primary/90 text-primary-foreground text-xs" variant="outline">
-                  <a href="https://www.google.com/maps/search/?api=1&query=21%2C%20Greams%20Lane%2C%20Off%20Greams%20Road%2C%20Chennai%20%E2%80%93%20600%20006" target="_blank" rel="noopener noreferrer">View Map</a>
                 </Button>
               </li>
             </ul>
