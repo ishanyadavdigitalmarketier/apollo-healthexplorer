@@ -6,7 +6,7 @@ import HospitalsSection from '@/components/HospitalsSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import BlogSection from '@/components/BlogSection';
 import CTASection from '@/components/CTASection';
-import { Footer } from 'react-day-picker';
+import Footer  from '@/components/Footer';
 
 const Index = () => {
   return (
