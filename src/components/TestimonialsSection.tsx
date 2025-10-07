@@ -1,10 +1,12 @@
+// Update the TestimonialsSection to fix the Button Link
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Star, Quote, Link } from 'lucide-react';
+import { Star, Quote } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const TestimonialsSection = () => {
   const testimonial = {
-    text: "The care I received at Apollo Hospitals was exceptional. From the moment I landed in Delhi to my complete recovery, AfyaWell took care of everything. The doctors were world-class, and I saved over $80,000 compared to US prices. I couldn't be happier with my decision.",
+    text: "The care I received at Apollo Hospitals was exceptional. From the moment I landed in Delhi to my complete recovery, Apollo Partners took care of everything. The doctors were world-class, and I saved over $80,000 compared to US prices. I couldn't be happier with my decision.",
     name: "Sarah Johnson, 45",
     country: "🇺🇸 USA",
     treatment: "Heart Bypass Surgery",
@@ -28,7 +30,7 @@ const TestimonialsSection = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Real Patient Success Stories</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Hear from thousands of patients who have transformed their lives through quality medical care abroad with AfyaWell's expert guidance.
+            Hear from thousands of patients who have transformed their lives through quality medical care abroad with Apollo Partners' expert guidance.
           </p>
         </div>
 
@@ -110,8 +112,8 @@ const TestimonialsSection = () => {
           </div>
 
           <div className="text-center">
-            <Button className="bg-accent hover:bg-accent/90">
-              <Link to="/story"> Share Your Success Story</Link>
+            <Button asChild className="bg-accent hover:bg-accent/90">
+              <Link to="/story">Share Your Success Story</Link>
             </Button>
           </div>
         </div>
