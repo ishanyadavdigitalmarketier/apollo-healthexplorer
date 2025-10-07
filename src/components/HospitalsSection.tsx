@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Star, MapPin, Users, Clock, Shield, CheckCircle } from 'lucide-react';
 import hospitalIcon from '@/assets/hospital-icon.jpg';
+import BumrungradHospital from '@/assets/Bumrungrad- Hospital.jpg';
 
 const HospitalsSection = () => {
   const countries = [
@@ -38,7 +39,7 @@ const HospitalsSection = () => {
       patients: '35,000+',
       experience: '30+ years',
       features: ['Medical Tourism Hub', 'Luxury Facilities', 'Interpreter Services'],
-      image: hospitalIcon,
+      image: BumrungradHospital,
     },
     {
       name: 'Mount Elizabeth Hospital',
