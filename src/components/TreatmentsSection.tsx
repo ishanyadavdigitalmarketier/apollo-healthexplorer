@@ -6,6 +6,10 @@ import { Badge } from '@/components/ui/badge';
 import { Star, Clock, Shield, Users, CheckCircle } from 'lucide-react';
 import treatmentIcon from '@/assets/treatment-icon.jpg';
 import robotictotal from '@/assets/robotic-total.png';
+import pexelszandatsu from '@/assets/pexels-zandatsu.jpg';
+import componentsof from '@/assets/components-of.jpg';
+import lasikeye from '@/assets/lasik-eye.jpg';
+import invitro from '@/assets/in-vitro.jpg';
 
 const TreatmentsSection = () => {
   const treatments = [
@@ -46,7 +50,7 @@ const TreatmentsSection = () => {
       price: '$1,400',
       duration: '3-5 days',
       features: ['Board Certified', 'Natural Results', 'Recovery Support'],
-      image: treatmentIcon,
+      image: pexelszandatsu,
     },
     {
       id: '4',
@@ -59,7 +63,7 @@ const TreatmentsSection = () => {
       price: '$800',
       duration: '2-3 days',
       features: ['Same Day Implants', 'Digital Planning', 'Lifetime Guarantee'],
-      image: treatmentIcon,
+      image: componentsof,
     },
     {
       id: '5',
@@ -72,7 +76,7 @@ const TreatmentsSection = () => {
       price: '$1,200',
       duration: '1 day',
       features: ['Bladeless Technology', 'Quick Recovery', 'Vision Guarantee'],
-      image: treatmentIcon,
+      image: lasikeye,
     },
     {
       id: '6',
@@ -85,7 +89,7 @@ const TreatmentsSection = () => {
       price: '$1,350',
       duration: '4-6 weeks',
       features: ['High Success Rate', 'Genetic Testing', 'Emotional Support'],
-      image: treatmentIcon,
+      image: invitro,
     },
   ];
 
