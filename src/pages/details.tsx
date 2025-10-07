@@ -5,11 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Star, Clock, Shield, Users, CheckCircle, ArrowLeft, Phone, Mail, MapPin, Building2, UserCheck } from 'lucide-react';
 import treatmentIcon from '@/assets/treatment-icon.jpg';
-import robotictotal from '@/assets/robotic-total.png';
-import pexelszandatsu from '@/assets/pexels-zandatsu.jpg';
-import componentsof from '@/assets/components-of.jpg';
-import lasikeye from '@/assets/lasik-eye.jpg';
-import invitro from '@/assets/in-vitro.jpg';
 
 interface Treatment {
   id: string;
@@ -44,7 +39,7 @@ const mockTreatments: Treatment[] = [
     category: 'Cardiology',
     savings: 'Up to 70% savings',
     title: 'Heart Bypass Surgery',
-    description: 'Advanced cardiac surgery with world-class specialists and cutting-edge technology. This procedure involves creating a new pathway for blood flow around blocked arteries in the heart. Performed using minimally invasive techniques for faster recovery.',
+    description: 'Advanced cardiac surgery with world-class specialists and cutting-edge technology. This procedure involves creating a new pathway for blood flow around blocked arteries in the heart.',
     rating: 4.9,
     reviews: 2847,
     price: '$1,200',
@@ -77,13 +72,13 @@ const mockTreatments: Treatment[] = [
     category: 'Orthopedics', 
     savings: 'Up to 75% savings',
     title: 'Knee Replacement',
-    description: 'Complete knee replacement surgery with advanced prosthetics and rehabilitation. Restore mobility and reduce pain with state-of-the-art implants. Robotic-assisted surgery ensures precision and minimal tissue damage.',
+    description: 'Complete knee replacement surgery with advanced prosthetics and rehabilitation. Restore mobility and reduce pain with state-of-the-art implants.',
     rating: 4.8,
     reviews: 1923,
     price: '$950',
     duration: '5-7 days',
     features: ['Robotic Surgery', 'Fast Recovery', 'Lifetime Warranty', 'Physiotherapy Included'],
-    image: robotictotal,
+    image: treatmentIcon,
     hospital: 'Fortis Healthcare, India',
     doctor: 'Dr. Priya Sharma',
     location: 'India',
@@ -110,13 +105,13 @@ const mockTreatments: Treatment[] = [
     category: 'Plastic Surgery',
     savings: 'Up to 60% savings',
     title: 'Cosmetic Surgery',
-    description: 'Comprehensive cosmetic procedures by board-certified plastic surgeons. Achieve your desired look with safe and effective treatments including rhinoplasty, liposuction, and facelifts tailored to individual needs.',
+    description: 'Comprehensive cosmetic procedures by board-certified plastic surgeons. Achieve your desired look with safe and effective treatments.',
     rating: 4.7,
     reviews: 3156,
     price: '$1,400',
     duration: '3-5 days',
     features: ['Board Certified', 'Natural Results', 'Recovery Support', 'Personalized Plans'],
-    image: pexelszandatsu,
+    image: treatmentIcon,
     hospital: 'Max Super Speciality, India',
     doctor: 'Dr. Amit Patel',
     location: 'India',
@@ -143,13 +138,13 @@ const mockTreatments: Treatment[] = [
     category: 'Dentistry',
     savings: 'Up to 80% savings', 
     title: 'Dental Implants',
-    description: 'Premium dental implants with immediate loading and aesthetic excellence. Restore your smile with durable and natural-looking solutions using titanium posts and custom crowns.',
+    description: 'Premium dental implants with immediate loading and aesthetic excellence. Restore your smile with durable and natural-looking solutions.',
     rating: 4.9,
     reviews: 4521,
     price: '$800',
     duration: '2-3 days',
     features: ['Same Day Implants', 'Digital Planning', 'Lifetime Guarantee', 'Painless Procedure'],
-    image: componentsof,
+    image: treatmentIcon,
     hospital: 'Bumrungrad International, Thailand',
     doctor: 'Dr. Somchai Lee',
     location: 'Thailand',
@@ -176,13 +171,13 @@ const mockTreatments: Treatment[] = [
     category: 'Ophthalmology',
     savings: 'Up to 70% savings',
     title: 'LASIK Eye Surgery',
-    description: 'Bladeless LASIK surgery for permanent vision correction with latest technology. Say goodbye to glasses with precise and safe laser treatment customized to your eye structure.',
+    description: 'Bladeless LASIK surgery for permanent vision correction with latest technology. Say goodbye to glasses with precise and safe laser treatment.',
     rating: 4.8,
     reviews: 2734,
     price: '$1,200',
     duration: '1 day',
     features: ['Bladeless Technology', 'Quick Recovery', 'Vision Guarantee', 'Custom Mapping'],
-    image: lasikeye,
+    image: treatmentIcon,
     hospital: 'Mount Elizabeth Hospital, Singapore',
     doctor: 'Dr. Lim Wei',
     location: 'Singapore',
@@ -209,13 +204,13 @@ const mockTreatments: Treatment[] = [
     category: 'Fertility',
     savings: 'Up to 65% savings',
     title: 'IVF Treatment',
-    description: 'Advanced fertility treatments with high success rates and personalized care. Journey to parenthood with expert guidance and modern techniques including embryo selection and cryopreservation.',
+    description: 'Advanced fertility treatments with high success rates and personalized care. Journey to parenthood with expert guidance and modern techniques.',
     rating: 4.7,
     reviews: 1867,
     price: '$1,350',
     duration: '4-6 weeks',
     features: ['High Success Rate', 'Genetic Testing', 'Emotional Support', 'Multiple Cycles Option'],
-    image: invitro,
+    image: treatmentIcon,
     hospital: 'Acibadem Healthcare, Turkey',
     doctor: 'Dr. Ahmet Oz',
     location: 'Turkey',
@@ -260,13 +255,6 @@ const TreatmentDetails = () => {
     <div className="min-h-screen bg-background">
       {/* Header with Back Button */}
       <div className="container mx-auto px-4 py-8">
-        <Button variant="ghost" size="sm" asChild className="mb-6">
-          <Link to="/treatments">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Treatments
-          </Link>
-        </Button>
-
         {/* Hero Image and Basic Info */}
         <div className="grid md:grid-cols-2 gap-8 mb-8">
           <img 
