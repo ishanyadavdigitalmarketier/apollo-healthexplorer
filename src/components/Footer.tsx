@@ -1,5 +1,6 @@
 // Footer.tsx
 import { Phone, Mail, Facebook, Twitter, Instagram, Linkedin, MapPin } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import apolloLogo from '@/assets/apollo-logo.png';
 
@@ -62,6 +63,9 @@ const Footer = () => {
               <li className="flex items-center gap-2">
                 <Phone size={16} />
                 <span>+91-1066-502-502</span>
+                <Button asChild size="sm" className="ml-2 bg-primary hover:bg-primary/90 text-primary-foreground text-xs">
+                  <a href="tel:+911066502502">Call Now</a>
+                </Button>
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={16} />
