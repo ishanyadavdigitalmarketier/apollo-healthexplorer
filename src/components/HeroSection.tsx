@@ -186,7 +186,10 @@ const HeroSection = () => {
                     <span className="flex items-center gap-1"><Calendar size={14} /> {treatment.duration}</span>
                     <span className="flex items-center gap-1"><DollarSign size={14} /> {treatment.cost}</span>
                   </div>
-                  <Button variant="outline" size="sm" className="mt-3 w-full">Book Now</Button>
+                  {/* <Button variant="outline" size="sm" className="mt-3 w-full">Book Now</Button> */}
+                    <Button variant="outline" size="sm" className="mt-3 w-full">
+                    <Link to="/book">Book Now</Link>
+                  </Button>
                 </div>
               ))}
             </div>
