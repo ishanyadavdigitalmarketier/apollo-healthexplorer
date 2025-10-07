@@ -1,10 +1,46 @@
 // pages/Story.tsx
+import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
 import { Quote } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Story = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    country: '',
+    treatment: '',
+    hospital: '',
+    savings: '',
+    recovery: '',
+    story: '',
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Success Story Submitted:', formData);
+    alert('Thank you for sharing your success story! We will review it and feature it soon.');
+    setFormData({
+      name: '',
+      email: '',
+      country: '',
+      treatment: '',
+      hospital: '',
+      savings: '',
+      recovery: '',
+      story: '',
+    });
+  };
+
   const testimonial = {
     text: "The care I received at Apollo Hospitals was exceptional. From the moment I landed in Delhi to my complete recovery, Apollo Partners took care of everything. The doctors were world-class, and I saved over $80,000 compared to US prices. I couldn't be happier with my decision.",
     name: "Sarah Johnson, 45",
@@ -35,7 +71,7 @@ const Story = () => {
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto mb-16">
             <Card className="bg-muted/30 border-0 shadow-lg mb-12">
               <CardContent className="p-8">
                 <div className="flex items-start gap-6">
@@ -111,12 +147,108 @@ const Story = () => {
                 </div>
               ))}
             </div>
+          </div>
 
-            <div className="text-center">
-              <Button asChild className="bg-accent hover:bg-accent/90">
-                <Link to="/story">Share Your Success Story</Link>
-              </Button>
+          {/* Share Your Success Story Form */}
+          <div className="max-w-2xl mx-auto">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold mb-2">Share Your Hospital & Doctors Experience</h3>
+              <p className="text-muted-foreground">Tell us about your journey with Apollo Partners. Your story could inspire others!</p>
             </div>
+
+            <Card className="border-0 shadow-lg">
+              <CardContent className="p-8">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="name">Full Name *</Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="email">Email *</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="country">Country</Label>
+                      <Input
+                        id="country"
+                        name="country"
+                        value={formData.country}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="treatment">Treatment *</Label>
+                      <Input
+                        id="treatment"
+                        name="treatment"
+                        value={formData.treatment}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="hospital">Hospital *</Label>
+                      <Input
+                        id="hospital"
+                        name="hospital"
+                        value={formData.hospital}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="savings">Savings (e.g., $10,000)</Label>
+                      <Input
+                        id="savings"
+                        name="savings"
+                        value={formData.savings}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    <div className="md:col-span-2">
+                      <Label htmlFor="recovery">Recovery Time (e.g., 2 weeks)</Label>
+                      <Input
+                        id="recovery"
+                        name="recovery"
+                        value={formData.recovery}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <Label htmlFor="story">Your Story *</Label>
+                    <Textarea
+                      id="story"
+                      name="story"
+                      rows={5}
+                      value={formData.story}
+                      onChange={handleInputChange}
+                      placeholder="Share your experience with the doctors and hospital care..."
+                      required
+                    />
+                  </div>
+                  <div className="flex justify-center">
+                    <Button type="submit" className="w-full md:w-auto bg-accent hover:bg-accent/90">
+                      Submit Your Story
+                    </Button>
+                  </div>
+                </form>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
