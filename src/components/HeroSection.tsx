@@ -332,7 +332,7 @@ const HeroSection = () => {
 
             {/* Search Form */}
             <div className="grid md:grid-cols-3 gap-4 mb-6">
-              {/* <div className="md:col-span-2">
+              <div className="md:col-span-2">
                 <label className="block text-sm font-medium mb-2">What are you looking for?</label>
                 <Input 
                   placeholder={`Search ${activeTab}...`} 
@@ -340,7 +340,7 @@ const HeroSection = () => {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="h-12"
                 />
-              </div> */}
+              </div>
               <div>
                 <label className="block text-sm font-medium mb-2">Preferred Location</label>
                 <Select value={selectedLocation} onValueChange={setSelectedLocation}>
