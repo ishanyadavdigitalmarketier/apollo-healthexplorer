@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Star, Clock, Shield, Users, CheckCircle } from 'lucide-react';
 import treatmentIcon from '@/assets/treatment-icon.jpg';
+import robotictotal from '@/assets/robotic-total.png';
 
 const TreatmentsSection = () => {
   const treatments = [
@@ -32,7 +33,7 @@ const TreatmentsSection = () => {
       price: '$950',
       duration: '5-7 days',
       features: ['Robotic Surgery', 'Fast Recovery', 'Lifetime Warranty'],
-      image: treatmentIcon,
+      image: robotictotal,
     },
     {
       id: '3',
