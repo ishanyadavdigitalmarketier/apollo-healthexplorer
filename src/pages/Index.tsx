@@ -6,6 +6,7 @@ import HospitalsSection from '@/components/HospitalsSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import BlogSection from '@/components/BlogSection';
 import CTASection from '@/components/CTASection';
+import { Footer } from 'react-day-picker';
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <TestimonialsSection />
       <BlogSection />
       <CTASection />
+      <Footer />
     </div>
   );
 };
