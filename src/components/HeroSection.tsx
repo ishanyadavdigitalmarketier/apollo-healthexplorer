@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { Search, Stethoscope, Building2, UserCheck, MapPin, Calendar, DollarSign } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import heroImage from '@/assets/hero-medical.jpg';
 
 const HeroSection = () => {
@@ -251,7 +252,9 @@ const HeroSection = () => {
                     </p>
                   </div>
                   <Badge variant="secondary">{doctor.rating} ★</Badge>
-                  <Button variant="outline" size="sm">Book Appointment</Button>
+                  <Button variant="outline" size="sm" asChild className="ml-auto">
+                    <Link to="/book">Book Appointment</Link>
+                  </Button>
                 </div>
               ))}
             </div>
