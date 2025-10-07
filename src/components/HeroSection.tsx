@@ -221,7 +221,10 @@ const HeroSection = () => {
                     <p className="text-sm text-muted-foreground">Specialties: {hospital.specialties.join(', ')}</p>
                   </div>
                   <Badge variant="secondary">{hospital.rating} ★</Badge>
-                  <Button variant="outline" size="sm">View Details</Button>
+                  {/* <Button variant="outline" size="sm">View Details</Button> */}
+                  <Button variant="outline" size="sm">
+                    <Link to="/details">View Details</Link>
+                  </Button>
                 </div>
               ))}
             </div>
