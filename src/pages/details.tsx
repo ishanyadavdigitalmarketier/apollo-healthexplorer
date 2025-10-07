@@ -255,13 +255,6 @@ const TreatmentDetails = () => {
     <div className="min-h-screen bg-background">
       {/* Header with Back Button */}
       <div className="container mx-auto px-4 py-8">
-        <Button asChild variant="ghost" className="mb-8 flex items-center gap-2">
-          <Link to="/treatments">
-            <ArrowLeft size={20} />
-            Back to Treatments
-          </Link>
-        </Button>
-
         {/* Hero Image and Basic Info */}
         <div className="grid md:grid-cols-2 gap-8 mb-8">
           <img 
