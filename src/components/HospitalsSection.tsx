@@ -5,6 +5,8 @@ import { Badge } from '@/components/ui/badge';
 import { Star, MapPin, Users, Clock, Shield, CheckCircle } from 'lucide-react';
 import hospitalIcon from '@/assets/hospital-icon.jpg';
 import BumrungradHospital from '@/assets/Bumrungrad- Hospital.jpg';
+import MountElizabeth from '@/assets/Mount-Elizabeth.jpg';
+import acibademaltunizade from '@/assets/acibadem-altunizade.png';
 
 const HospitalsSection = () => {
   const countries = [
@@ -51,7 +53,7 @@ const HospitalsSection = () => {
       patients: '25,000+',
       experience: '40+ years',
       features: ['Cutting-Edge Technology', 'World-Class Specialists', 'Personalized Care'],
-      image: hospitalIcon,
+      image: MountElizabeth,
     },
     {
       name: 'Acibadem Healthcare',
@@ -63,7 +65,7 @@ const HospitalsSection = () => {
       patients: '40,000+',
       experience: '20+ years',
       features: ['Medical Tourism Package', 'Airport Transfer', 'Hotel Partnership'],
-      image: hospitalIcon,
+      image: acibademaltunizade,
     },
   ];
 
