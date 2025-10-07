@@ -421,15 +421,6 @@ const TreatmentDetails = () => {
             </div>
           </CardContent>
         </Card>
-
-        {/* CTA Section */}
-        <div className="text-center mt-12">
-          <h2 className="text-2xl font-bold mb-4">Ready to Get Started?</h2>
-          <p className="text-muted-foreground mb-6">Contact us for a free consultation and personalized treatment plan.</p>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 px-8">
-            Schedule Free Consultation
-          </Button>
-        </div>
       </div>
     </div>
   );
