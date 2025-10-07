@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Search, Stethoscope, Building2, UserCheck, MapPin, Calendar, DollarSign, User, Mail, Phone, Heart, Star, Filter } from 'lucide-react';
+import { Search, Stethoscope, Building2, UserCheck, MapPin, Calendar, DollarSign, User, Heart, Star, Filter } from 'lucide-react';
 import heroImage from '@/assets/hero-medical.jpg';
 
 const HeroSection = () => {
@@ -79,7 +79,86 @@ const HeroSection = () => {
         { id: 3, name: 'Dr. Chaiya Suk', specialty: 'Oncologist', experience: '19 years', rating: 4.7, qualifications: ['MD', 'PhD Oncology'] }
       ]
     },
-    // ... other locations (singapore, turkey, mexico, malaysia) with similar structure
+    singapore: {
+      treatments: [
+        { id: 1, name: 'Heart Surgery', cost: '$15,000', duration: '8 days', category: 'cardiac', rating: 4.9 },
+        { id: 2, name: 'Orthopedic Surgery', cost: '$12,000', duration: '6 days', category: 'ortho', rating: 4.8 },
+        { id: 3, name: 'Cosmetic Surgery', cost: '$8,000', duration: '4 days', category: 'cosmetic', rating: 4.7 },
+        { id: 4, name: 'Dental Treatments', cost: '$2,000', duration: '3 days', category: 'dental', rating: 4.6 },
+        { id: 5, name: 'Eye Surgery', cost: '$6,000', duration: '5 days', category: 'ophthalmology', rating: 4.9 },
+        { id: 6, name: 'Cancer Treatment', cost: '$25,000', duration: '15 days', category: 'oncology', rating: 4.8 }
+      ],
+      hospitals: [
+        { id: 1, name: 'Mount Elizabeth Hospital', rating: 4.9, specialties: ['Cardiology', 'Oncology'], beds: 345, established: 1976 },
+        { id: 2, name: 'Singapore General Hospital', rating: 4.8, specialties: ['Orthopedics', 'Neurology'], beds: 1785, established: 1821 },
+        { id: 3, name: 'Gleneagles Hospital', rating: 4.7, specialties: ['Cosmetic', 'Eye Care'], beds: 221, established: 1957 }
+      ],
+      doctors: [
+        { id: 1, name: 'Dr. Lim Wei', specialty: 'Cardiologist', experience: '25 years', rating: 5.0, qualifications: ['MD', 'FRCP'] },
+        { id: 2, name: 'Dr. Tan Mei', specialty: 'Orthopedist', experience: '20 years', rating: 4.9, qualifications: ['MBBS', 'FRCS'] },
+        { id: 3, name: 'Dr. Goh Hock', specialty: 'Oncologist', experience: '21 years', rating: 4.8, qualifications: ['MD', 'PhD'] }
+      ]
+    },
+    turkey: {
+      treatments: [
+        { id: 1, name: 'Heart Surgery', cost: '$6,000', duration: '7 days', category: 'cardiac', rating: 4.7 },
+        { id: 2, name: 'Orthopedic Surgery', cost: '$4,500', duration: '5 days', category: 'ortho', rating: 4.6 },
+        { id: 3, name: 'Cosmetic Surgery', cost: '$3,000', duration: '3 days', category: 'cosmetic', rating: 4.8 },
+        { id: 4, name: 'Dental Treatments', cost: '$900', duration: '2 days', category: 'dental', rating: 4.5 },
+        { id: 5, name: 'Eye Surgery', cost: '$2,000', duration: '4 days', category: 'ophthalmology', rating: 4.7 },
+        { id: 6, name: 'Cancer Treatment', cost: '$12,000', duration: '14 days', category: 'oncology', rating: 4.6 }
+      ],
+      hospitals: [
+        { id: 1, name: 'Acibadem Healthcare', rating: 4.8, specialties: ['Cardiology', 'Cosmetic'], beds: 600, established: 1991 },
+        { id: 2, name: 'Memorial Hospitals', rating: 4.7, specialties: ['Orthopedics', 'Oncology'], beds: 450, established: 2000 },
+        { id: 3, name: 'Medipol University Hospital', rating: 4.6, specialties: ['Dental', 'Eye Care'], beds: 470, established: 2009 }
+      ],
+      doctors: [
+        { id: 1, name: 'Dr. Ahmet Oz', specialty: 'Cardiologist', experience: '18 years', rating: 4.8, qualifications: ['MD', 'Cardiology'] },
+        { id: 2, name: 'Dr. Elif Kaya', specialty: 'Orthopedist', experience: '14 years', rating: 4.7, qualifications: ['MD', 'Orthopedics'] },
+        { id: 3, name: 'Dr. Mehmet Ali', specialty: 'Oncologist', experience: '17 years', rating: 4.6, qualifications: ['MD', 'Oncology'] }
+      ]
+    },
+    mexico: {
+      treatments: [
+        { id: 1, name: 'Heart Surgery', cost: '$7,000', duration: '7 days', category: 'cardiac', rating: 4.6 },
+        { id: 2, name: 'Orthopedic Surgery', cost: '$5,000', duration: '5 days', category: 'ortho', rating: 4.5 },
+        { id: 3, name: 'Cosmetic Surgery', cost: '$3,500', duration: '3 days', category: 'cosmetic', rating: 4.7 },
+        { id: 4, name: 'Dental Treatments', cost: '$1,200', duration: '2 days', category: 'dental', rating: 4.4 },
+        { id: 5, name: 'Eye Surgery', cost: '$2,500', duration: '4 days', category: 'ophthalmology', rating: 4.6 },
+        { id: 6, name: 'Cancer Treatment', cost: '$15,000', duration: '14 days', category: 'oncology', rating: 4.5 }
+      ],
+      hospitals: [
+        { id: 1, name: 'Hospital Angeles', rating: 4.7, specialties: ['Cardiology', 'Orthopedics'], beds: 520, established: 1968 },
+        { id: 2, name: 'ABC Medical Center', rating: 4.8, specialties: ['Oncology', 'Cosmetic'], beds: 380, established: 1995 },
+        { id: 3, name: 'Star Medica', rating: 4.6, specialties: ['Dental', 'Eye Care'], beds: 290, established: 1985 }
+      ],
+      doctors: [
+        { id: 1, name: 'Dr. Carlos Ramirez', specialty: 'Cardiologist', experience: '19 years', rating: 4.7, qualifications: ['MD', 'Cardiology'] },
+        { id: 2, name: 'Dr. Maria Lopez', specialty: 'Orthopedist', experience: '15 years', rating: 4.8, qualifications: ['MD', 'Orthopedics'] },
+        { id: 3, name: 'Dr. Juan Hernandez', specialty: 'Oncologist', experience: '16 years', rating: 4.6, qualifications: ['MD', 'Oncology'] }
+      ]
+    },
+    malaysia: {
+      treatments: [
+        { id: 1, name: 'Heart Surgery', cost: '$5,500', duration: '7 days', category: 'cardiac', rating: 4.7 },
+        { id: 2, name: 'Orthopedic Surgery', cost: '$4,000', duration: '5 days', category: 'ortho', rating: 4.6 },
+        { id: 3, name: 'Cosmetic Surgery', cost: '$2,500', duration: '3 days', category: 'cosmetic', rating: 4.8 },
+        { id: 4, name: 'Dental Treatments', cost: '$950', duration: '2 days', category: 'dental', rating: 4.5 },
+        { id: 5, name: 'Eye Surgery', cost: '$1,800', duration: '4 days', category: 'ophthalmology', rating: 4.7 },
+        { id: 6, name: 'Cancer Treatment', cost: '$11,000', duration: '14 days', category: 'oncology', rating: 4.6 }
+      ],
+      hospitals: [
+        { id: 1, name: 'Gleneagles Kuala Lumpur', rating: 4.8, specialties: ['Cardiology', 'Oncology'], beds: 331, established: 1996 },
+        { id: 2, name: 'Pantai Hospital', rating: 4.7, specialties: ['Orthopedics', 'Cosmetic'], beds: 370, established: 1974 },
+        { id: 3, name: 'Sunway Medical Centre', rating: 4.9, specialties: ['Dental', 'Eye Care'], beds: 608, established: 1999 }
+      ],
+      doctors: [
+        { id: 1, name: 'Dr. Ahmad Bin', specialty: 'Cardiologist', experience: '21 years', rating: 4.8, qualifications: ['MD', 'Cardiology'] },
+        { id: 2, name: 'Dr. Siti Rahman', specialty: 'Orthopedist', experience: '17 years', rating: 4.7, qualifications: ['MD', 'Orthopedics'] },
+        { id: 3, name: 'Dr. Kumar Nair', specialty: 'Oncologist', experience: '20 years', rating: 4.9, qualifications: ['MD', 'Oncology'] }
+      ]
+    }
   };
 
   // All available locations for search
@@ -89,11 +168,7 @@ const HeroSection = () => {
     { value: 'singapore', label: 'Singapore' },
     { value: 'turkey', label: 'Turkey' },
     { value: 'mexico', label: 'Mexico' },
-    { value: 'malaysia', label: 'Malaysia' },
-    { value: 'usa', label: 'United States' },
-    { value: 'germany', label: 'Germany' },
-    { value: 'south-korea', label: 'South Korea' },
-    { value: 'uae', label: 'United Arab Emirates' }
+    { value: 'malaysia', label: 'Malaysia' }
   ];
 
   // Load user data from localStorage on component mount
@@ -103,6 +178,7 @@ const HeroSection = () => {
     
     if (savedUser) {
       setUserDetails(JSON.parse(savedUser));
+      setUserForm(JSON.parse(savedUser));
     }
     if (savedFavorites) {
       setFavorites(JSON.parse(savedFavorites));
@@ -178,49 +254,45 @@ const HeroSection = () => {
       if (!locationData) return;
 
       // Search treatments
-      if (activeTab === 'treatments' || !searchTriggered) {
-        results.treatments.push(...locationData.treatments
-          .filter(treatment => 
-            treatment.name.toLowerCase().includes(query) ||
-            treatment.category.toLowerCase().includes(query) ||
-            treatment.cost.toLowerCase().includes(query)
-          )
-          .map(item => ({ ...item, location }))
-        );
-      }
+      results.treatments.push(...locationData.treatments
+        .filter(treatment => 
+          treatment.name.toLowerCase().includes(query) ||
+          treatment.category.toLowerCase().includes(query) ||
+          treatment.cost.toLowerCase().includes(query)
+        )
+        .map(item => ({ ...item, location }))
+      );
 
       // Search hospitals
-      if (activeTab === 'hospitals' || !searchTriggered) {
-        results.hospitals.push(...locationData.hospitals
-          .filter(hospital =>
-            hospital.name.toLowerCase().includes(query) ||
-            hospital.specialties.some(specialty => 
-              specialty.toLowerCase().includes(query)
-            )
+      results.hospitals.push(...locationData.hospitals
+        .filter(hospital =>
+          hospital.name.toLowerCase().includes(query) ||
+          hospital.specialties.some(specialty => 
+            specialty.toLowerCase().includes(query)
           )
-          .map(item => ({ ...item, location }))
-        );
-      }
+        )
+        .map(item => ({ ...item, location }))
+      );
 
       // Search doctors
-      if (activeTab === 'doctors' || !searchTriggered) {
-        results.doctors.push(...locationData.doctors
-          .filter(doctor =>
-            doctor.name.toLowerCase().includes(query) ||
-            doctor.specialty.toLowerCase().includes(query) ||
-            doctor.qualifications.some(qual => 
-              qual.toLowerCase().includes(query)
-            )
-          )
-          .map(item => ({ ...item, location }))
-        );
-      }
+      results.doctors.push(...locationData.doctors
+        .filter(doctor =>
+          doctor.name.toLowerCase().includes(query) ||
+          doctor.specialty.toLowerCase().includes(query) ||
+          (doctor.qualifications && doctor.qualifications.some(qual => 
+            qual.toLowerCase().includes(query)
+          ))
+        )
+        .map(item => ({ ...item, location }))
+      );
     });
 
     return results;
   };
 
   const sortData = (data) => {
+    if (!data) return [];
+    
     switch (sortBy) {
       case 'cost':
         return [...data].sort((a, b) => {
@@ -298,38 +370,43 @@ const HeroSection = () => {
             </TabsList>
             
             <TabsContent value="treatments">
-              {renderTreatments(searchResults.treatments)}
+              {renderTreatments(sortData(searchResults.treatments))}
             </TabsContent>
             
             <TabsContent value="hospitals">
-              {renderHospitals(searchResults.hospitals)}
+              {renderHospitals(sortData(searchResults.hospitals))}
             </TabsContent>
             
             <TabsContent value="doctors">
-              {renderDoctors(searchResults.doctors)}
+              {renderDoctors(sortData(searchResults.doctors))}
             </TabsContent>
           </Tabs>
         ) : (
           // Location-specific results
           (() => {
+            if (!currentData) return null;
+            
             switch (activeTab) {
               case 'treatments':
-                return renderTreatments(sortData(currentData.treatments.filter(treatment =>
+                const filteredTreatments = currentData.treatments.filter(treatment =>
                   treatment.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                   treatment.category.toLowerCase().includes(searchQuery.toLowerCase())
-                )));
+                );
+                return renderTreatments(sortData(filteredTreatments));
               case 'hospitals':
-                return renderHospitals(sortData(currentData.hospitals.filter(hospital =>
+                const filteredHospitals = currentData.hospitals.filter(hospital =>
                   hospital.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                   hospital.specialties.some(specialty => 
                     specialty.toLowerCase().includes(searchQuery.toLowerCase())
                   )
-                )));
+                );
+                return renderHospitals(sortData(filteredHospitals));
               case 'doctors':
-                return renderDoctors(sortData(currentData.doctors.filter(doctor =>
+                const filteredDoctors = currentData.doctors.filter(doctor =>
                   doctor.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                   doctor.specialty.toLowerCase().includes(searchQuery.toLowerCase())
-                )));
+                );
+                return renderDoctors(sortData(filteredDoctors));
               default:
                 return null;
             }
@@ -340,7 +417,7 @@ const HeroSection = () => {
   };
 
   const renderTreatments = (treatments) => {
-    if (treatments.length === 0) {
+    if (!treatments || treatments.length === 0) {
       return <div className="text-center py-8 text-muted-foreground">No treatments found.</div>;
     }
 
@@ -400,7 +477,7 @@ const HeroSection = () => {
   };
 
   const renderHospitals = (hospitals) => {
-    if (hospitals.length === 0) {
+    if (!hospitals || hospitals.length === 0) {
       return <div className="text-center py-8 text-muted-foreground">No hospitals found.</div>;
     }
 
@@ -465,7 +542,7 @@ const HeroSection = () => {
   };
 
   const renderDoctors = (doctors) => {
-    if (doctors.length === 0) {
+    if (!doctors || doctors.length === 0) {
       return <div className="text-center py-8 text-muted-foreground">No doctors found.</div>;
     }
 
@@ -636,7 +713,7 @@ const HeroSection = () => {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="h-12"
-                    onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+                    onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                   />
                 </div>
                 <div>
@@ -668,12 +745,12 @@ const HeroSection = () => {
 
               {/* Quick Filters */}
               <div className="flex flex-wrap gap-2 mb-4">
-                <Badge variant="secondary" className="cursor-pointer">Cardiac Care</Badge>
-                <Badge variant="secondary" className="cursor-pointer">Orthopedics</Badge>
-                <Badge variant="secondary" className="cursor-pointer">Cosmetic Surgery</Badge>
-                <Badge variant="secondary" className="cursor-pointer">Dental</Badge>
-                <Badge variant="secondary" className="cursor-pointer">Eye Care</Badge>
-                <Badge variant="secondary" className="cursor-pointer">Oncology</Badge>
+                <Badge variant="secondary" className="cursor-pointer hover:bg-blue-100" onClick={() => setSearchQuery('cardiac')}>Cardiac Care</Badge>
+                <Badge variant="secondary" className="cursor-pointer hover:bg-blue-100" onClick={() => setSearchQuery('orthopedic')}>Orthopedics</Badge>
+                <Badge variant="secondary" className="cursor-pointer hover:bg-blue-100" onClick={() => setSearchQuery('cosmetic')}>Cosmetic Surgery</Badge>
+                <Badge variant="secondary" className="cursor-pointer hover:bg-blue-100" onClick={() => setSearchQuery('dental')}>Dental</Badge>
+                <Badge variant="secondary" className="cursor-pointer hover:bg-blue-100" onClick={() => setSearchQuery('eye')}>Eye Care</Badge>
+                <Badge variant="secondary" className="cursor-pointer hover:bg-blue-100" onClick={() => setSearchQuery('cancer')}>Oncology</Badge>
               </div>
 
               {/* Results */}
