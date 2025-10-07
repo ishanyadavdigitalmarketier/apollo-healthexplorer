@@ -1,4 +1,4 @@
-// TreatmentsSection.tsx - Updated to include IDs and dynamic links
+// TreatmentsSection.tsx - Fixed dynamic links
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
@@ -165,8 +165,8 @@ const TreatmentsSection = () => {
                 </div>
 
                 <Button asChild className="w-full mt-4" variant="outline">
-                  {/* <Link to={`/details/${treatment.id}`}>View Details</Link> */}
-                                <Link to="/details">View Details</Link>
+                  {/* FIXED: Use dynamic link with treatment ID */}
+                  <Link to={`/details/${treatment.id}`}>View Details</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -174,8 +174,8 @@ const TreatmentsSection = () => {
         </div>
 
         <div className="text-center">
-          <Button size="lg" className="bg-primary hover:bg-primary/90">
-            {/* View All Treatments */}
+          <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
+            {/* FIXED: Wrap Button content with Link */}
             <Link to="/treatments">View All Treatments</Link>
           </Button>
         </div>
