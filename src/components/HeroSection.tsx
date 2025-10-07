@@ -12,102 +12,126 @@ const HeroSection = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchTriggered, setSearchTriggered] = useState(false);
 
-  // Data for Apollo Hospitals locations in India
+  // Mock data for treatments, hospitals, and doctors per location
   const dataByLocation = {
-    chennai: {
+    india: {
       treatments: [
-        { name: 'Cardiac Surgery', cost: '₹4,00,000', duration: '7 days' },
-        { name: 'Orthopedic Surgery', cost: '₹2,50,000', duration: '5 days' },
-        { name: 'Oncology Treatment', cost: '₹8,00,000', duration: '14 days' },
-        { name: 'Neurology Procedures', cost: '₹3,00,000', duration: '4 days' },
-        { name: 'Gastroenterology', cost: '₹1,50,000', duration: '3 days' },
-        { name: 'Cosmetic Surgery', cost: '₹1,00,000', duration: '2 days' }
+        { name: 'Heart Surgery', cost: '$5,000', duration: '7 days' },
+        { name: 'Orthopedic Surgery', cost: '$3,500', duration: '5 days' },
+        { name: 'Cosmetic Surgery', cost: '$2,000', duration: '3 days' },
+        { name: 'Dental Treatments', cost: '$800', duration: '2 days' },
+        { name: 'Eye Surgery', cost: '$1,500', duration: '4 days' },
+        { name: 'Cancer Treatment', cost: '$10,000', duration: '14 days' }
       ],
       hospitals: [
-        { name: 'Apollo Hospitals Greams Road, Chennai', rating: 4.9, specialties: ['Cardiology', 'Oncology'] },
-        { name: 'Apollo Speciality Hospitals, Chennai', rating: 4.8, specialties: ['Orthopedics', 'Neurology'] },
-        { name: 'Apollo Children\'s Hospital, Chennai', rating: 4.7, specialties: ['Pediatrics', 'Cancer Care'] }
+        { name: 'Apollo Hospitals', rating: 4.8, specialties: ['Cardiology', 'Orthopedics'] },
+        { name: 'Fortis Healthcare', rating: 4.7, specialties: ['Oncology', 'Neurology'] },
+        { name: 'Max Super Speciality', rating: 4.9, specialties: ['Cosmetic', 'Dental'] }
       ],
       doctors: [
-        { name: 'Dr. S. S. Badrinath', specialty: 'Ophthalmologist', experience: '50+ years', rating: 5.0 },
-        { name: 'Dr. Prathap C. Reddy', specialty: 'Founder Cardiologist', experience: '40+ years', rating: 4.9 },
-        { name: 'Dr. N. Rajendra Prasad', specialty: 'Cardiothoracic Surgeon', experience: '25 years', rating: 4.8 }
+        { name: 'Dr. Rajesh Kumar', specialty: 'Cardiologist', experience: '20 years', rating: 4.9 },
+        { name: 'Dr. Priya Sharma', specialty: 'Orthopedist', experience: '15 years', rating: 4.8 },
+        { name: 'Dr. Amit Patel', specialty: 'Oncologist', experience: '18 years', rating: 4.7 }
       ]
     },
-    delhi: {
+    thailand: {
       treatments: [
-        { name: 'Cardiac Surgery', cost: '₹4,50,000', duration: '7 days' },
-        { name: 'Orthopedic Surgery', cost: '₹2,80,000', duration: '5 days' },
-        { name: 'Oncology Treatment', cost: '₹9,00,000', duration: '14 days' },
-        { name: 'Neurology Procedures', cost: '₹3,20,000', duration: '4 days' },
-        { name: 'Gastroenterology', cost: '₹1,70,000', duration: '3 days' },
-        { name: 'Cosmetic Surgery', cost: '₹1,20,000', duration: '2 days' }
+        { name: 'Heart Surgery', cost: '$4,500', duration: '6 days' },
+        { name: 'Orthopedic Surgery', cost: '$3,000', duration: '4 days' },
+        { name: 'Cosmetic Surgery', cost: '$1,800', duration: '2 days' },
+        { name: 'Dental Treatments', cost: '$700', duration: '1 day' },
+        { name: 'Eye Surgery', cost: '$1,200', duration: '3 days' },
+        { name: 'Cancer Treatment', cost: '$9,000', duration: '12 days' }
       ],
       hospitals: [
-        { name: 'Indraprastha Apollo Hospital, Delhi', rating: 4.9, specialties: ['Cardiology', 'Oncology'] },
-        { name: 'Apollo Spectra Hospitals, Delhi', rating: 4.8, specialties: ['Orthopedics', 'Gastroenterology'] }
+        { name: 'Bumrungrad International', rating: 4.9, specialties: ['Cardiology', 'Cosmetic'] },
+        { name: 'Bangkok Hospital', rating: 4.8, specialties: ['Orthopedics', 'Oncology'] },
+        { name: 'Samitivej Hospital', rating: 4.7, specialties: ['Dental', 'Eye Care'] }
       ],
       doctors: [
-        { name: 'Dr. Naresh Trehan', specialty: 'Cardiologist', experience: '45 years', rating: 4.9 },
-        { name: 'Dr. Rajesh Sharma', specialty: 'Pediatric Cardiac Surgeon', experience: '30 years', rating: 4.8 },
-        { name: 'Dr. S. K. Sogani', specialty: 'Neurosurgeon', experience: '35 years', rating: 4.7 }
+        { name: 'Dr. Somchai Lee', specialty: 'Cardiologist', experience: '22 years', rating: 4.9 },
+        { name: 'Dr. Naree Wong', specialty: 'Orthopedist', experience: '16 years', rating: 4.8 },
+        { name: 'Dr. Chaiya Suk', specialty: 'Oncologist', experience: '19 years', rating: 4.7 }
       ]
     },
-    bangalore: {
+    singapore: {
       treatments: [
-        { name: 'Cardiac Surgery', cost: '₹4,20,000', duration: '7 days' },
-        { name: 'Orthopedic Surgery', cost: '₹2,60,000', duration: '5 days' },
-        { name: 'Oncology Treatment', cost: '₹8,50,000', duration: '14 days' },
-        { name: 'Neurology Procedures', cost: '₹3,10,000', duration: '4 days' },
-        { name: 'Gastroenterology', cost: '₹1,60,000', duration: '3 days' },
-        { name: 'Cosmetic Surgery', cost: '₹1,10,000', duration: '2 days' }
+        { name: 'Heart Surgery', cost: '$15,000', duration: '8 days' },
+        { name: 'Orthopedic Surgery', cost: '$8,000', duration: '6 days' },
+        { name: 'Cosmetic Surgery', cost: '$5,000', duration: '4 days' },
+        { name: 'Dental Treatments', cost: '$1,500', duration: '3 days' },
+        { name: 'Eye Surgery', cost: '$3,000', duration: '5 days' },
+        { name: 'Cancer Treatment', cost: '$20,000', duration: '15 days' }
       ],
       hospitals: [
-        { name: 'Apollo Hospitals Bannerghatta, Bangalore', rating: 4.8, specialties: ['Cardiology', 'Orthopedics'] },
-        { name: 'Apollo Cancer Centre, Bangalore', rating: 4.9, specialties: ['Oncology', 'Neurology'] }
+        { name: 'Mount Elizabeth Hospital', rating: 4.9, specialties: ['Cardiology', 'Oncology'] },
+        { name: 'Singapore General Hospital', rating: 4.8, specialties: ['Orthopedics', 'Neurology'] },
+        { name: 'Gleneagles Hospital', rating: 4.7, specialties: ['Cosmetic', 'Eye Care'] }
       ],
       doctors: [
-        { name: 'Dr. B. S. Ramesh', specialty: 'Cardiologist', experience: '25 years', rating: 4.8 },
-        { name: 'Dr. Ravi B. A', specialty: 'Orthopedic Surgeon', experience: '20 years', rating: 4.7 },
-        { name: 'Dr. Shalini Rajneesh', specialty: 'Oncologist', experience: '18 years', rating: 4.6 }
+        { name: 'Dr. Lim Wei', specialty: 'Cardiologist', experience: '25 years', rating: 5.0 },
+        { name: 'Dr. Tan Mei', specialty: 'Orthopedist', experience: '20 years', rating: 4.9 },
+        { name: 'Dr. Goh Hock', specialty: 'Oncologist', experience: '21 years', rating: 4.8 }
       ]
     },
-    hyderabad: {
+    turkey: {
       treatments: [
-        { name: 'Cardiac Surgery', cost: '₹3,80,000', duration: '7 days' },
-        { name: 'Orthopedic Surgery', cost: '₹2,30,000', duration: '5 days' },
-        { name: 'Oncology Treatment', cost: '₹7,50,000', duration: '14 days' },
-        { name: 'Neurology Procedures', cost: '₹2,80,000', duration: '4 days' },
-        { name: 'Gastroenterology', cost: '₹1,40,000', duration: '3 days' },
-        { name: 'Cosmetic Surgery', cost: '₹90,000', duration: '2 days' }
+        { name: 'Heart Surgery', cost: '$6,000', duration: '7 days' },
+        { name: 'Orthopedic Surgery', cost: '$4,000', duration: '5 days' },
+        { name: 'Cosmetic Surgery', cost: '$2,500', duration: '3 days' },
+        { name: 'Dental Treatments', cost: '$900', duration: '2 days' },
+        { name: 'Eye Surgery', cost: '$1,800', duration: '4 days' },
+        { name: 'Cancer Treatment', cost: '$12,000', duration: '14 days' }
       ],
       hospitals: [
-        { name: 'Apollo Hospitals Jubilee Hills, Hyderabad', rating: 4.8, specialties: ['Cardiology', 'Oncology'] },
-        { name: 'Apollo Health City, Hyderabad', rating: 4.9, specialties: ['Orthopedics', 'Neurology'] }
+        { name: 'Acibadem Healthcare', rating: 4.8, specialties: ['Cardiology', 'Cosmetic'] },
+        { name: 'Memorial Hospitals', rating: 4.7, specialties: ['Orthopedics', 'Oncology'] },
+        { name: 'Medipol University Hospital', rating: 4.6, specialties: ['Dental', 'Eye Care'] }
       ],
       doctors: [
-        { name: 'Dr. G. Sengottuvelu', specialty: 'Interventional Cardiologist', experience: '25 years', rating: 4.9 },
-        { name: 'Dr. P. Pavan', specialty: 'Orthopedic Surgeon', experience: '20 years', rating: 4.8 },
-        { name: 'Dr. T. P. S. Bhandari', specialty: 'Oncologist', experience: '22 years', rating: 4.7 }
+        { name: 'Dr. Ahmet Oz', specialty: 'Cardiologist', experience: '18 years', rating: 4.8 },
+        { name: 'Dr. Elif Kaya', specialty: 'Orthopedist', experience: '14 years', rating: 4.7 },
+        { name: 'Dr. Mehmet Ali', specialty: 'Oncologist', experience: '17 years', rating: 4.6 }
       ]
     },
-    kolkata: {
+    mexico: {
       treatments: [
-        { name: 'Cardiac Surgery', cost: '₹4,00,000', duration: '7 days' },
-        { name: 'Orthopedic Surgery', cost: '₹2,50,000', duration: '5 days' },
-        { name: 'Oncology Treatment', cost: '₹8,00,000', duration: '14 days' },
-        { name: 'Neurology Procedures', cost: '₹3,00,000', duration: '4 days' },
-        { name: 'Gastroenterology', cost: '₹1,50,000', duration: '3 days' },
-        { name: 'Cosmetic Surgery', cost: '₹1,00,000', duration: '2 days' }
+        { name: 'Heart Surgery', cost: '$7,000', duration: '7 days' },
+        { name: 'Orthopedic Surgery', cost: '$4,500', duration: '5 days' },
+        { name: 'Cosmetic Surgery', cost: '$3,000', duration: '3 days' },
+        { name: 'Dental Treatments', cost: '$1,000', duration: '2 days' },
+        { name: 'Eye Surgery', cost: '$2,000', duration: '4 days' },
+        { name: 'Cancer Treatment', cost: '$15,000', duration: '14 days' }
       ],
       hospitals: [
-        { name: 'Apollo Gleneagles Hospital, Kolkata', rating: 4.7, specialties: ['Cardiology', 'Orthopedics'] },
-        { name: 'Apollo Multispeciality Hospitals, Kolkata', rating: 4.8, specialties: ['Oncology', 'Gastroenterology'] }
+        { name: 'Hospital Angeles', rating: 4.7, specialties: ['Cardiology', 'Orthopedics'] },
+        { name: 'ABC Medical Center', rating: 4.8, specialties: ['Oncology', 'Cosmetic'] },
+        { name: 'Star Medica', rating: 4.6, specialties: ['Dental', 'Eye Care'] }
       ],
       doctors: [
-        { name: 'Dr. K. M. Mandana', specialty: 'Cardiothoracic Surgeon', experience: '28 years', rating: 4.8 },
-        { name: 'Dr. Chhanda Das', specialty: 'Orthopedic Surgeon', experience: '20 years', rating: 4.7 },
-        { name: 'Dr. Soumitra Chatterjee', specialty: 'Oncologist', experience: '18 years', rating: 4.6 }
+        { name: 'Dr. Carlos Ramirez', specialty: 'Cardiologist', experience: '19 years', rating: 4.7 },
+        { name: 'Dr. Maria Lopez', specialty: 'Orthopedist', experience: '15 years', rating: 4.8 },
+        { name: 'Dr. Juan Hernandez', specialty: 'Oncologist', experience: '16 years', rating: 4.6 }
+      ]
+    },
+    malaysia: {
+      treatments: [
+        { name: 'Heart Surgery', cost: '$5,500', duration: '7 days' },
+        { name: 'Orthopedic Surgery', cost: '$3,800', duration: '5 days' },
+        { name: 'Cosmetic Surgery', cost: '$2,200', duration: '3 days' },
+        { name: 'Dental Treatments', cost: '$850', duration: '2 days' },
+        { name: 'Eye Surgery', cost: '$1,600', duration: '4 days' },
+        { name: 'Cancer Treatment', cost: '$11,000', duration: '14 days' }
+      ],
+      hospitals: [
+        { name: 'Gleneagles Kuala Lumpur', rating: 4.8, specialties: ['Cardiology', 'Oncology'] },
+        { name: 'Pantai Hospital', rating: 4.7, specialties: ['Orthopedics', 'Cosmetic'] },
+        { name: 'Sunway Medical Centre', rating: 4.9, specialties: ['Dental', 'Eye Care'] }
+      ],
+      doctors: [
+        { name: 'Dr. Ahmad Bin', specialty: 'Cardiologist', experience: '21 years', rating: 4.8 },
+        { name: 'Dr. Siti Rahman', specialty: 'Orthopedist', experience: '17 years', rating: 4.7 },
+        { name: 'Dr. Kumar Nair', specialty: 'Oncologist', experience: '20 years', rating: 4.9 }
       ]
     }
   };
@@ -118,7 +142,8 @@ const HeroSection = () => {
     if (selectedLocation) {
       setSearchTriggered(true);
     } else {
-      alert('Please select a preferred city before searching.');
+      // Optionally handle case where no location is selected, e.g., show a toast or alert
+      alert('Please select a preferred location before searching.');
     }
   };
 
@@ -126,7 +151,7 @@ const HeroSection = () => {
     if (!selectedLocation || !searchTriggered) {
       return (
         <div className="text-center py-8 text-muted-foreground">
-          Please select a city and click Search to view Apollo Hospitals details.
+          Please select a location and click Search to view details.
         </div>
       );
     }
@@ -142,7 +167,7 @@ const HeroSection = () => {
         if (filteredTreatments.length === 0 && query) {
           return (
             <div className="text-center py-8 text-muted-foreground">
-              No treatments found for "{searchQuery}" at Apollo Hospitals in {locationName}.
+              No treatments found for "{searchQuery}" in {locationName}.
             </div>
           );
         }
@@ -150,7 +175,7 @@ const HeroSection = () => {
           <div className="space-y-4">
             <h3 className="text-xl font-semibold flex items-center gap-2">
               <MapPin size={20} />
-              {query ? `Treatments matching "${searchQuery}"` : 'Treatments'} at Apollo Hospitals in {locationName}
+              {query ? `Treatments matching "${searchQuery}"` : 'Treatments'} in {locationName}
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
               {(query ? filteredTreatments : currentData.treatments).map((treatment, index) => (
@@ -206,7 +231,7 @@ const HeroSection = () => {
         if (filteredDoctors.length === 0 && query) {
           return (
             <div className="text-center py-8 text-muted-foreground">
-              No doctors found for "{searchQuery}" at Apollo Hospitals in {locationName}.
+              No doctors found for "{searchQuery}" in {locationName}.
             </div>
           );
         }
@@ -214,7 +239,7 @@ const HeroSection = () => {
           <div className="space-y-4">
             <h3 className="text-xl font-semibold flex items-center gap-2">
               <UserCheck size={20} />
-              {query ? `Doctors matching "${searchQuery}"` : 'Doctors'} at Apollo Hospitals in {locationName}
+              {query ? `Doctors matching "${searchQuery}"` : 'Doctors'} in {locationName}
             </h3>
             <div className="space-y-3">
               {(query ? filteredDoctors : currentData.doctors).map((doctor, index) => (
@@ -259,22 +284,22 @@ const HeroSection = () => {
           {/* Hero Text */}
           <div className="text-white mb-12">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              World-Class Healthcare
+              World-Class
               <br />
-              at Apollo Hospitals
+              Healthcare
               <br />
-              Excellence Within Reach
+              Within Reach
             </h1>
             <p className="text-lg md:text-xl mb-8 opacity-90 max-w-2xl">
-              Connect with Apollo Partners for top hospitals and specialists in India. Quality medical care at affordable prices, with personalized support every step of the way.
+              Connect with top hospitals and specialists worldwide. Quality medical care at affordable prices, with personalized support every step of the way.
             </p>
           </div>
 
           {/* Search Card */}
           <div className="bg-white rounded-2xl p-8 shadow-2xl">
             <div className="mb-6">
-              <h2 className="text-2xl font-bold text-foreground mb-2">Find Your Perfect Medical Solution at Apollo</h2>
-              <p className="text-muted-foreground">Search treatments, hospitals, and specialists across Apollo network</p>
+              <h2 className="text-2xl font-bold text-foreground mb-2">Find Your Perfect Medical Solution</h2>
+              <p className="text-muted-foreground">Search from thousands of treatments, hospitals, and specialists</p>
             </div>
 
             {/* Tabs */}
@@ -307,7 +332,7 @@ const HeroSection = () => {
 
             {/* Search Form */}
             <div className="grid md:grid-cols-3 gap-4 mb-6">
-              <div className="md:col-span-2">
+              {/* <div className="md:col-span-2">
                 <label className="block text-sm font-medium mb-2">What are you looking for?</label>
                 <Input 
                   placeholder={`Search ${activeTab}...`} 
@@ -315,19 +340,20 @@ const HeroSection = () => {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="h-12"
                 />
-              </div>
+              </div> */}
               <div>
-                <label className="block text-sm font-medium mb-2">Preferred City</label>
+                <label className="block text-sm font-medium mb-2">Preferred Location</label>
                 <Select value={selectedLocation} onValueChange={setSelectedLocation}>
                   <SelectTrigger className="h-12">
-                    <SelectValue placeholder="Select city" />
+                    <SelectValue placeholder="Select country" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="chennai">Chennai</SelectItem>
-                    <SelectItem value="delhi">Delhi</SelectItem>
-                    <SelectItem value="bangalore">Bangalore</SelectItem>
-                    <SelectItem value="hyderabad">Hyderabad</SelectItem>
-                    <SelectItem value="kolkata">Kolkata</SelectItem>
+                    <SelectItem value="india">India</SelectItem>
+                    <SelectItem value="thailand">Thailand</SelectItem>
+                    <SelectItem value="singapore">Singapore</SelectItem>
+                    <SelectItem value="turkey">Turkey</SelectItem>
+                    <SelectItem value="mexico">Mexico</SelectItem>
+                    <SelectItem value="malaysia">Malaysia</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -339,7 +365,7 @@ const HeroSection = () => {
               onClick={handleSearch}
             >
               <Search size={20} className="mr-2" />
-              Search Apollo Network
+              Search
             </Button>
 
             {/* Tab Content */}
@@ -348,9 +374,9 @@ const HeroSection = () => {
             {/* Fallback Popular Treatments (only if no location selected and treatments tab) */}
             {activeTab === 'treatments' && !selectedLocation && (
               <div className="mt-6">
-                <p className="text-sm text-muted-foreground mb-3">Popular Treatments at Apollo Hospitals:</p>
+                <p className="text-sm text-muted-foreground mb-3">Popular Treatments:</p>
                 <div className="flex flex-wrap gap-2">
-                  {['Cardiac Surgery', 'Orthopedic Surgery', 'Oncology Treatment', 'Neurology Procedures', 'Gastroenterology', 'Cosmetic Surgery'].map((treatment, index) => (
+                  {['Heart Surgery', 'Orthopedic Surgery', 'Cosmetic Surgery', 'Dental Treatments', 'Eye Surgery', 'Cancer Treatment'].map((treatment, index) => (
                     <Badge 
                       key={index} 
                       variant="secondary" 
