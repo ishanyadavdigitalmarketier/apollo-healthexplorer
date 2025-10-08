@@ -10,28 +10,28 @@ const Hospitals = () => {
       location: 'New York, NY',
       specialty: 'Multi-Specialty',
       description: 'A flagship facility offering comprehensive services including cardiology, oncology, and orthopedics. Known for its advanced robotic surgery program and 24/7 emergency care.',
-      image: 'https://images.unsplash.com/photo-1519494026892-80bbdcd8aa2f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80'
+      image: '/assets/hospital-icon-izrzLpb1.jpg'
     },
     {
       name: 'Apollo West Hospital',
       location: 'Los Angeles, CA',
       specialty: 'Cardiology & Neurology',
       description: 'Specializing in heart and brain health, this hospital features cutting-edge imaging technology and a dedicated stroke unit for rapid response care.',
-      image: 'https://images.unsplash.com/photo-1585435557344-62dc330c3de3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80'
+      image: '/assets/Bumrungrad-%20Hospital-DYIyfrDj.jpg'
     },
     {
       name: 'Apollo Pediatric Center',
       location: 'Chicago, IL',
       specialty: 'Pediatrics',
       description: 'Dedicated to children\'s health, offering specialized pediatric ICU, neonatal care, and family-centered treatment programs in a child-friendly environment.',
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80'
+      image: '/assets/Mount-Elizabeth-CLNBCgls.jpg'
     },
     {
       name: 'Apollo South Hospital',
       location: 'Miami, FL',
       specialty: 'Oncology & Dermatology',
       description: 'Leading cancer treatment center with innovative therapies and a comprehensive dermatology department focused on skin health and cosmetic procedures.',
-      image: 'https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80'
+      image: '/assets/acibadem-altunizade-3PPhX4GT.png'
     }
   ];
 
