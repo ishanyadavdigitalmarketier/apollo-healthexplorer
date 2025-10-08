@@ -169,7 +169,7 @@ const BlogSection = () => {
         </div>
 
         {/* Newsletter Signup */}
-        <Card className="bg-primary text-primary-foreground border-0 shadow-lg mb-8">
+        {/* <Card className="bg-primary text-primary-foreground border-0 shadow-lg mb-8">
           <CardContent className="p-8 text-center">
             <h3 className="text-2xl font-bold mb-4">Stay Updated with Medical Tourism Insights</h3>
             <p className="mb-6 opacity-90">
@@ -185,13 +185,13 @@ const BlogSection = () => {
               By subscribing, you agree to our Privacy Policy. Unsubscribe at any time.
             </p>
           </CardContent>
-        </Card>
+        </Card> */}
 
-        <div className="text-center">
+        {/* <div className="text-center">
           <Button size="lg" variant="outline">
             <Link to="/article"> View All Articles</Link>
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>
   );
