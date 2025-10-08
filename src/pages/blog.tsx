@@ -118,19 +118,6 @@ const Blog = () => {
             <h2 className="text-xl font-semibold mb-4">Featured Hospital Stories & Insights</h2>
           </header>
 
-          <div className="mb-8">
-            <div className="relative max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4 pointer-events-none" />
-              <Input
-                type="search"
-                placeholder="Search hospital insights..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
-              />
-            </div>
-          </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {filteredPosts.map((post) => (
               <div key={post.id} className="bg-card rounded-lg shadow-md border overflow-hidden">
