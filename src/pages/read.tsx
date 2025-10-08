@@ -442,7 +442,7 @@ const Read = () => {
         </article>
 
         {/* Newsletter Signup */}
-        <Card className="bg-primary text-primary-foreground border-0 shadow-lg">
+        {/* <Card className="bg-primary text-primary-foreground border-0 shadow-lg">
           <CardContent className="p-8 text-center">
             <h3 className="text-2xl font-bold mb-4">Loved This Article?</h3>
             <p className="mb-6 opacity-90">
@@ -455,7 +455,7 @@ const Read = () => {
               Subscribe Now
             </Button>
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
     </div>
   );
