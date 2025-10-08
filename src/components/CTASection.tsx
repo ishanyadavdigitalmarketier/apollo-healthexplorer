@@ -71,7 +71,7 @@ const CTASection = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
             <Button size="lg" className="bg-accent hover:bg-accent/90 text-lg px-8 py-6">
-              Get Free Quote
+              <Link to="/book">Get Free Quote</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               <Link to="/book">Book Consultation</Link>
