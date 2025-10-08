@@ -47,7 +47,7 @@ const mockTreatments: Treatment[] = [
     description: 'Advanced cardiac surgery with world-class specialists and cutting-edge technology. This procedure involves creating a new pathway for blood flow around blocked arteries in the heart.',
     rating: 4.9,
     reviews: 2847,
-    price: '$1,200',
+    price: '$4000',
     duration: '7-10 days',
     features: ['JCI Accredited Hospitals', 'English Speaking Doctors', 'Post-Op Care', '24/7 Monitoring'],
     image: treatmentIcon,
