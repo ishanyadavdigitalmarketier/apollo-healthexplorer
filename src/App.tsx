@@ -1,4 +1,4 @@
-// App.tsx - Updated to remove /article/:id route
+// App.tsx - Updated to include /details/:id route
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -35,7 +35,7 @@ const App = () => (
           <Route path="/hospitals" element={<Hospitals />} />
           <Route path="/treatments" element={<Treatments />} />
           <Route path="/book" element={<Book />} />
-          <Route path="/details" element={<Details />} />
+          <Route path="/details/:id" element={<Details />} />
           <Route path="/article" element={<Article />} />
           <Route path="/read" element={<Read />} />
           <Route path="/story" element={<Story />} />
