@@ -62,7 +62,7 @@ const mockArticles: Article[] = [
     date: 'Oct 06, 2025',
     readTime: '6 min read',
     views: '12.1K',
-    image: 'https://images.unsplash.com/photo-1585435557344-62dc330c3de3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
+    image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
     relatedArticles: [
       {
         title: 'Dental Tourism: Transform Your Smile While Saving Money',
@@ -237,7 +237,7 @@ const mockArticles: Article[] = [
     date: 'Sep 20, 2025',
     readTime: '6 min read',
     views: '8.9K',
-    image: 'https://images.unsplash.com/photo-1603398937357-fccaa4b4e8cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
+    image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
     relatedArticles: [
       {
         title: 'Heart Surgery Abroad: Cost Comparison and Quality Insights',
