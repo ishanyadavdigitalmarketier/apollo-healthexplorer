@@ -143,7 +143,7 @@ const Blog = () => {
                 </div>
                 <div className="p-4">
                   <h3 className="text-base font-semibold mb-2">
-                    <a href={`/blog/${post.slug}`} className="text-primary hover:underline">
+                    <a href='#' className="text-primary hover:underline">
                       {post.title}
                     </a>
                   </h3>
