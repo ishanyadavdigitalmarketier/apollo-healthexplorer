@@ -29,7 +29,7 @@ const Treatments = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               <div className="text-center p-5 bg-muted rounded border">
                 <img
-                  src="https://via.placeholder.com/120x120?text=Heart+Care"
+                  src="https://images.unsplash.com/photo-1585435557344-62dc330c3de3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
                   alt="Cardiac Treatment"
                   className="w-full h-32 object-cover rounded mb-3"
                 />
@@ -45,7 +45,7 @@ const Treatments = () => {
 
               <div className="text-center p-5 bg-muted rounded border">
                 <img
-                  src="https://via.placeholder.com/120x120?text=Brain+Health"
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
                   alt="Neurology Treatment"
                   className="w-full h-32 object-cover rounded mb-3"
                 />
@@ -61,7 +61,7 @@ const Treatments = () => {
 
               <div className="text-center p-5 bg-muted rounded border">
                 <img
-                  src="https://via.placeholder.com/120x120?text=Child+Health"
+                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
                   alt="Pediatric Treatment"
                   className="w-full h-32 object-cover rounded mb-3"
                 />
@@ -77,7 +77,7 @@ const Treatments = () => {
 
               <div className="text-center p-5 bg-muted rounded border">
                 <img
-                  src="https://via.placeholder.com/120x120?text=Skin+Care"
+                  src="https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
                   alt="Dermatology Treatment"
                   className="w-full h-32 object-cover rounded mb-3"
                 />
