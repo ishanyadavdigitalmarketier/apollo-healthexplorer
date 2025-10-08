@@ -82,7 +82,7 @@ const Hospitals = () => {
                 Our hospitals are conveniently located and equipped for all your healthcare needs. Find the nearest location and schedule a visit today.
               </p>
               <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-                <a href="/contact">Find a Location</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=21%2C%20Greams%20Lane%2C%20Off%20Greams%20Road%2C%20Chennai%20%E2%80%93%20600%20006">Find a Location</a>
               </Button>
             </div>
           </div>
