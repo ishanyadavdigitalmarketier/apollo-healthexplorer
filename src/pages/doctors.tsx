@@ -43,7 +43,7 @@ const Doctors = () => {
             <img
               src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
               alt="Our Doctors"
-              className="w-full h-64 object-cover rounded-lg mb-6"
+              className="w-full h-84 object-cover rounded-lg mb-6"
             />
             <div className="doctors-intro space-y-4">
               <h3 className="text-xl font-semibold text-primary">Expert Care from Top Professionals</h3>
