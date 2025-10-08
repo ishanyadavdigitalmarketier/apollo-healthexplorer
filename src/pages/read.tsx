@@ -351,7 +351,7 @@ const Read = () => {
         <article className="max-w-4xl mx-auto">
           <div className="relative mb-8">
             <img 
-              // src={article.image} 
+              src={article.image} 
               alt={article.title}
               className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
             />
