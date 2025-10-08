@@ -1,17 +1,36 @@
-// Read.tsx - Component for reading the Heart Surgery Abroad article
-import { Link } from 'react-router-dom';
+// Read.tsx - Updated to be dynamic based on article ID
+import { useParams, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Clock, Calendar, Share2, Bookmark, BookOpen, Eye } from 'lucide-react';
+import { ArrowLeft, Clock, Calendar, Share2, Bookmark, BookOpen, Eye, Phone, Mail } from 'lucide-react';
 
-const Read = () => {
-  // Use the same placeholder image URL
-  const placeholderImage = 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80';
+const placeholderImage = 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80';
 
-  // Hardcoded article data for the Heart Surgery page, updated with recent cost data
-  const article = {
+interface Article {
+  id: string;
+  category: string;
+  title: string;
+  description: string;
+  fullContent: string;
+  author: string;
+  authorTitle: string;
+  date: string;
+  readTime: string;
+  views: string;
+  image: string;
+  relatedArticles: {
+    title: string;
+    description: string;
+    category: string;
+    readTime: string;
+  }[];
+}
+
+const mockArticles: Article[] = [
+  {
+    id: '1',
     category: 'Cardiology',
     title: 'Heart Surgery Abroad: Cost Comparison and Quality Insights',
     description: 'Detailed analysis of heart surgery costs and quality standards across top medical tourism destinations including India, Thailand, and Singapore.',
@@ -45,7 +64,7 @@ const Read = () => {
     date: 'Oct 06, 2025',
     readTime: '6 min read',
     views: '12.1K',
-    image: placeholderImage, // Use placeholder image
+    image: placeholderImage,
     relatedArticles: [
       {
         title: 'Dental Tourism: Transform Your Smile While Saving Money',
@@ -72,7 +91,258 @@ const Read = () => {
         readTime: '4 min read',
       },
     ],
-  };
+  },
+  {
+    id: '2',
+    category: 'Dentistry',
+    title: 'Dental Tourism: Transform Your Smile While Saving Money',
+    description: 'How to get world-class dental treatments at a fraction of home country costs. Compare destinations, procedures, and recovery timelines.',
+    fullContent: `
+      <h2>Introduction to Dental Tourism</h2>
+      <p>Dental tourism has exploded in popularity, allowing patients to receive high-quality dental care at significantly reduced costs abroad. Countries like Mexico, Thailand, and Hungary offer procedures from implants to veneers at 50-80% less than in the US or Europe.</p>
+
+      <h2>Top Destinations for Dental Work</h2>
+      <ul>
+        <li><strong>Mexico:</strong> Tijuana and Los Algodones specialize in implants ($800–$1,200 vs. $3,000+ in the US). Quick border access for North Americans.</li>
+        <li><strong>Thailand:</strong> Bangkok clinics provide cosmetic dentistry like veneers ($200–$400 per tooth). Renowned for hygiene and English-speaking dentists.</li>
+        <li><strong>Hungary:</strong> Budapest is Europe's dental capital, with full smile makeovers at €3,000–€6,000, compared to €15,000+ elsewhere.</li>
+      </ul>
+      <p>Savings include materials, labor, and overhead, with many clinics offering packages with hotel stays.</p>
+
+      <h2>Popular Procedures and Costs</h2>
+      <p>Implants, crowns, whitening, and orthodontics are common. Expect 1-2 week trips for most treatments, with immediate results for cosmetics.</p>
+
+      <h2>Quality and Safety Tips</h2>
+      <p>Choose ISO or ADA-accredited clinics. Patient reviews emphasize sterile environments and skilled prosthodontists. Follow-up care can be arranged remotely.</p>
+
+      <h2>Conclusion</h2>
+      <p>Dental tourism combines vacation with transformation. Research thoroughly and consult multiple providers for your perfect smile.</p>
+    `,
+    author: 'Dr. Amanda Rodriguez',
+    authorTitle: 'Dentist & International Health Consultant',
+    date: 'Sep 28, 2025',
+    readTime: '5 min read',
+    views: '15.4K',
+    image: placeholderImage,
+    relatedArticles: [
+      {
+        title: 'Heart Surgery Abroad: Cost Comparison and Quality Insights',
+        description: 'Detailed analysis of heart surgery costs and quality standards across top medical tourism destinations including India, Thailand, and Singapore.',
+        category: 'Cardiology',
+        readTime: '6 min read',
+      },
+      {
+        title: 'IVF Success Stories: Hope Through Medical Tourism',
+        description: 'Real stories of couples who achieved their dream of parenthood through fertility treatments abroad. Success rates, costs, and emotional support.',
+        category: 'Fertility',
+        readTime: '7 min read',
+      },
+      {
+        title: 'Recovery and Aftercare: Your Medical Tourism Journey',
+        description: 'Essential tips for post-operative care, follow-up appointments, and ensuring the best outcomes from your medical tourism experience.',
+        category: 'Recovery',
+        readTime: '6 min read',
+      },
+      {
+        title: 'Medical Tourism Insurance: Protecting Your Investment',
+        description: 'Understanding medical tourism insurance options, what\'s covered, and how to choose the right policy for international medical treatments.',
+        category: 'Insurance',
+        readTime: '4 min read',
+      },
+    ],
+  },
+  {
+    id: '3',
+    category: 'Fertility',
+    title: 'IVF Success Stories: Hope Through Medical Tourism',
+    description: 'Real stories of couples who achieved their dream of parenthood through fertility treatments abroad. Success rates, costs, and emotional support.',
+    fullContent: `
+      <h2>Introduction to IVF Medical Tourism</h2>
+      <p>In vitro fertilization (IVF) can cost $12,000–$20,000 per cycle in the US, but abroad, it's as low as $3,000–$6,000 with comparable success rates. Destinations like Czech Republic, Spain, and Mexico share inspiring journeys.</p>
+
+      <h2>Success Stories from Around the World</h2>
+      <ul>
+        <li><strong>Czech Republic:</strong> Prague clinics boast 50%+ success rates for under-35s at €2,500 per cycle. Emma and Tom from the UK welcomed twins after two cycles.</li>
+        <li><strong>Spain:</strong> Barcelona's advanced labs offer egg donation for €5,000–€7,000. Sarah's story: Third-time success after home failures, now a proud mom.</li>
+        <li><strong>Mexico:</strong> Affordable at $4,000, with 40-45% rates. The Garcias traveled from California for their miracle baby, praising compassionate care.</li>
+      </ul>
+
+      <h2>Factors Behind High Success Rates</h2>
+      <p>European clinics use cutting-edge tech like PGS screening. Costs cover medications and monitoring, with success boosted by relaxed regulations in some areas.</p>
+
+      <h2>Emotional and Practical Support</h2>
+      <p>Many programs include counseling and donor matching. Patients report holistic care, turning stressful journeys into hopeful adventures.</p>
+
+      <h2>Conclusion</h2>
+      <p>IVF abroad offers hope and affordability. Connect with communities for guidance on your path to parenthood.</p>
+    `,
+    author: 'Dr. Lisa Thompson',
+    authorTitle: 'Fertility Specialist & Patient Advocate',
+    date: 'Oct 02, 2025',
+    readTime: '7 min read',
+    views: '11.2K',
+    image: placeholderImage,
+    relatedArticles: [
+      {
+        title: 'Heart Surgery Abroad: Cost Comparison and Quality Insights',
+        description: 'Detailed analysis of heart surgery costs and quality standards across top medical tourism destinations including India, Thailand, and Singapore.',
+        category: 'Cardiology',
+        readTime: '6 min read',
+      },
+      {
+        title: 'Dental Tourism: Transform Your Smile While Saving Money',
+        description: 'How to get world-class dental treatments at a fraction of home country costs. Compare destinations, procedures, and recovery timelines.',
+        category: 'Dentistry',
+        readTime: '5 min read',
+      },
+      {
+        title: 'Recovery and Aftercare: Your Medical Tourism Journey',
+        description: 'Essential tips for post-operative care, follow-up appointments, and ensuring the best outcomes from your medical tourism experience.',
+        category: 'Recovery',
+        readTime: '6 min read',
+      },
+      {
+        title: 'Medical Tourism Insurance: Protecting Your Investment',
+        description: 'Understanding medical tourism insurance options, what\'s covered, and how to choose the right policy for international medical treatments.',
+        category: 'Insurance',
+        readTime: '4 min read',
+      },
+    ],
+  },
+  {
+    id: '4',
+    category: 'Recovery',
+    title: 'Recovery and Aftercare: Your Medical Tourism Journey',
+    description: 'Essential tips for post-operative care, follow-up appointments, and ensuring the best outcomes from your medical tourism experience.',
+    fullContent: `
+      <h2>Understanding Recovery in Medical Tourism</h2>
+      <p>Recovery is a crucial phase after surgery abroad. With proper planning, you can heal comfortably while enjoying your destination. This guide covers timelines, tips, and support.</p>
+
+      <h2>Post-Op Care Essentials</h2>
+      <ul>
+        <li><strong>Immediate Aftercare:</strong> Follow surgeon instructions for wound care, medications, and mobility. Most procedures allow light travel within 1-2 weeks.</li>
+        <li><strong>Nutrition and Rest:</strong> Hydrate, eat anti-inflammatory foods, and rest in recovery-friendly hotels near clinics.</li>
+        <li><strong>Follow-Ups:</strong> Virtual check-ins via telehealth bridge gaps until home consultations.</li>
+      </ul>
+
+      <h2>Destination-Specific Recovery</h2>
+      <p>India offers ayurvedic wellness; Thailand, spa retreats; Turkey, coastal relaxation. Packages often include physiotherapy and nutritionists.</p>
+
+      <h2>Common Challenges and Solutions</h2>
+      <p>Jet lag and pain management: Use apps for tracking and local pharmacies. Travel insurance covers complications.</p>
+
+      <h2>Conclusion</h2>
+      <p>Thoughtful recovery planning ensures lasting results. Embrace the journey for holistic healing.</p>
+    `,
+    author: 'Dr. James Wilson',
+    authorTitle: 'Rehabilitation Expert & Travel Medicine Physician',
+    date: 'Sep 20, 2025',
+    readTime: '6 min read',
+    views: '8.9K',
+    image: placeholderImage,
+    relatedArticles: [
+      {
+        title: 'Heart Surgery Abroad: Cost Comparison and Quality Insights',
+        description: 'Detailed analysis of heart surgery costs and quality standards across top medical tourism destinations including India, Thailand, and Singapore.',
+        category: 'Cardiology',
+        readTime: '6 min read',
+      },
+      {
+        title: 'Dental Tourism: Transform Your Smile While Saving Money',
+        description: 'How to get world-class dental treatments at a fraction of home country costs. Compare destinations, procedures, and recovery timelines.',
+        category: 'Dentistry',
+        readTime: '5 min read',
+      },
+      {
+        title: 'IVF Success Stories: Hope Through Medical Tourism',
+        description: 'Real stories of couples who achieved their dream of parenthood through fertility treatments abroad. Success rates, costs, and emotional support.',
+        category: 'Fertility',
+        readTime: '7 min read',
+      },
+      {
+        title: 'Medical Tourism Insurance: Protecting Your Investment',
+        description: 'Understanding medical tourism insurance options, what\'s covered, and how to choose the right policy for international medical treatments.',
+        category: 'Insurance',
+        readTime: '4 min read',
+      },
+    ],
+  },
+  {
+    id: '5',
+    category: 'Insurance',
+    title: 'Medical Tourism Insurance: Protecting Your Investment',
+    description: 'Understanding medical tourism insurance options, what\'s covered, and how to choose the right policy for international medical treatments.',
+    fullContent: `
+      <h2>Why Insurance Matters in Medical Tourism</h2>
+      <p>While treatments abroad save money, unexpected issues like complications or trip cancellations can add costs. Specialized insurance provides peace of mind.</p>
+
+      <h2>Key Coverage Types</h2>
+      <ul>
+        <li><strong>Medical Coverage:</strong> Up to $1M for complications, including follow-up care and evacuation ($50–$200 premium).</li>
+        <li><strong>Trip Protection:</strong> Reimburses non-refundable bookings if delayed or canceled ($20–$100).</li>
+        <li><strong>Pre-Existing Conditions:</strong> Waivers available for planned treatments.</li>
+      </ul>
+
+      <h2>Top Providers and Tips</h2>
+      <p>Companies like Allianz and IMG offer tailored plans. Compare deductibles and exclusions; buy early for full coverage.</p>
+
+      <h2>Real-World Examples</h2>
+      <p>A delayed flight covered by insurance saved a patient $2,000 in rescheduling fees. Always read fine print.</p>
+
+      <h2>Conclusion</h2>
+      <p>Invest in insurance to safeguard your health journey abroad. It's the smart layer of protection.</p>
+    `,
+    author: 'Sarah Johnson',
+    authorTitle: 'Insurance Advisor & Healthcare Analyst',
+    date: 'Oct 04, 2025',
+    readTime: '4 min read',
+    views: '7.3K',
+    image: placeholderImage,
+    relatedArticles: [
+      {
+        title: 'Heart Surgery Abroad: Cost Comparison and Quality Insights',
+        description: 'Detailed analysis of heart surgery costs and quality standards across top medical tourism destinations including India, Thailand, and Singapore.',
+        category: 'Cardiology',
+        readTime: '6 min read',
+      },
+      {
+        title: 'Dental Tourism: Transform Your Smile While Saving Money',
+        description: 'How to get world-class dental treatments at a fraction of home country costs. Compare destinations, procedures, and recovery timelines.',
+        category: 'Dentistry',
+        readTime: '5 min read',
+      },
+      {
+        title: 'IVF Success Stories: Hope Through Medical Tourism',
+        description: 'Real stories of couples who achieved their dream of parenthood through fertility treatments abroad. Success rates, costs, and emotional support.',
+        category: 'Fertility',
+        readTime: '7 min read',
+      },
+      {
+        title: 'Recovery and Aftercare: Your Medical Tourism Journey',
+        description: 'Essential tips for post-operative care, follow-up appointments, and ensuring the best outcomes from your medical tourism experience.',
+        category: 'Recovery',
+        readTime: '6 min read',
+      },
+    ],
+  },
+];
+
+const Read = () => {
+  const { id } = useParams<{ id: string }>();
+  const article = mockArticles.find(a => a.id === id) || mockArticles[0];
+
+  if (!article) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">Article Not Found</h1>
+          <Button asChild variant="outline">
+            <Link to="/blog">Back to Blog</Link>
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -108,7 +378,7 @@ const Read = () => {
             <div className="flex items-center gap-4">
               <Avatar className="w-12 h-12">
                 <AvatarImage src="/placeholder-avatar.jpg" />
-                <AvatarFallback>MC</AvatarFallback>
+                <AvatarFallback>{article.author.charAt(0)}${article.author.charAt(article.author.indexOf(' ') + 1)}</AvatarFallback>
               </Avatar>
               <div>
                 <p className="font-semibold">{article.author}</p>

@@ -1,4 +1,4 @@
-// App.tsx - Updated to include /details/:id route
+// App.tsx - Updated to include /read/:id route
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -37,7 +37,7 @@ const App = () => (
           <Route path="/book" element={<Book />} />
           <Route path="/details/:id" element={<Details />} />
           <Route path="/article" element={<Article />} />
-          <Route path="/read" element={<Read />} />
+          <Route path="/read/:id" element={<Read />} />
           <Route path="/story" element={<Story />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

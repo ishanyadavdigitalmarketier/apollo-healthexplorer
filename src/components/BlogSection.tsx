@@ -1,4 +1,4 @@
-// Updated BlogSection.tsx - Link featured article to /article without ID
+// BlogSection.tsx - Updated with IDs and dynamic links for articles
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
@@ -23,6 +23,7 @@ const BlogSection = () => {
 
   const articles = [
     {
+      id: '1',
       category: 'Cardiology',
       views: '8.7K',
       title: 'Heart Surgery Abroad: Cost Comparison and Quality Insights',
@@ -32,6 +33,7 @@ const BlogSection = () => {
       icon: '📄',
     },
     {
+      id: '2',
       category: 'Dentistry',
       views: '12.1K',
       title: 'Dental Tourism: Transform Your Smile While Saving Money',
@@ -41,6 +43,7 @@ const BlogSection = () => {
       icon: '📄',
     },
     {
+      id: '3',
       category: 'Fertility',
       views: '9.3K',
       title: 'IVF Success Stories: Hope Through Medical Tourism',
@@ -50,6 +53,7 @@ const BlogSection = () => {
       icon: '📄',
     },
     {
+      id: '4',
       category: 'Recovery',
       views: '6.8K',
       title: 'Recovery and Aftercare: Your Medical Tourism Journey',
@@ -59,6 +63,7 @@ const BlogSection = () => {
       icon: '📄',
     },
     {
+      id: '5',
       category: 'Insurance',
       views: '5.2K',
       title: 'Medical Tourism Insurance: Protecting Your Investment',
@@ -125,8 +130,8 @@ const BlogSection = () => {
 
         {/* Articles Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {articles.map((article, index) => (
-            <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-white overflow-hidden">
+          {articles.map((article) => (
+            <Card key={article.id} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-white overflow-hidden">
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between mb-3">
                   <div className="text-2xl">{article.icon}</div>
@@ -156,7 +161,7 @@ const BlogSection = () => {
                   </div>
                 </div>
                 <Button variant="outline" size="sm" className="w-full">
-                  <Link to="/read">Read More</Link>
+                  <Link to={`/read/${article.id}`}>Read More</Link>
                 </Button>
               </CardContent>
             </Card>
