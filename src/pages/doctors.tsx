@@ -43,28 +43,28 @@ const Doctors = () => {
       id: '1',
       name: 'Dr. Rajesh Kumar',
       specialty: 'Cardiology',
-      image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+      image: 'https://via.placeholder.com/120x120?text=Dr.+Rajesh',
       bio: 'Board-certified cardiologist with 15+ years of experience in interventional cardiology and heart disease prevention.'
     },
     {
       id: '2',
       name: 'Dr. Priya Sharma',
       specialty: 'Neurology',
-      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+      image: 'https://via.placeholder.com/120x120?text=Dr.+Priya',
       bio: 'Expert in neurological disorders, specializing in stroke management and neurodegenerative diseases.'
     },
     {
       id: '3',
       name: 'Dr. Amit Patel',
       specialty: 'Orthopedics',
-      image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+      image: 'https://via.placeholder.com/120x120?text=Dr.+Amit',
       bio: 'Renowned orthopedic surgeon focusing on joint replacements and sports medicine.'
     },
     {
       id: '4',
       name: 'Dr. Sneha Gupta',
       specialty: 'Dermatology',
-      image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+      image: 'https://via.placeholder.com/120x120?text=Dr.+Sneha',
       bio: 'Dermatologist with expertise in cosmetic procedures and skin cancer treatment.'
     }
   ];
@@ -103,27 +103,6 @@ const Doctors = () => {
                 <Link to="/book">Book Now</Link>
               </Button>
             </div>
-          </div>
-
-          {/* Doctor Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {doctors.map((doctor) => (
-              <div key={doctor.id} className="bg-card p-6 rounded-lg shadow-md border text-center">
-                <img
-                  src={doctor.image}
-                  alt={doctor.name}
-                  className="w-24 h-24 mx-auto rounded-full object-cover mb-4"
-                />
-                <h3 className="text-xl font-bold text-primary mb-2">{doctor.name}</h3>
-                <div className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-sm font-semibold mb-3 inline-block">
-                  {doctor.specialty}
-                </div>
-                <p className="text-sm text-muted-foreground mb-4">{doctor.bio}</p>
-                <Button variant="outline" size="sm" asChild>
-                  <Link to={`/doctors/${doctor.id}`}>View Profile</Link>
-                </Button>
-              </div>
-            ))}
           </div>
         </div>
       </main>
