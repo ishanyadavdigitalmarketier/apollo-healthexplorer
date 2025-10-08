@@ -347,19 +347,11 @@ const Read = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
-        {/* Header with Back Button */}
-        <Button asChild variant="ghost" className="mb-8 flex items-center gap-2">
-          <Link to="/blog">
-            <ArrowLeft size={20} />
-            Back to Blog
-          </Link>
-        </Button>
-
         {/* Article Hero */}
         <article className="max-w-4xl mx-auto">
           <div className="relative mb-8">
             <img 
-              src={article.image} 
+              // src={article.image} 
               alt={article.title}
               className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
             />
