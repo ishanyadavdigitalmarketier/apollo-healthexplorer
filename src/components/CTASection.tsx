@@ -9,9 +9,9 @@ const CTASection = () => {
       icon: Phone,
       title: 'Call Us Now',
       description: 'Speak with our medical experts',
-      action: '+1-800-AFYAWELL',
+      action: '+1-800-APOLLO-PARTNERS',
       buttonText: 'Call Now',
-      href: 'tel:+1-800-AFYAWELL',
+      href: 'tel:+1-800-APOLLO-PARTNERS',
     },
     {
       icon: MessageCircle,
@@ -133,7 +133,7 @@ const CTASection = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-                  <a href="tel:+1-800-AFYAWELL">Call Now: +1-800-AFYAWELL</a>
+                  <a href="tel:+1-800-APOLLO-PARTNERS">Call Now: +1-800-APOLLO-PARTNERS</a>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">
                   <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
