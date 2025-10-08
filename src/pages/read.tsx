@@ -408,54 +408,7 @@ const Read = () => {
             className="prose prose-lg max-w-none mb-16"
             dangerouslySetInnerHTML={{ __html: article.fullContent }}
           />
-
-          {/* Related Articles */}
-          {article.relatedArticles.length > 0 && (
-            <Card className="mb-12">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <BookOpen className="w-5 h-5" />
-                  Related Articles
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {article.relatedArticles.map((relArticle, index) => (
-                    <div key={index} className="flex items-center gap-4 p-4 border rounded-lg hover:bg-muted transition-colors">
-                      <div className="flex-1">
-                        <Badge variant="outline" className="mb-2">{relArticle.category}</Badge>
-                        <h4 className="font-semibold mb-1">{relArticle.title}</h4>
-                        <p className="text-sm text-muted-foreground mb-2">{relArticle.description}</p>
-                        <div className="text-xs text-muted-foreground">
-                          {relArticle.readTime}
-                        </div>
-                      </div>
-                      <Button asChild variant="outline" size="sm">
-                        <Link to="/read">Read More</Link>
-                      </Button>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          )}
         </article>
-
-        {/* Newsletter Signup */}
-        {/* <Card className="bg-primary text-primary-foreground border-0 shadow-lg">
-          <CardContent className="p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4">Loved This Article?</h3>
-            <p className="mb-6 opacity-90">
-              Subscribe for more insights on medical tourism and health tips.
-            </p>
-            <Button 
-              size="lg" 
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
-            >
-              Subscribe Now
-            </Button>
-          </CardContent>
-        </Card> */}
       </div>
     </div>
   );
