@@ -164,7 +164,8 @@ const TreatmentsSection = () => {
                   ))}
                 </div>
                 <Button asChild className="w-full mt-4" variant="outline">
-                  <Link to={`/details/${treatment.id}`}>View Details</Link>
+                  {/* <Link to={`/details/${treatment.id}`}>View Details</Link> */}
+                  <Link to="/details">View Details</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -173,6 +174,7 @@ const TreatmentsSection = () => {
 
         <div className="text-center">
           <Button size="lg" className="bg-primary hover:bg-primary/90">
+            {/* View All Treatments */}
             <Link to="/treatments">View All Treatments</Link>
           </Button>
         </div>

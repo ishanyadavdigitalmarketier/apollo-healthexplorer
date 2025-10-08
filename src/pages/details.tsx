@@ -5,11 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Star, Clock, Shield, Users, CheckCircle, ArrowLeft, Phone, Mail, MapPin, Building2, UserCheck } from 'lucide-react';
 import treatmentIcon from '@/assets/treatment-icon.jpg';
-import robotictotal from '@/assets/robotic-total.png';
-import pexelszandatsu from '@/assets/pexels-zandatsu.jpg';
-import componentsof from '@/assets/components-of.jpg';
-import lasikeye from '@/assets/lasik-eye.jpg';
-import invitro from '@/assets/in-vitro.jpg';
 
 interface Treatment {
   id: string;
@@ -83,7 +78,7 @@ const mockTreatments: Treatment[] = [
     price: '$950',
     duration: '5-7 days',
     features: ['Robotic Surgery', 'Fast Recovery', 'Lifetime Warranty', 'Physiotherapy Included'],
-    image: robotictotal,
+    image: treatmentIcon,
     hospital: 'Fortis Healthcare, India',
     doctor: 'Dr. Priya Sharma',
     location: 'India',
@@ -116,7 +111,7 @@ const mockTreatments: Treatment[] = [
     price: '$1,400',
     duration: '3-5 days',
     features: ['Board Certified', 'Natural Results', 'Recovery Support', 'Personalized Plans'],
-    image: pexelszandatsu,
+    image: treatmentIcon,
     hospital: 'Max Super Speciality, India',
     doctor: 'Dr. Amit Patel',
     location: 'India',
@@ -149,7 +144,7 @@ const mockTreatments: Treatment[] = [
     price: '$800',
     duration: '2-3 days',
     features: ['Same Day Implants', 'Digital Planning', 'Lifetime Guarantee', 'Painless Procedure'],
-    image: componentsof,
+    image: treatmentIcon,
     hospital: 'Bumrungrad International, Thailand',
     doctor: 'Dr. Somchai Lee',
     location: 'Thailand',
@@ -182,7 +177,7 @@ const mockTreatments: Treatment[] = [
     price: '$1,200',
     duration: '1 day',
     features: ['Bladeless Technology', 'Quick Recovery', 'Vision Guarantee', 'Custom Mapping'],
-    image: lasikeye,
+    image: treatmentIcon,
     hospital: 'Mount Elizabeth Hospital, Singapore',
     doctor: 'Dr. Lim Wei',
     location: 'Singapore',
@@ -215,7 +210,7 @@ const mockTreatments: Treatment[] = [
     price: '$1,350',
     duration: '4-6 weeks',
     features: ['High Success Rate', 'Genetic Testing', 'Emotional Support', 'Multiple Cycles Option'],
-    image: invitro,
+    image: treatmentIcon,
     hospital: 'Acibadem Healthcare, Turkey',
     doctor: 'Dr. Ahmet Oz',
     location: 'Turkey',
