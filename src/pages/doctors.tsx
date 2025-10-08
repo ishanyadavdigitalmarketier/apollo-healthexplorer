@@ -99,8 +99,8 @@ const Doctors = () => {
                 Our doctors are accepting new patients. Book a consultation today and start your path to better health.
               </p>
               <Button asChild className="bg-primary hover:bg-primary/90">
-                {/* <a href="/contact">Book Now</a> */}
-                <Link to="/book">Book Now</Link>
+                <a href="/book">Book Now</a>
+                {/* <Link to="/book">Book Now</Link> */}
               </Button>
             </div>
           </div>
