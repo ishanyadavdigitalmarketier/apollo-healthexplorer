@@ -29,7 +29,7 @@ const Treatments = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               <div className="text-center p-5 bg-muted rounded border">
                 <img
-                  src="https://images.unsplash.com/photo-1585435557344-62dc330c3de3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
+                  src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
                   alt="Cardiac Treatment"
                   className="w-full h-32 object-cover rounded mb-3"
                 />
