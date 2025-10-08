@@ -54,7 +54,7 @@ const Blog = () => {
       id: '5',
       title: 'Apollo Central Hospital: A Hub for Multi-Specialty Care',
       slug: 'apollo-central-hospital-multi-specialty',
-      image: 'https://images.unsplash.com/photo-1519494026892-80bbdcd8aa2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80',
+      image: '/assets/hospital-icon-izrzLpb1.jpg',
       alt: 'Apollo Central Hospital',
       categories: ['Hospitals', 'Multi-Specialty', 'Innovation']
     },
@@ -70,7 +70,7 @@ const Blog = () => {
       id: '7',
       title: 'Oncology Services in Apollo Network Hospitals',
       slug: 'oncology-apollo-network-hospitals',
-      image: 'https://images.unsplash.com/photo-1585435557344-62dc330c3de3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80',
+      image: '/assets/Bumrungrad-%20Hospital-DYIyfrDj.jpg',
       alt: 'Apollo Oncology Services',
       categories: ['Hospitals', 'Oncology', 'Cancer Care']
     },
@@ -78,7 +78,7 @@ const Blog = () => {
       id: '8',
       title: 'Patient Stories from Apollo Hospitals Worldwide',
       slug: 'patient-stories-apollo-hospitals',
-      image: 'https://images.unsplash.com/photo-1603398937357-fccaa4b4e8cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80',
+      image: '/assets/Mount-Elizabeth-CLNBCgls.jpg',
       alt: 'Patient Stories Apollo',
       categories: ['Hospitals', 'Testimonials', 'Medical Tourism']
     },
