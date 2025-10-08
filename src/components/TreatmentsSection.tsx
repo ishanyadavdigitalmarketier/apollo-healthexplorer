@@ -21,7 +21,7 @@ const TreatmentsSection = () => {
       description: 'Advanced cardiac surgery with world-class specialists and cutting-edge technology.',
       rating: 4.9,
       reviews: 2847,
-      price: '$1,200',
+      price: '$4000',
       duration: '7-10 days',
       features: ['JCI Accredited Hospitals', 'English Speaking Doctors', 'Post-Op Care'],
       image: treatmentIcon,
