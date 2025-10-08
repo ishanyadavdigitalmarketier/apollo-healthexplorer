@@ -5,14 +5,6 @@ import { Users, Calendar, Heart, Link as LinkIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 
-interface Doctor {
-  id: string;
-  name: string;
-  specialty: string;
-  image: string;
-  bio: string;
-}
-
 const Doctors = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -38,37 +30,6 @@ const Doctors = () => {
     });
   };
 
-  const doctors: Doctor[] = [
-    {
-      id: '1',
-      name: 'Dr. Rajesh Kumar',
-      specialty: 'Cardiology',
-      image: 'https://via.placeholder.com/120x120?text=Dr.+Rajesh',
-      bio: 'Board-certified cardiologist with 15+ years of experience in interventional cardiology and heart disease prevention.'
-    },
-    {
-      id: '2',
-      name: 'Dr. Priya Sharma',
-      specialty: 'Neurology',
-      image: 'https://via.placeholder.com/120x120?text=Dr.+Priya',
-      bio: 'Expert in neurological disorders, specializing in stroke management and neurodegenerative diseases.'
-    },
-    {
-      id: '3',
-      name: 'Dr. Amit Patel',
-      specialty: 'Orthopedics',
-      image: 'https://via.placeholder.com/120x120?text=Dr.+Amit',
-      bio: 'Renowned orthopedic surgeon focusing on joint replacements and sports medicine.'
-    },
-    {
-      id: '4',
-      name: 'Dr. Sneha Gupta',
-      specialty: 'Dermatology',
-      image: 'https://via.placeholder.com/120x120?text=Dr.+Sneha',
-      bio: 'Dermatologist with expertise in cosmetic procedures and skin cancer treatment.'
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -79,6 +40,11 @@ const Doctors = () => {
               <Users className="h-6 w-6" />
               Our Doctors
             </h1>
+            <img
+              src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+              alt="Our Doctors"
+              className="w-full h-64 object-cover rounded-lg mb-6"
+            />
             <div className="doctors-intro space-y-4">
               <h3 className="text-xl font-semibold text-primary">Expert Care from Top Professionals</h3>
               <p className="text-foreground leading-relaxed">
