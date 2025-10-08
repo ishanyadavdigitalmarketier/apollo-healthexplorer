@@ -1,7 +1,7 @@
 // pages/Doctors.tsx
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Users, Calendar, Heart } from 'lucide-react';
+import { Users, Calendar, Heart, Link } from 'lucide-react';
 import Header from '@/components/Header';
 
 interface Doctor {
@@ -99,7 +99,8 @@ const Doctors = () => {
                 Our doctors are accepting new patients. Book a consultation today and start your path to better health.
               </p>
               <Button asChild className="bg-primary hover:bg-primary/90">
-                <a href="/contact">Book Now</a>
+                {/* <a href="/contact">Book Now</a> */}
+                <Link to="/book">Book Now</Link>
               </Button>
             </div>
           </div>
