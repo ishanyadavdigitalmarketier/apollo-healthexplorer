@@ -199,8 +199,8 @@ const Footer = () => {
               <li className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-2">
                 <Mail size={14} className="sm:size-16 flex-shrink-0" />
                 <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                  <a href="mailto:info@apollohospitals.com" className="font-medium hover:text-primary transition-colors">Send Email</a>
-                  <span>info@apollohospitals.com</span>
+                  <a href="mailto:Info@apolopartners.com" className="font-medium hover:text-primary transition-colors">Send Email</a>
+                  <span>Info@apolopartners.com</span>
                 </div>
                 <Button asChild size="sm" className="ml-auto sm:ml-2 bg-primary hover:bg-primary/90 text-primary-foreground text-xs w-full sm:w-auto">
                   <a href="mailto:Info@apolopartners.com">Email</a>
