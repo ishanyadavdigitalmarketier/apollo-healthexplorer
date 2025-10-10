@@ -203,7 +203,7 @@ const Footer = () => {
                   <span>info@apollohospitals.com</span>
                 </div>
                 <Button asChild size="sm" className="ml-auto sm:ml-2 bg-primary hover:bg-primary/90 text-primary-foreground text-xs w-full sm:w-auto">
-                  <a href="mailto:info@apollohospitals.com">Email</a>
+                  <a href="mailto:Info@apolopartners.com">Email</a>
                 </Button>
               </li>
               <li className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-2">
