@@ -189,9 +189,9 @@ const Footer = () => {
                   <a href="tel:+911066502502" className="font-medium hover:text-primary transition-colors text-xs sm:text-sm truncate">Call Now</a>
                   <span className="text-xs sm:text-sm">+91-1066-502-502</span>
                 </div>
-                <Button asChild size="sm" className="mt-2 sm:mt-0 bg-primary hover:bg-primary/90 text-primary-foreground text-xs w-full sm:w-auto whitespace-nowrap">
+                {/* <Button asChild size="sm" className="mt-2 sm:mt-0 bg-primary hover:bg-primary/90 text-primary-foreground text-xs w-full sm:w-auto whitespace-nowrap">
                   <a href="tel:+911066502502">Call</a>
-                </Button>
+                </Button> */}
               </li>
               <li className="flex flex-col sm:flex-row sm:items-center gap-2">
                 <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
@@ -199,9 +199,9 @@ const Footer = () => {
                   <a href="mailto:Info@apolopartners.com" className="font-medium hover:text-primary transition-colors text-xs sm:text-sm truncate">Send Email</a>
                   <span className="text-xs sm:text-sm">Info@apolopartners.com</span>
                 </div>
-                <Button asChild size="sm" className="mt-2 sm:mt-0 bg-primary hover:bg-primary/90 text-primary-foreground text-xs w-full sm:w-auto whitespace-nowrap">
+                {/* <Button asChild size="sm" className="mt-2 sm:mt-0 bg-primary hover:bg-primary/90 text-primary-foreground text-xs w-full sm:w-auto whitespace-nowrap">
                   <a href="mailto:Info@apolopartners.com">Email</a>
-                </Button>
+                </Button> */}
               </li>
               <li className="flex flex-col sm:flex-row sm:items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 mt-0.5 sm:mt-0" />
@@ -216,7 +216,7 @@ const Footer = () => {
                   </a>
                   <span className="leading-relaxed text-xs sm:text-sm break-words">21, Greams Lane, Off Greams Road, Chennai – 600 006</span>
                 </div>
-                <Button asChild size="sm" className="mt-2 sm:mt-0 bg-primary hover:bg-primary/90 text-primary-foreground text-xs w-full sm:w-auto whitespace-nowrap" variant="outline">
+                {/* <Button asChild size="sm" className="mt-2 sm:mt-0 bg-primary hover:bg-primary/90 text-primary-foreground text-xs w-full sm:w-auto whitespace-nowrap" variant="outline">
                   <a 
                     href="https://www.google.com/maps/search/?api=1&query=21%2C%20Greams%20Lane%2C%20Off%20Greams%20Road%2C%20Chennai%20%E2%80%93%20600%20006" 
                     target="_blank" 
@@ -224,7 +224,7 @@ const Footer = () => {
                   >
                     Map
                   </a>
-                </Button>
+                </Button> */}
               </li>
             </ul>
           </div>
