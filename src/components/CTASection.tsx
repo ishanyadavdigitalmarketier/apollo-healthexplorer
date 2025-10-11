@@ -27,7 +27,7 @@ const CTASection = () => {
       description: 'Detailed medical inquiry',
       action: 'Send Email',
       buttonText: 'Email Us',
-      href: 'mailto:info@apollohospitals.com',
+      href: 'mailto:Info@apolopartners.com',
     },
   ];
 
