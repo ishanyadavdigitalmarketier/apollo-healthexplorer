@@ -122,8 +122,6 @@
 //     </footer>
 //   );
 // };
-
-// export default Footer;
 import { Phone, Mail, Facebook, Twitter, Instagram, Linkedin, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -141,7 +139,7 @@ const Footer = () => {
               <img 
                 src={apolloLogo} 
                 alt="Apollo Partners Logo" 
-                className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+                className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 object-contain"
               />
               <div>
                 <h3 className="text-base sm:text-lg lg:text-xl font-bold text-primary">Apollo Partners</h3>
@@ -153,16 +151,16 @@ const Footer = () => {
             </p>
             <div className="flex space-x-2 sm:space-x-3">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                <Facebook className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-primary hover:text-primary/80 transition-colors" />
+                <Facebook className="w-4 h-4 sm:w-5 sm:h-5 text-primary hover:text-primary/80 transition-colors flex-shrink-0" />
               </a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                <Twitter className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-primary hover:text-primary/80 transition-colors" />
+                <Twitter className="w-4 h-4 sm:w-5 sm:h-5 text-primary hover:text-primary/80 transition-colors flex-shrink-0" />
               </a>
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <Instagram className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-primary hover:text-primary/80 transition-colors" />
+                <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-primary hover:text-primary/80 transition-colors flex-shrink-0" />
               </a>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <Linkedin className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-primary hover:text-primary/80 transition-colors" />
+                <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-primary hover:text-primary/80 transition-colors flex-shrink-0" />
               </a>
             </div>
           </div>
@@ -185,29 +183,29 @@ const Footer = () => {
           <div className="mb-6 sm:mb-0">
             <h4 className="text-xs sm:text-sm font-semibold text-foreground mb-3 sm:mb-4">Contact Us</h4>
             <ul className="space-y-3 text-xs sm:text-sm text-muted-foreground">
-              <li className="flex flex-col lg:flex-row lg:items-center gap-2">
+              <li className="flex flex-col sm:flex-row sm:items-center gap-2">
                 <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
-                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 flex-1">
-                  <a href="tel:+911066502502" className="font-medium hover:text-primary transition-colors text-xs sm:text-sm">Call Now</a>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 flex-1 min-w-0">
+                  <a href="tel:+911066502502" className="font-medium hover:text-primary transition-colors text-xs sm:text-sm truncate">Call Now</a>
                   <span className="text-xs sm:text-sm">+91-1066-502-502</span>
                 </div>
-                <Button asChild size="sm" className="mt-2 lg:mt-0 bg-primary hover:bg-primary/90 text-primary-foreground text-xs w-full lg:w-auto">
+                <Button asChild size="sm" className="mt-2 sm:mt-0 bg-primary hover:bg-primary/90 text-primary-foreground text-xs w-full sm:w-auto whitespace-nowrap">
                   <a href="tel:+911066502502">Call</a>
                 </Button>
               </li>
-              <li className="flex flex-col lg:flex-row lg:items-center gap-2">
+              <li className="flex flex-col sm:flex-row sm:items-center gap-2">
                 <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
-                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 flex-1">
-                  <a href="mailto:Info@apolopartners.com" className="font-medium hover:text-primary transition-colors text-xs sm:text-sm">Send Email</a>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 flex-1 min-w-0">
+                  <a href="mailto:Info@apolopartners.com" className="font-medium hover:text-primary transition-colors text-xs sm:text-sm truncate">Send Email</a>
                   <span className="text-xs sm:text-sm">Info@apolopartners.com</span>
                 </div>
-                <Button asChild size="sm" className="mt-2 lg:mt-0 bg-primary hover:bg-primary/90 text-primary-foreground text-xs w-full lg:w-auto">
+                <Button asChild size="sm" className="mt-2 sm:mt-0 bg-primary hover:bg-primary/90 text-primary-foreground text-xs w-full sm:w-auto whitespace-nowrap">
                   <a href="mailto:Info@apolopartners.com">Email</a>
                 </Button>
               </li>
-              <li className="flex flex-col lg:flex-row lg:items-start gap-2">
-                <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 mt-1 lg:mt-0" />
-                <div className="flex flex-col sm:flex-row lg:items-start gap-1 sm:gap-2 flex-1">
+              <li className="flex flex-col sm:flex-row sm:items-start gap-2">
+                <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 mt-0.5 sm:mt-0" />
+                <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-2 flex-1 min-w-0">
                   <a 
                     href="https://www.google.com/maps/search/?api=1&query=21%2C%20Greams%20Lane%2C%20Off%20Greams%20Road%2C%20Chennai%20%E2%80%93%20600%20006" 
                     target="_blank" 
@@ -216,9 +214,9 @@ const Footer = () => {
                   >
                     View Map
                   </a>
-                  <span className="leading-relaxed text-xs sm:text-sm">21, Greams Lane, Off Greams Road, Chennai – 600 006</span>
+                  <span className="leading-relaxed text-xs sm:text-sm break-words">21, Greams Lane, Off Greams Road, Chennai – 600 006</span>
                 </div>
-                <Button asChild size="sm" className="mt-2 lg:mt-0 bg-primary hover:bg-primary/90 text-primary-foreground text-xs w-full lg:w-auto" variant="outline">
+                <Button asChild size="sm" className="mt-2 sm:mt-0 bg-primary hover:bg-primary/90 text-primary-foreground text-xs w-full sm:w-auto whitespace-nowrap" variant="outline">
                   <a 
                     href="https://www.google.com/maps/search/?api=1&query=21%2C%20Greams%20Lane%2C%20Off%20Greams%20Road%2C%20Chennai%20%E2%80%93%20600%20006" 
                     target="_blank" 
@@ -243,7 +241,7 @@ const Footer = () => {
                 placeholder="Enter your email"
                 className="flex-1 px-3 py-2 border border-input rounded-md bg-background text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 text-xs sm:text-sm"
               />
-              <button className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-xs sm:text-sm font-medium w-full sm:w-auto">
+              <button className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-xs sm:text-sm font-medium w-full sm:w-auto whitespace-nowrap">
                 Subscribe
               </button>
             </div>
