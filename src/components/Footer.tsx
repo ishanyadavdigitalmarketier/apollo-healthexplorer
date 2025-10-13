@@ -119,7 +119,7 @@ const Footer = () => {
             <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 leading-relaxed">
               Subscribe to our newsletter for the latest healthcare insights.
             </p>
-            <div className="flex flex-col sm:flex-row gap-2">
+            <div>
               <input
                 type="email"
                 placeholder="Enter your email"
