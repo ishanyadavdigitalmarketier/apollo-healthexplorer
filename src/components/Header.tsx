@@ -321,8 +321,8 @@ const Header = () => {
             <Link to="/hospitals" className={mobileNavLinkClass('/hospitals')}>Hospitals</Link>
             <Link to="/doctors" className={mobileNavLinkClass('/doctors')}>Doctors</Link>
             <Link to="/about" className={mobileNavLinkClass('/about')}>About</Link>
-            {/* <Link to="/blog" className={mobileNavLinkClass('/blog')}>Blog</Link>
-            <Link to="/contact" className={mobileNavLinkClass('/contact')}>Contact</Link> */}
+            <Link to="/blog" className={mobileNavLinkClass('/blog')}>Blog</Link>
+            {/* <Link to="/contact" className={mobileNavLinkClass('/contact')}>Contact</Link> */}
             <div className="flex gap-3 mt-4 pt-2">
               <Button size="sm" className="bg-accent hover:bg-accent/90 flex-1" asChild>
                 <Link to="/book">Book Consultation</Link>
