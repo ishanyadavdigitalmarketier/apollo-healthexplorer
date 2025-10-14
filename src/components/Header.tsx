@@ -292,7 +292,7 @@ const Header = () => {
             <Link to="/doctors" className={navLinkClass('/doctors')}>Doctors</Link>
             <Link to="/about" className={navLinkClass('/about')}>About</Link>
             <Link to="/blog" className={navLinkClass('/blog')}>Blog</Link>
-            <Link to="/contact" className={navLinkClass('/contact')}>Contact</Link>
+            <Link to="/contact" className={navLinkClass('/contact')}>Contacthhh</Link>
           </div>
 
           {/* Action Buttons */}
