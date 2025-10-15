@@ -106,8 +106,8 @@
 // };
 
 // export default Header;
-// Header.tsx - Simple language selector for English and French only
-import { useState } from 'react';
+// Header.tsx - Simple language selector for English and French only with localStorage persistence
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Phone, Mail, Menu, X, Languages } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
@@ -117,6 +117,14 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState('en'); // Default to English
   const location = useLocation();
+
+  // Load language from localStorage on mount
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('language');
+    if (savedLanguage && ['en', 'fr'].includes(savedLanguage)) {
+      setCurrentLanguage(savedLanguage);
+    }
+  }, []);
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -129,7 +137,8 @@ const Header = () => {
   const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const lang = event.target.value;
     setCurrentLanguage(lang);
-    // Here you can add logic to switch language for the entire app, e.g., update i18n context or localStorage
+    localStorage.setItem('language', lang);
+    // Here you can add logic to switch language for the entire app, e.g., update i18n context
     console.log('Language changed to:', lang); // For demo purposes
   };
 
