@@ -20,37 +20,5 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    
-    <!-- Language Selector Script -->
-    <script>
-      // Simple client-side language switcher for English/French
-      document.addEventListener('DOMContentLoaded', function() {
-        const html = document.documentElement;
-        const select = document.createElement('select');
-        select.innerHTML = `
-          <option value="en">English</option>
-          <option value="fr">Français</option>
-        `;
-        select.style.position = 'fixed';
-        select.style.top = '10px';
-        select.style.right = '10px';
-        select.style.zIndex = '9999';
-        select.style.padding = '5px';
-        select.style.border = '1px solid #ccc';
-        select.style.borderRadius = '4px';
-        select.onchange = function() {
-          const lang = this.value;
-          html.lang = lang;
-          localStorage.setItem('userLang', lang);
-          // Reload page to apply language (for full app, use React i18n)
-          location.reload();
-        };
-        // Load saved language
-        const savedLang = localStorage.getItem('userLang') || 'en';
-        html.lang = savedLang;
-        select.value = savedLang;
-        document.body.appendChild(select);
-      });
-    </script>
   </body>
 </html>
