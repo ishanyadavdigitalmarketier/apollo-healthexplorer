@@ -106,24 +106,16 @@
 // };
 
 // export default Header;
-// Header.tsx - Updated for French language only
-import { useState, useEffect, useRef } from 'react';
+// Header.tsx - Simple language selector for English and French only
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Phone, Mail, Menu, X, Languages } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import apolloLogo from '@/assets/apollo-logo.png';
 
-declare global {
-  interface Window {
-    google: any;
-    googleTranslateElementInit: () => void;
-  }
-}
-
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isTranslateReady, setIsTranslateReady] = useState(false);
-  const translateRef = useRef<HTMLDivElement>(null);
+  const [currentLanguage, setCurrentLanguage] = useState('en'); // Default to English
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
@@ -134,71 +126,44 @@ const Header = () => {
   const mobileNavLinkClass = (path: string) =>
     `block font-medium ${isActive(path) ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`;
 
-  useEffect(() => {
-    // Define the global init function
-    window.googleTranslateElementInit = () => {
-      if (translateRef.current && window.google && window.google.translate) {
-        new window.google.translate.TranslateElement(
-          {
-            pageLanguage: 'en',
-            includedLanguages: 'en,fr',
-            layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false
-          },
-          translateRef.current
-        );
-        setIsTranslateReady(true);
-      }
-    };
-
-    // Load script if not present
-    let script = document.getElementById('google-translate-script') as HTMLScriptElement;
-    if (!script) {
-      script = document.createElement('script');
-      script.id = 'google-translate-script';
-      script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-      script.async = true;
-      document.head.appendChild(script);
-    }
-
-    // Poll for Google Translate to be ready
-    const pollInterval = setInterval(() => {
-      if (window.google && window.google.translate && window.google.translate.TranslateElement) {
-        clearInterval(pollInterval);
-        if (typeof window.googleTranslateElementInit === 'function') {
-          window.googleTranslateElementInit();
-        }
-      }
-    }, 100);
-
-    return () => {
-      clearInterval(pollInterval);
-      if (script) {
-        document.head.removeChild(script);
-      }
-      delete (window as any).googleTranslateElementInit;
-    };
-  }, []);
-
   const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const lang = event.target.value;
-    if (lang && isTranslateReady && window.google && window.google.translate) {
-      const googleSelect = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-      if (googleSelect) {
-        googleSelect.value = lang;
-        googleSelect.dispatchEvent(new Event('change', { bubbles: true }));
-      }
-    } else if (lang) {
-      // Retry after a short delay if not ready
-      setTimeout(() => {
-        const googleSelect = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-        if (googleSelect) {
-          googleSelect.value = lang;
-          googleSelect.dispatchEvent(new Event('change', { bubbles: true }));
-        }
-      }, 500);
-    }
+    setCurrentLanguage(lang);
+    // Here you can add logic to switch language for the entire app, e.g., update i18n context or localStorage
+    console.log('Language changed to:', lang); // For demo purposes
   };
+
+  // Simple translations (expand as needed for the app)
+  const translations = {
+    en: {
+      support: '24/7 Medical Support Available',
+      language: 'Language',
+      chooseLanguage: 'Choose Language',
+      home: 'Home',
+      treatments: 'Treatments',
+      hospitals: 'Hospitals',
+      doctors: 'Doctors',
+      about: 'About',
+      blog: 'Blog',
+      contact: 'Contact',
+      bookConsultation: 'Book Consultation',
+    },
+    fr: {
+      support: 'Support Médical 24/7 Disponible',
+      language: 'Langue',
+      chooseLanguage: 'Choisir la Langue',
+      home: 'Accueil',
+      treatments: 'Traitements',
+      hospitals: 'Hôpitaux',
+      doctors: 'Médecins',
+      about: 'À Propos',
+      blog: 'Blog',
+      contact: 'Contact',
+      bookConsultation: 'Prendre Rendez-vous',
+    },
+  };
+
+  const t = translations[currentLanguage as keyof typeof translations];
 
   const languages = [
     { value: 'en', label: 'English' },
@@ -222,13 +187,13 @@ const Header = () => {
           </div>
           
           <div className="flex items-center gap-4">
-            <div className="hidden sm:block">24/7 Medical Support Available</div>
+            <div className="hidden sm:block">{t.support}</div>
             <div className="flex items-center gap-2">
               <Languages size={14} />
               <select
                 className="bg-transparent border border-primary-foreground/30 rounded px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-primary-foreground"
                 onChange={handleLanguageChange}
-                defaultValue="en"
+                value={currentLanguage}
               >
                 {languages.map((lang) => (
                   <option key={lang.value} value={lang.value}>
@@ -259,19 +224,19 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <Link to="/" className={navLinkClass('/')}>Home</Link>
-            <Link to="/treatments" className={navLinkClass('/treatments')}>Treatments</Link>
-            <Link to="/hospitals" className={navLinkClass('/hospitals')}>Hospitals</Link>
-            <Link to="/doctors" className={navLinkClass('/doctors')}>Doctors</Link>
-            <Link to="/about" className={navLinkClass('/about')}>About</Link>
-            <Link to="/blog" className={navLinkClass('/blog')}>Blog</Link>
-            <Link to="/contact" className={navLinkClass('/contact')}>Contact</Link>
+            <Link to="/" className={navLinkClass('/')}>{t.home}</Link>
+            <Link to="/treatments" className={navLinkClass('/treatments')}>{t.treatments}</Link>
+            <Link to="/hospitals" className={navLinkClass('/hospitals')}>{t.hospitals}</Link>
+            <Link to="/doctors" className={navLinkClass('/doctors')}>{t.doctors}</Link>
+            <Link to="/about" className={navLinkClass('/about')}>{t.about}</Link>
+            <Link to="/blog" className={navLinkClass('/blog')}>{t.blog}</Link>
+            <Link to="/contact" className={navLinkClass('/contact')}>{t.contact}</Link>
           </div>
 
           {/* Action Buttons */}
           <div className="hidden md:flex items-center gap-3">
             <Button className="bg-accent hover:bg-accent/90" asChild>
-              <Link to="/book">Book Consultation</Link>
+              <Link to="/book">{t.bookConsultation}</Link>
             </Button>
           </div>
 
@@ -289,21 +254,21 @@ const Header = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4">
-            <Link to="/" className={mobileNavLinkClass('/')}>Home</Link>
-            <Link to="/treatments" className={mobileNavLinkClass('/treatments')}>Treatments</Link>
-            <Link to="/hospitals" className={mobileNavLinkClass('/hospitals')}>Hospitals</Link>
-            <Link to="/doctors" className={mobileNavLinkClass('/doctors')}>Doctors</Link>
-            <Link to="/about" className={mobileNavLinkClass('/about')}>About</Link>
-            <Link to="/blog" className={mobileNavLinkClass('/blog')}>Blog</Link>
-            <Link to="/contact" className={mobileNavLinkClass('/contact')}>Contact</Link>
+            <Link to="/" className={mobileNavLinkClass('/')}>{t.home}</Link>
+            <Link to="/treatments" className={mobileNavLinkClass('/treatments')}>{t.treatments}</Link>
+            <Link to="/hospitals" className={mobileNavLinkClass('/hospitals')}>{t.hospitals}</Link>
+            <Link to="/doctors" className={mobileNavLinkClass('/doctors')}>{t.doctors}</Link>
+            <Link to="/about" className={mobileNavLinkClass('/about')}>{t.about}</Link>
+            <Link to="/blog" className={mobileNavLinkClass('/blog')}>{t.blog}</Link>
+            <Link to="/contact" className={mobileNavLinkClass('/contact')}>{t.contact}</Link>
             
             {/* Language selector in mobile menu */}
             <div className="pt-4 border-t">
-              <label className="block text-sm font-medium mb-2">Language</label>
+              <label className="block text-sm font-medium mb-2">{t.language}</label>
               <select
                 className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-sm"
                 onChange={handleLanguageChange}
-                defaultValue="en"
+                value={currentLanguage}
               >
                 {languages.map((lang) => (
                   <option key={lang.value} value={lang.value}>
@@ -315,15 +280,12 @@ const Header = () => {
             
             <div className="flex gap-3 mt-4">
               <Button size="sm" className="bg-accent hover:bg-accent/90" asChild>
-                <Link to="/book">Book Consultation</Link>
+                <Link to="/book">{t.bookConsultation}</Link>
               </Button>
             </div>
           </div>
         )}
       </nav>
-
-      {/* Hidden Google Translate Widget Container */}
-      <div ref={translateRef} id="google_translate_element" style={{ display: 'none' }}></div>
     </header>
   );
 };
