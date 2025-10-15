@@ -87,8 +87,8 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4">
             <Link to="/" className={mobileNavLinkClass('/')}>Home</Link>
-            <Link to="/treatments" className={mobileNavLinkClass('/treatments')}>Treatments</Link>
-            <Link to="/hospitals" className={mobileNavLinkClass('/hospitals')}>Hospitals</Link>
+            {/* <Link to="/treatments" className={mobileNavLinkClass('/treatments')}>Treatments</Link>
+            <Link to="/hospitals" className={mobileNavLinkClass('/hospitals')}>Hospitals</Link> */}
             <Link to="/doctors" className={mobileNavLinkClass('/doctors')}>Doctors</Link>
             <Link to="/about" className={mobileNavLinkClass('/about')}>About</Link>
             <Link to="/blog" className={mobileNavLinkClass('/blog')}>Blog</Link>
