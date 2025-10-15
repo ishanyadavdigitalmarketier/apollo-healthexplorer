@@ -106,16 +106,24 @@
 // };
 
 // export default Header;
-// Header.tsx - Updated with language selector without Google Translate
-import { useState } from 'react';
+// Header.tsx - Updated for French language only
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Phone, Mail, Menu, X, Languages } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import apolloLogo from '@/assets/apollo-logo.png';
 
+declare global {
+  interface Window {
+    google: any;
+    googleTranslateElementInit: () => void;
+  }
+}
+
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState('en');
+  const [isTranslateReady, setIsTranslateReady] = useState(false);
+  const translateRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
@@ -126,50 +134,75 @@ const Header = () => {
   const mobileNavLinkClass = (path: string) =>
     `block font-medium ${isActive(path) ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`;
 
+  useEffect(() => {
+    // Define the global init function
+    window.googleTranslateElementInit = () => {
+      if (translateRef.current && window.google && window.google.translate) {
+        new window.google.translate.TranslateElement(
+          {
+            pageLanguage: 'en',
+            includedLanguages: 'en,fr',
+            layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+          },
+          translateRef.current
+        );
+        setIsTranslateReady(true);
+      }
+    };
+
+    // Load script if not present
+    let script = document.getElementById('google-translate-script') as HTMLScriptElement;
+    if (!script) {
+      script = document.createElement('script');
+      script.id = 'google-translate-script';
+      script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      script.async = true;
+      document.head.appendChild(script);
+    }
+
+    // Poll for Google Translate to be ready
+    const pollInterval = setInterval(() => {
+      if (window.google && window.google.translate && window.google.translate.TranslateElement) {
+        clearInterval(pollInterval);
+        if (typeof window.googleTranslateElementInit === 'function') {
+          window.googleTranslateElementInit();
+        }
+      }
+    }, 100);
+
+    return () => {
+      clearInterval(pollInterval);
+      if (script) {
+        document.head.removeChild(script);
+      }
+      delete (window as any).googleTranslateElementInit;
+    };
+  }, []);
+
   const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const lang = event.target.value;
-    if (lang) {
-      setSelectedLanguage(lang);
-      // Update the HTML lang attribute for accessibility and browser language detection
-      document.documentElement.lang = lang;
-      // Optional: Handle RTL languages (e.g., Arabic)
-      if (['ar', 'he', 'fa'].includes(lang)) {
-        document.documentElement.dir = 'rtl';
-      } else {
-        document.documentElement.dir = 'ltr';
+    if (lang && isTranslateReady && window.google && window.google.translate) {
+      const googleSelect = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+      if (googleSelect) {
+        googleSelect.value = lang;
+        googleSelect.dispatchEvent(new Event('change', { bubbles: true }));
       }
-      // Optional: Save to localStorage for persistence
-      localStorage.setItem('preferredLanguage', lang);
-      // Optional: Trigger a re-render or custom event for components to respond
-      window.dispatchEvent(new CustomEvent('languageChange', { detail: { lang } }));
+    } else if (lang) {
+      // Retry after a short delay if not ready
+      setTimeout(() => {
+        const googleSelect = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+        if (googleSelect) {
+          googleSelect.value = lang;
+          googleSelect.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }, 500);
     }
   };
 
-  // Load saved language on mount
-  useState(() => {
-    const savedLang = localStorage.getItem('preferredLanguage');
-    if (savedLang && savedLang !== 'en') {
-      setSelectedLanguage(savedLang);
-      document.documentElement.lang = savedLang;
-      if (['ar', 'he', 'fa'].includes(savedLang)) {
-        document.documentElement.dir = 'rtl';
-      }
-    }
-  }, []);
-
   const languages = [
     { value: 'en', label: 'English' },
-    { value: 'es', label: 'Spanish' },
-    { value: 'fr', label: 'French' },
-    { value: 'de', label: 'German' },
-    { value: 'it', label: 'Italian' },
-    { value: 'pt', label: 'Portuguese' },
-    { value: 'ru', label: 'Russian' },
-    { value: 'ja', label: 'Japanese' },
-    { value: 'ko', label: 'Korean' },
-    { value: 'zh-CN', label: 'Chinese' },
-    { value: 'ar', label: 'Arabic' },
-    { value: 'hi', label: 'Hindi' },
+    { value: 'fr', label: 'Français' },
   ];
 
   return (
@@ -194,10 +227,9 @@ const Header = () => {
               <Languages size={14} />
               <select
                 className="bg-transparent border border-primary-foreground/30 rounded px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-primary-foreground"
-                value={selectedLanguage}
                 onChange={handleLanguageChange}
+                defaultValue="en"
               >
-                <option value="" disabled>Language</option>
                 {languages.map((lang) => (
                   <option key={lang.value} value={lang.value}>
                     {lang.label}
@@ -270,10 +302,9 @@ const Header = () => {
               <label className="block text-sm font-medium mb-2">Language</label>
               <select
                 className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-sm"
-                value={selectedLanguage}
                 onChange={handleLanguageChange}
+                defaultValue="en"
               >
-                <option value="" disabled>Choose Language</option>
                 {languages.map((lang) => (
                   <option key={lang.value} value={lang.value}>
                     {lang.label}
@@ -290,6 +321,9 @@ const Header = () => {
           </div>
         )}
       </nav>
+
+      {/* Hidden Google Translate Widget Container */}
+      <div ref={translateRef} id="google_translate_element" style={{ display: 'none' }}></div>
     </header>
   );
 };
