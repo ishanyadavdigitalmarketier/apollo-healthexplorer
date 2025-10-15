@@ -106,14 +106,13 @@
 // };
 
 // export default Header;
-// Updated Header.tsx with integrated language selector
-import { useState, useEffect } from 'react';
+// Header.tsx - Updated with proper Google Translate integration
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Phone, Mail, Menu, X, Languages } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import apolloLogo from '@/assets/apollo-logo.png';
 
-// Add the same window interface declaration
 declare global {
   interface Window {
     google: any;
@@ -123,6 +122,8 @@ declare global {
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isTranslateReady, setIsTranslateReady] = useState(false);
+  const translateRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
@@ -133,19 +134,74 @@ const Header = () => {
   const mobileNavLinkClass = (path: string) =>
     `block font-medium ${isActive(path) ? 'text-primary' : 'text-foreground hover:text-primary transition-colors'}`;
 
-  // Language selector functions
+  useEffect(() => {
+    // Define the global init function
+    window.googleTranslateElementInit = () => {
+      if (translateRef.current && window.google && window.google.translate) {
+        new window.google.translate.TranslateElement(
+          {
+            pageLanguage: 'en',
+            includedLanguages: 'en,es,fr,de,it,pt,ru,ja,ko,zh-CN,ar,hi',
+            layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+          },
+          translateRef.current
+        );
+        setIsTranslateReady(true);
+      }
+    };
+
+    // Load script if not present
+    let script = document.getElementById('google-translate-script') as HTMLScriptElement;
+    if (!script) {
+      script = document.createElement('script');
+      script.id = 'google-translate-script';
+      script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      script.async = true;
+      document.head.appendChild(script);
+    }
+
+    // Poll for Google Translate to be ready
+    const pollInterval = setInterval(() => {
+      if (window.google && window.google.translate && window.google.translate.TranslateElement) {
+        clearInterval(pollInterval);
+        if (typeof window.googleTranslateElementInit === 'function') {
+          window.googleTranslateElementInit();
+        }
+      }
+    }, 100);
+
+    return () => {
+      clearInterval(pollInterval);
+      if (script) {
+        document.head.removeChild(script);
+      }
+      delete (window as any).googleTranslateElementInit;
+    };
+  }, []);
+
   const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const lang = event.target.value;
-    if (lang && window.google && window.google.translate) {
-      const select = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-      if (select) {
-        select.value = lang;
-        select.dispatchEvent(new Event('change'));
+    if (lang && isTranslateReady && window.google && window.google.translate) {
+      const googleSelect = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+      if (googleSelect) {
+        googleSelect.value = lang;
+        googleSelect.dispatchEvent(new Event('change', { bubbles: true }));
       }
+    } else if (lang) {
+      // Retry after a short delay if not ready
+      setTimeout(() => {
+        const googleSelect = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+        if (googleSelect) {
+          googleSelect.value = lang;
+          googleSelect.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }, 500);
     }
   };
 
   const languages = [
+    { value: '', label: 'Select Language' },
     { value: 'en', label: 'English' },
     { value: 'es', label: 'Spanish' },
     { value: 'fr', label: 'French' },
@@ -278,6 +334,9 @@ const Header = () => {
           </div>
         )}
       </nav>
+
+      {/* Hidden Google Translate Widget Container */}
+      <div ref={translateRef} id="google_translate_element" style={{ display: 'none' }}></div>
     </header>
   );
 };
