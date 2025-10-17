@@ -84,7 +84,7 @@ const Blog = () => {
       id: '7',
       title: 'Oncology Services in Apollo Network Hospitals',
       slug: 'oncology-apollo-network-hospitals',
-      image: '/assets/Bumrungrad-%20Hospital-DYIyfrDj.jpg',
+      image: '/assets/Bumrungrad- Hospital.jpg',
       alt: 'Apollo Oncology Services',
       categories: ['Hospitals', 'Oncology', 'Cancer Care']
     },
@@ -92,7 +92,7 @@ const Blog = () => {
       id: '8',
       title: 'Patient Stories from Apollo Hospitals Worldwide',
       slug: 'patient-stories-apollo-hospitals',
-      image: '/assets/Mount-Elizabeth-CLNBCgls.jpg',
+      image: '/assets/Mount-Elizabeth.jpg',
       alt: 'Patient Stories Apollo',
       categories: ['Hospitals', 'Testimonials', 'Medical Tourism']
     },
