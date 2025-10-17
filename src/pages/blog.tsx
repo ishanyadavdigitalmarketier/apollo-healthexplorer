@@ -173,7 +173,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 import Header from '@/components/Header';
-import Link from 'next/link';
+// import Link from 'next/link';
 
 interface BlogPost {
   id: string;
@@ -332,11 +332,11 @@ const Blog = () => {
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="text-base font-semibold mb-2 line-clamp-2">
+                  {/* <h3 className="text-base font-semibold mb-2 line-clamp-2">
                     <Link href={`/blog/${post.slug}`} className="text-primary hover:underline">
                       {post.title}
                     </Link>
-                  </h3>
+                  </h3> */}
                   <div className="text-sm text-muted-foreground mb-2">
                     {post.categories.map((cat, index) => (
                       <span key={index}>
