@@ -112,12 +112,13 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Hospital, MapPin, Star, Search } from 'lucide-react';
+import { Hospital, MapPin, Star, Search, Image as ImageIcon } from 'lucide-react';
 import Header from '@/components/Header';
 
 const Hospitals = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredHospitals, setFilteredHospitals] = useState([]);
+  const [imageErrors, setImageErrors] = useState({});
 
   useEffect(() => {
     // Start of Tawk.to Script
@@ -133,13 +134,20 @@ const Hospitals = () => {
     // End of Tawk.to Script
   }, []);
 
+  const handleImageError = (hospitalName) => {
+    setImageErrors(prev => ({
+      ...prev,
+      [hospitalName]: true
+    }));
+  };
+
   const hospitals = [
     {
       name: 'Groote Schuur Hospital',
       location: 'Cape Town, Western Cape',
       specialty: 'Public Teaching Hospital',
       description: 'One of South Africa\'s largest public hospitals, famous for performing the world\'s first heart transplant. Offers comprehensive medical services and serves as a major teaching hospital.',
-      image: '/assets/groote-schuur.jpg',
+      image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=300&h=300&fit=crop&auto=format',
       type: 'public',
       rating: 4.2,
       features: ['Emergency', 'Surgery', 'Cardiology', 'Oncology']
@@ -149,7 +157,7 @@ const Hospitals = () => {
       location: 'Cape Town, Western Cape',
       specialty: 'Private Multi-Specialty',
       description: 'Leading private hospital in Cape Town offering world-class healthcare with state-of-the-art facilities and specialized medical professionals.',
-      image: '/assets/christiaan-barnard.jpg',
+      image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=300&h=300&fit=crop&auto=format',
       type: 'private',
       rating: 4.5,
       features: ['Cardiac Surgery', 'Neurosurgery', 'Oncology', 'Emergency']
@@ -159,7 +167,7 @@ const Hospitals = () => {
       location: 'Cape Town, Western Cape',
       specialty: 'Public Academic Hospital',
       description: 'Second largest hospital in South Africa and major teaching hospital serving the Western Cape region with comprehensive medical services.',
-      image: '/assets/tygerberg-hospital.jpg',
+      image: 'https://images.unsplash.com/photo-1516549655669-dfbf54c5a709?w=300&h=300&fit=crop&auto=format',
       type: 'public',
       rating: 4.0,
       features: ['Trauma Center', 'Teaching Hospital', 'Multiple Specialties']
@@ -169,7 +177,7 @@ const Hospitals = () => {
       location: 'Cape Town, Western Cape',
       specialty: 'Private Comprehensive Care',
       description: 'Premier private healthcare facility offering advanced medical technology and specialized treatment across various medical disciplines.',
-      image: '/assets/kingsbury-hospital.jpg',
+      image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=300&h=300&fit=crop&auto=format',
       type: 'private',
       rating: 4.4,
       features: ['Surgical', 'Maternity', 'ICU', 'Oncology']
@@ -179,7 +187,7 @@ const Hospitals = () => {
       location: 'Durban, KwaZulu-Natal',
       specialty: 'Private Multi-Specialty',
       description: 'Modern private hospital in Durban providing comprehensive healthcare services with advanced medical technology and specialist care.',
-      image: '/assets/parklands-hospital.jpg',
+      image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=300&h=300&fit=crop&auto=format',
       type: 'private',
       rating: 4.3,
       features: ['Surgery', 'Cardiology', 'Maternity', 'Emergency']
@@ -189,7 +197,7 @@ const Hospitals = () => {
       location: 'Durban, KwaZulu-Natal',
       specialty: 'Public Coastal Hospital',
       description: 'Major public hospital serving Durban and surrounding areas with comprehensive emergency and specialized medical services.',
-      image: '/assets/addington-hospital.jpg',
+      image: 'https://images.unsplash.com/photo-1516549655669-dfbf54c5a709?w=300&h=300&fit=crop&auto=format',
       type: 'public',
       rating: 3.9,
       features: ['Emergency', 'Trauma', 'Surgical', 'Medical']
@@ -199,7 +207,7 @@ const Hospitals = () => {
       location: 'Johannesburg, Gauteng',
       specialty: 'Public Academic Hospital',
       description: 'One of the largest public hospitals in South Africa, serving as a major referral center and teaching hospital for the region.',
-      image: '/assets/johannesburg-general.jpg',
+      image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=300&h=300&fit=crop&auto=format',
       type: 'public',
       rating: 4.1,
       features: ['Teaching Hospital', 'Multiple Specialties', 'Emergency']
@@ -209,7 +217,7 @@ const Hospitals = () => {
       location: 'Somerset West, Western Cape',
       specialty: 'Private Surgical Hospital',
       description: 'Modern private surgical hospital offering advanced medical procedures and comprehensive patient care in the Western Cape.',
-      image: '/assets/vergelegen-hospital.jpg',
+      image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=300&h=300&fit=crop&auto=format',
       type: 'private',
       rating: 4.4,
       features: ['Surgical', 'Oncology', 'Cardiology', 'Orthopedics']
@@ -219,7 +227,7 @@ const Hospitals = () => {
       location: 'Cape Town, Western Cape',
       specialty: 'Pediatric Specialist',
       description: 'Largest dedicated children\'s hospital in Africa, providing specialized pediatric care and serving as a referral center for complex childhood conditions.',
-      image: '/assets/red-cross-childrens.jpg',
+      image: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=300&h=300&fit=crop&auto=format',
       type: 'public',
       rating: 4.3,
       features: ['Pediatric Surgery', 'Oncology', 'ICU', 'Specialized Care']
@@ -229,7 +237,7 @@ const Hospitals = () => {
       location: 'Durban, KwaZulu-Natal',
       specialty: 'Private Multi-Specialty',
       description: 'Leading private hospital in Durban offering comprehensive medical services with advanced technology and specialist expertise.',
-      image: '/assets/st-augustines.jpg',
+      image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=300&h=300&fit=crop&auto=format',
       type: 'private',
       rating: 4.4,
       features: ['Cardiac', 'Neuroscience', 'Oncology', 'Surgical']
@@ -239,7 +247,7 @@ const Hospitals = () => {
       location: 'Cape Town, Western Cape',
       specialty: 'Ophthalmology Specialist',
       description: 'Specialized eye hospital providing comprehensive ophthalmology services including advanced surgical procedures and vision care.',
-      image: '/assets/cape-town-eye-hospital.jpg',
+      image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=300&h=300&fit=crop&auto=format',
       type: 'private',
       rating: 4.5,
       features: ['Cataract Surgery', 'Retinal Care', 'Laser Treatment']
@@ -249,7 +257,7 @@ const Hospitals = () => {
       location: 'Pretoria, Gauteng',
       specialty: 'Public Academic Hospital',
       description: 'Major academic hospital and referral center providing tertiary healthcare services and medical education in Pretoria.',
-      image: '/assets/steve-biko-hospital.jpg',
+      image: 'https://images.unsplash.com/photo-1516549655669-dfbf54c5a709?w=300&h=300&fit=crop&auto=format',
       type: 'public',
       rating: 4.0,
       features: ['Teaching Hospital', 'Tertiary Care', 'Multiple Specialties']
@@ -279,6 +287,16 @@ const Hospitals = () => {
     'surgical hospital',
     'eye hospital'
   ];
+
+  // Fallback background colors for when images fail to load
+  const getFallbackBackground = (hospitalName) => {
+    const colors = [
+      'bg-blue-100', 'bg-green-100', 'bg-purple-100', 
+      'bg-orange-100', 'bg-pink-100', 'bg-indigo-100'
+    ];
+    const index = hospitalName.length % colors.length;
+    return colors[index];
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -370,11 +388,22 @@ const Hospitals = () => {
                     </div>
                   </div>
                   
-                  <img
-                    src={hospital.image}
-                    alt={`${hospital.name} logo`}
-                    className="w-20 h-20 mx-auto mb-4 rounded-full object-cover border-4 border-white shadow-sm"
-                  />
+                  {/* Image with fallback */}
+                  <div className="relative w-20 h-20 mx-auto mb-4">
+                    {!imageErrors[hospital.name] ? (
+                      <img
+                        src={hospital.image}
+                        alt={`${hospital.name} facility`}
+                        className="w-full h-full rounded-full object-cover border-4 border-white shadow-sm"
+                        onError={() => handleImageError(hospital.name)}
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className={`w-full h-full rounded-full border-4 border-white shadow-sm flex items-center justify-center ${getFallbackBackground(hospital.name)}`}>
+                        <ImageIcon className="h-8 w-8 text-gray-400" />
+                      </div>
+                    )}
+                  </div>
                   
                   <div className="hospital-specialty inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold mb-3">
                     {hospital.specialty}
