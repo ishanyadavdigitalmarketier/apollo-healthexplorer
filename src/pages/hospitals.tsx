@@ -111,15 +111,10 @@
 // pages/Hospitals.tsx
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Hospital, MapPin, Star, Search, Image as ImageIcon } from 'lucide-react';
+import { Hospital, MapPin, Star, Search } from 'lucide-react';
 import Header from '@/components/Header';
 
 const Hospitals = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [filteredHospitals, setFilteredHospitals] = useState([]);
-  const [imageErrors, setImageErrors] = useState({});
-
   useEffect(() => {
     // Start of Tawk.to Script
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
@@ -134,329 +129,216 @@ const Hospitals = () => {
     // End of Tawk.to Script
   }, []);
 
-  const handleImageError = (hospitalName) => {
-    setImageErrors(prev => ({
-      ...prev,
-      [hospitalName]: true
-    }));
-  };
+  const [searchTerm, setSearchTerm] = useState('');
 
   const hospitals = [
     {
       name: 'Groote Schuur Hospital',
-      location: 'Cape Town, Western Cape',
-      specialty: 'Public Teaching Hospital',
-      description: 'One of South Africa\'s largest public hospitals, famous for performing the world\'s first heart transplant. Offers comprehensive medical services and serves as a major teaching hospital.',
-      image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=300&h=300&fit=crop&auto=format',
-      type: 'public',
-      rating: 4.2,
-      features: ['Emergency', 'Surgery', 'Cardiology', 'Oncology']
+      location: 'Observatory, Cape Town',
+      specialty: 'Tertiary Academic Public',
+      description: 'Established in 1938, this renowned public teaching hospital affiliated with the University of Cape Town is famous for the world\'s first human heart transplant in 1967. It offers comprehensive services in surgery, oncology, cardiology, emergency care, and research, serving as one of South Africa\'s top public hospitals and ranking in the top 10 overall.',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/2/28/Groote_Schuur_Hospital%2C_Observatory%2C_Cape_Town%2C_Western_Cape._05.JPG'
     },
     {
       name: 'Netcare Christiaan Barnard Memorial Hospital',
-      location: 'Cape Town, Western Cape',
-      specialty: 'Private Multi-Specialty',
-      description: 'Leading private hospital in Cape Town offering world-class healthcare with state-of-the-art facilities and specialized medical professionals.',
-      image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=300&h=300&fit=crop&auto=format',
-      type: 'private',
-      rating: 4.5,
-      features: ['Cardiac Surgery', 'Neurosurgery', 'Oncology', 'Emergency']
+      location: 'Foreshore, Cape Town',
+      specialty: 'Cardiology & Oncology Private',
+      description: 'Named after heart transplant pioneer Christiaan Barnard, this top private hospital in Cape Town specializes in cardiac surgery, oncology treatments, chemotherapy, fertility services, and cosmetic procedures. It features advanced facilities and is consistently ranked among South Africa\'s top 10 hospitals for specialized care.',
+      image: 'https://www.netcare.co.za/Portals/0/Images/Content-Images/Christiaan-Barnard-Memorial-Hospital-officially-opening.jpg?ver=IkDePNRMoMDJ27KMhcSPmg%3D%3D'
     },
     {
-      name: 'Tygerberg Hospital',
-      location: 'Cape Town, Western Cape',
-      specialty: 'Public Academic Hospital',
-      description: 'Second largest hospital in South Africa and major teaching hospital serving the Western Cape region with comprehensive medical services.',
-      image: 'https://images.unsplash.com/photo-1516549655669-dfbf54c5a709?w=300&h=300&fit=crop&auto=format',
-      type: 'public',
-      rating: 4.0,
-      features: ['Trauma Center', 'Teaching Hospital', 'Multiple Specialties']
+      name: 'Mediclinic Cape Town',
+      location: 'Oranjezicht, Cape Town',
+      specialty: 'Multi-Specialty Private',
+      description: 'A leading private hospital in the Western Cape providing high-quality care in cardiology, orthopedics, maternity, neurology, and surgical services. Part of the Mediclinic network, it emphasizes patient-centered treatment with modern infrastructure and is one of the best private hospitals in Cape Town.',
+      image: 'https://mediclinic.scene7.com/is/image/mediclinic/Mediclinic-Cape-Town?_ck=1616255882232'
     },
     {
       name: 'Life Kingsbury Hospital',
-      location: 'Cape Town, Western Cape',
-      specialty: 'Private Comprehensive Care',
-      description: 'Premier private healthcare facility offering advanced medical technology and specialized treatment across various medical disciplines.',
-      image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=300&h=300&fit=crop&auto=format',
-      type: 'private',
-      rating: 4.4,
-      features: ['Surgical', 'Maternity', 'ICU', 'Oncology']
+      location: 'Claremont, Cape Town',
+      specialty: 'Oncology & General Private',
+      description: 'Recognized as one of the best oncology hospitals in South Africa, this private facility offers comprehensive cancer care, maternity, rehabilitation, and general services in a serene suburban setting. It adheres to high standards and is part of the Life Healthcare network in the Western Cape.',
+      image: 'https://www.lifehealthcare.co.za/media/2212/hospitals_westerncape_kingsbury.jpg'
     },
     {
-      name: 'Netcare Parklands Hospital',
-      location: 'Durban, KwaZulu-Natal',
-      specialty: 'Private Multi-Specialty',
-      description: 'Modern private hospital in Durban providing comprehensive healthcare services with advanced medical technology and specialist care.',
-      image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=300&h=300&fit=crop&auto=format',
-      type: 'private',
-      rating: 4.3,
-      features: ['Surgery', 'Cardiology', 'Maternity', 'Emergency']
+      name: 'Red Cross War Memorial Children’s Hospital',
+      location: 'Rondebosch, Cape Town',
+      specialty: 'Pediatrics Public',
+      description: "South Africa's only dedicated tertiary children's hospital and the largest in Sub-Saharan Africa, providing specialized pediatric ICU, neonatal care, oncology, and family-centered programs for infants, children, and adolescents. Affiliated with the University of Cape Town.",
+      image: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Red_Cross_War_Memorial_Children%27s_Hospital.jpg'
     },
     {
-      name: 'Addington Hospital',
-      location: 'Durban, KwaZulu-Natal',
-      specialty: 'Public Coastal Hospital',
-      description: 'Major public hospital serving Durban and surrounding areas with comprehensive emergency and specialized medical services.',
-      image: 'https://images.unsplash.com/photo-1516549655669-dfbf54c5a709?w=300&h=300&fit=crop&auto=format',
-      type: 'public',
-      rating: 3.9,
-      features: ['Emergency', 'Trauma', 'Surgical', 'Medical']
+      name: 'Tygerberg Hospital',
+      location: 'Parow, Cape Town',
+      specialty: 'Tertiary Public',
+      description: 'The largest hospital in the Western Cape with over 1,000 beds, this academic center affiliated with Stellenbosch University excels in trauma, infectious diseases, surgery, and emergency services. It is a top public hospital in South Africa serving a vast population.',
+      image: 'https://static.wheretostay.co.za/locations/poi/0/0/006245/3895_xl.jpg'
     },
     {
-      name: 'Johannesburg General Hospital',
-      location: 'Johannesburg, Gauteng',
-      specialty: 'Public Academic Hospital',
-      description: 'One of the largest public hospitals in South Africa, serving as a major referral center and teaching hospital for the region.',
-      image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=300&h=300&fit=crop&auto=format',
-      type: 'public',
-      rating: 4.1,
-      features: ['Teaching Hospital', 'Multiple Specialties', 'Emergency']
+      name: 'Chris Hani Baragwanath Academic Hospital',
+      location: 'Soweto, Johannesburg',
+      specialty: 'Multi-Specialty Public (Largest in Africa)',
+      description: 'The third-largest hospital in the world and the biggest in Africa with 3,400 beds, this major teaching hospital handles high volumes of emergencies, trauma, surgery, and medicine. It serves underserved communities and ranks as the top public and biggest hospital in South Africa.',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Chris_Hani_Baragwanath_Academic_Hospital_entrance.jpg'
     },
     {
-      name: 'Mediclinic Vergelegen',
-      location: 'Somerset West, Western Cape',
-      specialty: 'Private Surgical Hospital',
-      description: 'Modern private surgical hospital offering advanced medical procedures and comprehensive patient care in the Western Cape.',
-      image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=300&h=300&fit=crop&auto=format',
-      type: 'private',
-      rating: 4.4,
-      features: ['Surgical', 'Oncology', 'Cardiology', 'Orthopedics']
+      name: 'Life Entabeni Hospital',
+      location: 'Berea, Durban',
+      specialty: 'Multi-Specialty Private',
+      description: 'One of the best private hospitals in Durban, featuring advanced cardiac centers, oncology units, and a 50-bed rehabilitation wing. It provides holistic care with a focus on recovery and is part of the Life Healthcare network in KwaZulu-Natal.',
+      image: 'https://www.lifehealthcare.co.za/media/2214/hospital_kzn_entabeni.jpg'
     },
     {
-      name: 'Red Cross War Memorial Children\'s Hospital',
-      location: 'Cape Town, Western Cape',
-      specialty: 'Pediatric Specialist',
-      description: 'Largest dedicated children\'s hospital in Africa, providing specialized pediatric care and serving as a referral center for complex childhood conditions.',
-      image: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=300&h=300&fit=crop&auto=format',
-      type: 'public',
-      rating: 4.3,
-      features: ['Pediatric Surgery', 'Oncology', 'ICU', 'Specialized Care']
+      name: 'Cape Eye Hospital',
+      location: 'Parow, Cape Town',
+      specialty: 'Ophthalmology Private',
+      description: 'A specialized eye hospital offering advanced treatments like cataract surgery, glaucoma management, refractive procedures, and retinal surgeries using cutting-edge ophthalmic technology. It is one of the top eye hospitals in Cape Town.',
+      image: 'https://cape-eye.co.za/wp-content/uploads/2024/01/Cape-Eye-Logo.png'
+    },
+    {
+      name: 'Nelson Mandela Children\'s Hospital',
+      location: 'Johannesburg',
+      specialty: 'Pediatrics Private',
+      description: 'A dedicated pediatric facility serving children across southern Africa with advanced treatments for complex conditions including oncology, cardiology, and critical care. It is one of the best children\'s hospitals in South Africa.',
+      image: 'https://www.nelsonmandelachildrenshospital.org/wp-content/uploads/2023/05/NMCH-Exterior-1-scaled.jpg'
+    },
+    {
+      name: 'Mediclinic Sandton',
+      location: 'Johannesburg',
+      specialty: 'Multi-Specialty Private',
+      description: 'Premier private hospital in Gauteng known for luxury care, international patient services, and specialties in oncology, orthopedics, and cardiology. Ranked among the top 10 hospitals in South Africa and a key facility in Johannesburg.',
+      image: 'https://www.mediclinic.co.za/content/dam/mc-sa/corporate/hospitals/sandton/images/Mediclinic-Sandton-Exterior.jpg'
+    },
+    {
+      name: 'Lenmed Ethekwini Hospital and Heart Centre',
+      location: 'Durban',
+      specialty: 'Oncology & Cardiology Private',
+      description: 'Leading facility for heart and cancer care in Durban, offering innovative therapies, chemotherapy, and cardiac interventions. Recognized as one of the best oncology and private hospitals in the region.',
+      image: 'https://lenmed.co.za/wp-content/uploads/2023/05/Ethekwini-Hospital-Exterior.jpg'
+    },
+    {
+      name: 'Life Peninsula Eye Hospital',
+      location: 'Strand, Cape Town',
+      specialty: 'Ophthalmology Private',
+      description: 'Specialized private eye hospital focusing on surgical treatments like LASIK, cataract removal, and glaucoma procedures in a state-of-the-art environment. A top choice for eye care in the Western Cape.',
+      image: 'https://www.lifehealthcare.co.za/media/2213/hospitals_westerncape_peninsulaeye.jpg'
+    },
+    {
+      name: 'Melomed Bellville Private Hospital',
+      location: 'Bellville, Cape Town',
+      specialty: 'General Private',
+      description: 'Affordable private hospital in the Northern Suburbs providing maternity, surgical, emergency, and general services as part of the Melomed network, one of the key private hospitals in the Western Cape.',
+      image: 'https://www.melomed.co.za/wp-content/uploads/2023/03/Melomed-Bellville-Exterior.jpg'
+    },
+    {
+      name: 'Netcare Milpark Hospital',
+      location: 'Parktown, Johannesburg',
+      specialty: 'Multi-Specialty Private',
+      description: 'Historic private hospital renowned for neurology, oncology, trauma care, and advanced surgeries. Consistently ranked in South Africa\'s top 10 hospitals and a leading facility in Johannesburg.',
+      image: 'https://www.netcare.co.za/Portals/0/Images/Content-Images/Milpark-Hospital.jpg'
+    },
+    {
+      name: 'Busamed Paardevlei Private Hospital',
+      location: 'Somerset West, Cape Town',
+      specialty: 'Surgical & General Private',
+      description: 'Modern private hospital specializing in day surgeries, orthopedics, gynecology, and emergency care, serving the Helderberg Basin in the Western Cape with innovative technology.',
+      image: 'https://busamed.co.za/wp-content/uploads/2023/06/Paardevlei-Exterior.jpg'
     },
     {
       name: 'St. Augustine\'s Hospital',
-      location: 'Durban, KwaZulu-Natal',
-      specialty: 'Private Multi-Specialty',
-      description: 'Leading private hospital in Durban offering comprehensive medical services with advanced technology and specialist expertise.',
-      image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=300&h=300&fit=crop&auto=format',
-      type: 'private',
-      rating: 4.4,
-      features: ['Cardiac', 'Neuroscience', 'Oncology', 'Surgical']
+      location: 'Durban',
+      specialty: 'General Private',
+      description: 'One of the leading private hospitals in Durban offering a wide range of services from emergency care to specialized treatments in oncology and cardiology, part of the Netcare group.',
+      image: 'https://www.netcare.co.za/Portals/0/StAugustines/External.jpg'
     },
     {
-      name: 'Cape Town Eye Hospital',
-      location: 'Cape Town, Western Cape',
-      specialty: 'Ophthalmology Specialist',
-      description: 'Specialized eye hospital providing comprehensive ophthalmology services including advanced surgical procedures and vision care.',
-      image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=300&h=300&fit=crop&auto=format',
-      type: 'private',
-      rating: 4.5,
-      features: ['Cataract Surgery', 'Retinal Care', 'Laser Treatment']
-    },
-    {
-      name: 'Steve Biko Academic Hospital',
-      location: 'Pretoria, Gauteng',
-      specialty: 'Public Academic Hospital',
-      description: 'Major academic hospital and referral center providing tertiary healthcare services and medical education in Pretoria.',
-      image: 'https://images.unsplash.com/photo-1516549655669-dfbf54c5a709?w=300&h=300&fit=crop&auto=format',
-      type: 'public',
-      rating: 4.0,
-      features: ['Teaching Hospital', 'Tertiary Care', 'Multiple Specialties']
+      name: 'Ahmed Al-Kadi Private Hospital',
+      location: 'Durban',
+      specialty: 'Multi-Specialty Private',
+      description: 'State-of-the-art private hospital with excellent facilities for general, surgical, and specialized care, recognized for high nursing standards and clinical excellence in KwaZulu-Natal.',
+      image: 'https://ahmedalkadi.com/wp-content/uploads/2023/01/Ahmed-Al-Kadi-Exterior.jpg'
     }
   ];
 
-  useEffect(() => {
-    const filtered = hospitals.filter(hospital => 
-      hospital.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      hospital.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      hospital.specialty.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      hospital.type.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      hospital.features.some(feature => 
-        feature.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    );
-    setFilteredHospitals(filtered);
-  }, [searchQuery]);
-
-  const popularSearches = [
-    'hospitals in cape town',
-    'hospital near me', 
-    'best hospital in south africa',
-    'private hospitals in durban',
-    'best oncology hospitals',
-    'children hospital',
-    'surgical hospital',
-    'eye hospital'
-  ];
-
-  // Fallback background colors for when images fail to load
-  const getFallbackBackground = (hospitalName) => {
-    const colors = [
-      'bg-blue-100', 'bg-green-100', 'bg-purple-100', 
-      'bg-orange-100', 'bg-pink-100', 'bg-indigo-100'
-    ];
-    const index = hospitalName.length % colors.length;
-    return colors[index];
-  };
+  const filteredHospitals = hospitals.filter(hospital =>
+    hospital.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    hospital.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    hospital.specialty.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    hospital.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto">
           <div className="bg-card p-6 rounded-lg shadow-md border">
             <h2 className="flex items-center gap-2 mb-6 text-2xl font-bold text-primary">
               <Hospital className="h-5 w-5" />
-              South African Hospitals
+              Hospitals in South Africa
             </h2>
-            
-            {/* Search Section */}
-            <div className="search-section mb-8">
+            <div className="hospitals-intro space-y-4">
+              <h3 className="text-lg font-semibold text-primary">Explore Top Hospitals: Cape Town, Durban, Johannesburg & More</h3>
+              <p className="text-foreground leading-relaxed">
+                Discover the best hospitals in South Africa, including hospitals in Cape Town, private hospitals in Durban and Western Cape, oncology centers, children\'s hospitals, eye clinics, surgical facilities, and the biggest public institutions like Chris Hani Baragwanath, the largest in Africa. Search for "hospital near me," "best oncology hospitals," "top 10 hospitals in South Africa," or specific locations to view full details.
+              </p>
+              <p className="text-foreground leading-relaxed">
+                From world-class private care at Netcare, Mediclinic, and Life Healthcare to leading public hospitals like Groote Schuur and Tygerberg, this directory covers Johannesburg hospitals, best public and private options, and more for comprehensive healthcare in South Africa.
+              </p>
+            </div>
+
+            <div className="search-section mb-6">
               <div className="relative">
-                <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                <Input
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <input
                   type="text"
-                  placeholder="Search hospitals by name, location, specialty, or features..."
-                  className="pl-10 pr-4 py-2 w-full"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search (e.g., Cape Town, oncology, children, Durban, biggest, eye, Johannesburg)"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 border border-input rounded-md bg-background focus-visible:ring-ring focus-visible:ring-2"
                 />
-              </div>
-              
-              {/* Popular Searches */}
-              <div className="mt-4">
-                <p className="text-sm text-muted-foreground mb-2">Popular searches:</p>
-                <div className="flex flex-wrap gap-2">
-                  {popularSearches.map((search, index) => (
-                    <Button
-                      key={index}
-                      variant="outline"
-                      size="sm"
-                      onClick={() => setSearchQuery(search)}
-                      className="text-xs"
-                    >
-                      {search}
-                    </Button>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="hospitals-intro space-y-4 mb-8">
-              <h3 className="text-lg font-semibold text-primary">World-Class Healthcare Facilities Across South Africa</h3>
-              <p className="text-foreground leading-relaxed">
-                Discover comprehensive healthcare services at leading hospitals throughout South Africa. From public academic institutions to private specialty centers, our network includes facilities renowned for medical excellence, advanced technology, and patient-centered care.
-              </p>
-              <p className="text-foreground leading-relaxed">
-                Whether you need emergency care, specialized treatment, or routine medical services, South Africa's hospitals offer diverse options to meet your healthcare needs with internationally trained specialists and state-of-the-art facilities.
-              </p>
-            </div>
-
-            {/* Statistics */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-              <div className="bg-muted p-4 rounded-lg text-center">
-                <div className="text-2xl font-bold text-primary">400+</div>
-                <div className="text-sm text-muted-foreground">Hospitals Nationwide</div>
-              </div>
-              <div className="bg-muted p-4 rounded-lg text-center">
-                <div className="text-2xl font-bold text-primary">85%</div>
-                <div className="text-sm text-muted-foreground">Private Facilities</div>
-              </div>
-              <div className="bg-muted p-4 rounded-lg text-center">
-                <div className="text-2xl font-bold text-primary">24/7</div>
-                <div className="text-sm text-muted-foreground">Emergency Services</div>
-              </div>
-              <div className="bg-muted p-4 rounded-lg text-center">
-                <div className="text-2xl font-bold text-primary">150+</div>
-                <div className="text-sm text-muted-foreground">Specialties Covered</div>
               </div>
             </div>
 
             <div className="hospitals-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
               {filteredHospitals.map((hospital, index) => (
-                <div key={index} className="hospital-card p-5 bg-muted rounded-lg border hover:shadow-lg transition-shadow">
-                  <div className="flex justify-between items-start mb-3">
-                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${
-                      hospital.type === 'private' 
-                        ? 'bg-green-100 text-green-800' 
-                        : 'bg-blue-100 text-blue-800'
-                    }`}>
-                      {hospital.type.toUpperCase()}
-                    </span>
-                    <div className="flex items-center gap-1">
-                      <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                      <span className="text-xs font-semibold">{hospital.rating}</span>
-                    </div>
-                  </div>
-                  
-                  {/* Image with fallback */}
-                  <div className="relative w-20 h-20 mx-auto mb-4">
-                    {!imageErrors[hospital.name] ? (
-                      <img
-                        src={hospital.image}
-                        alt={`${hospital.name} facility`}
-                        className="w-full h-full rounded-full object-cover border-4 border-white shadow-sm"
-                        onError={() => handleImageError(hospital.name)}
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className={`w-full h-full rounded-full border-4 border-white shadow-sm flex items-center justify-center ${getFallbackBackground(hospital.name)}`}>
-                        <ImageIcon className="h-8 w-8 text-gray-400" />
-                      </div>
-                    )}
-                  </div>
-                  
+                <div key={index} className="hospital-card text-center p-5 bg-muted rounded-lg border">
+                  <img
+                    src={hospital.image}
+                    alt={`${hospital.name} facility`}
+                    className="w-full h-32 mx-auto mb-4 rounded object-cover"
+                  />
                   <div className="hospital-specialty inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold mb-3">
                     {hospital.specialty}
                   </div>
-                  
                   <h4 className="text-lg font-semibold text-primary mb-1">{hospital.name}</h4>
                   <h5 className="text-sm text-muted-foreground mb-3 flex items-center justify-center gap-1">
                     <MapPin className="h-3 w-3" />
                     {hospital.location}
                   </h5>
-                  
-                  <p className="text-sm text-foreground leading-relaxed mb-4">{hospital.description}</p>
-                  
-                  <div className="features flex flex-wrap gap-1 justify-center">
-                    {hospital.features.map((feature, idx) => (
-                      <span key={idx} className="bg-background px-2 py-1 rounded text-xs text-muted-foreground">
-                        {feature}
-                      </span>
-                    ))}
+                  <p className="text-sm text-foreground leading-relaxed">{hospital.description}</p>
+                  <div className="flex justify-center items-center gap-1 mt-2">
+                    <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                    <span className="text-xs text-muted-foreground">Top Rated</span>
                   </div>
                 </div>
               ))}
+              {filteredHospitals.length === 0 && searchTerm && (
+                <p className="col-span-full text-center text-muted-foreground py-8">No hospitals found matching "{searchTerm}". Try broader terms like "Cape Town" or "oncology"!</p>
+              )}
+              {!searchTerm && (
+                <p className="col-span-full text-center text-muted-foreground py-8">Browse all {hospitals.length} hospitals or use the search to filter by location, specialty, or type (e.g., biggest hospital, children\'s hospital).</p>
+              )}
             </div>
 
-            {filteredHospitals.length === 0 && (
-              <div className="text-center py-12">
-                <Hospital className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-muted-foreground mb-2">
-                  No hospitals found
-                </h3>
-                <p className="text-muted-foreground">
-                  Try adjusting your search terms or browse the popular searches above.
-                </p>
-              </div>
-            )}
-
-            <div className="visit-section text-center mt-12 p-6 bg-primary/5 rounded-lg">
-              <h3 className="text-lg font-semibold text-primary mb-4">Find Healthcare Near You</h3>
+            <div className="visit-section text-center mt-8">
+              <h3 className="text-lg font-semibold text-primary mb-4">Find a Hospital Near You</h3>
               <p className="text-foreground mb-6">
-                Our comprehensive network of hospitals across South Africa ensures you have access to quality healthcare when you need it most.
+                For the nearest facility, top options in your area, or more details on South Africa hospitals, search based on your location.
               </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-                  <a href="https://www.google.com/maps/search/hospitals+in+south+africa">
-                    Find Hospitals Near Me
-                  </a>
-                </Button>
-                <Button asChild variant="outline">
-                  <a href="https://www.google.com/maps/search/emergency+hospitals+near+me">
-                    Emergency Facilities
-                  </a>
-                </Button>
-              </div>
+              <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+                <a href="https://www.google.com/maps/search/hospitals+near+me">Hospital Near Me</a>
+              </Button>
             </div>
           </div>
         </div>
