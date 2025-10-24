@@ -79,8 +79,7 @@ const CTASection = () => {
             <Button 
               asChild 
               size="lg" 
-              variant="outline" 
-              className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground w-full sm:w-auto"
+              className="bg-green-500 hover:bg-green-600 text-white text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto flex items-center justify-center gap-2 border border-green-500"
             >
               <a 
                 href="https://wa.me/918130795394" 
@@ -90,14 +89,14 @@ const CTASection = () => {
               >
                 <img 
                   loading="lazy" 
-                  src="https://d3lclm53tbcdw6.cloudfront.net/v2/new-home/images/whatsaap-icon01.webp" 
+                  src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/whatsapp-white-icon.png" 
                   alt="Chat with Us" 
                   width="24" 
                   height="24" 
                   className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" 
                   title="Chat with Us"
                 />
-                <span>{t('whatsapp Chat')}</span>
+                <span>{t('whatsappChat')}</span>
               </a>
             </Button>
           </div>
