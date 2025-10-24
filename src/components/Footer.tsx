@@ -64,7 +64,7 @@ const Footer = () => {
                 <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 text-primary" />
                 <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 flex-1 min-w-0">
                   <a href="tel:+911066502502" className="font-medium hover:text-primary transition-colors text-xs sm:text-sm truncate">Call Now</a>
-                  <span className="text-xs sm:text-sm">+91-1066-502-502</span>
+                  <span className="text-xs sm:text-sm">+91 81307 95394</span>
                 </div>
                 <Button 
                   asChild 
