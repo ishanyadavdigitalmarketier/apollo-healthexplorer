@@ -1,155 +1,3 @@
-// import { Button } from '@/components/ui/button';
-// import { Card, CardContent } from '@/components/ui/card';
-// import { Phone, MessageCircle, Mail, Shield, Users, Clock, Link as LucideLink } from 'lucide-react';
-// import { Link } from 'react-router-dom';
-
-// const CTASection = () => {
-//   const contactMethods = [
-//     {
-//       icon: Phone,
-//       title: 'Call Us Now',
-//       description: 'Speak with our medical experts',
-//       action: '+1-800-APOLLO-PARTNERS',
-//       buttonText: 'Call Now',
-//       href: 'tel:+1-800-APOLLO-PARTNERS',
-//     },
-//     {
-//       icon: MessageCircle,
-//       title: 'WhatsApp Chat',
-//       description: 'Quick response & support',
-//       action: 'Start Chat',
-//       buttonText: 'WhatsApp',
-//       href: 'https://wa.me/1234567890',
-//     },
-//     {
-//       icon: Mail,
-//       title: 'Email Consultation',
-//       description: 'Detailed medical inquiry',
-//       action: 'Send Email',
-//       buttonText: 'Email Us',
-//       href: 'mailto:Info@apolopartners.com',
-//     },
-//   ];
-
-//   const features = [
-//     {
-//       icon: Clock,
-//       title: '24/7 Support',
-//       description: 'Round-the-clock medical assistance and consultation support',
-//     },
-//     {
-//       icon: Shield,
-//       title: 'Confidential & Secure',
-//       description: 'Your medical information is protected with highest security standards',
-//     },
-//     {
-//       icon: Users,
-//       title: 'Expert Team',
-//       description: 'Experienced medical tourism coordinators and healthcare professionals',
-//     },
-//   ];
-
-//   const finalStats = [
-//     { number: '500K+', label: 'Successful Treatments' },
-//     { number: '98%', label: 'Patient Satisfaction' },
-//     { number: '50+', label: 'Partner Countries' },
-//     { number: '24/7', label: 'Medical Support' },
-//   ];
-
-//   return (
-//     <section className="py-12 sm:py-16 lg:py-20 bg-background">
-//       <div className="container mx-auto px-4 sm:px-6">
-//         {/* Main CTA */}
-//         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-//           <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight">
-//             Ready to Start Your <br className="hidden sm:block" />
-//             <span className="text-primary">Medical Journey?</span>
-//           </h2>
-//           <p className="text-base sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed">
-//             Get personalized treatment plans, cost estimates, and expert guidance from our medical tourism specialists. Your health transformation starts here.
-//           </p>
-
-//           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-16">
-//             <Button size="lg" className="bg-accent hover:bg-accent/90 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto">
-//               <Link to="/book">Get Free Quote</Link>
-//             </Button>
-//             <Button asChild size="lg" variant="outline" className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground w-full sm:w-auto">
-//               <Link to="/book">Book Consultation</Link>
-//             </Button>
-//           </div>
-//         </div>
-
-//         {/* Contact Methods */}
-//         <div className="grid grid-cols-1 sm:grid-cols-2 lg:md:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
-//           {contactMethods.map((method, index) => (
-//             <Card key={index} className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow bg-white">
-//               <CardContent className="p-6 sm:p-8">
-//                 <method.icon className="w-10 h-10 sm:w-12 sm:h-12 text-primary mx-auto mb-3 sm:mb-4" />
-//                 <h3 className="text-lg sm:text-xl font-bold mb-2">{method.title}</h3>
-//                 <p className="text-muted-foreground mb-3 sm:mb-4 text-sm sm:text-base">{method.description}</p>
-//                 <p className="font-semibold text-base sm:text-lg mb-3 sm:mb-4">{method.action}</p>
-//                 <Button asChild className="w-full">
-//                   {method.href.startsWith('http') || method.href.startsWith('tel') || method.href.startsWith('mailto') ? (
-//                     <a href={method.href} target={method.href.startsWith('http') ? '_blank' : '_self'} rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
-//                       {method.buttonText}
-//                     </a>
-//                   ) : (
-//                     <Link to={method.href}>{method.buttonText}</Link>
-//                   )}
-//                 </Button>
-//               </CardContent>
-//             </Card>
-//           ))}
-//         </div>
-
-//         {/* Features */}
-//         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
-//           {features.map((feature, index) => (
-//             <div key={index} className="text-center">
-//               <feature.icon className="w-10 h-10 sm:w-12 sm:h-12 text-accent mx-auto mb-3 sm:mb-4" />
-//               <h4 className="text-base sm:text-lg font-bold mb-2">{feature.title}</h4>
-//               <p className="text-muted-foreground text-sm sm:text-base">{feature.description}</p>
-//             </div>
-//           ))}
-//         </div>
-
-//         {/* Final Stats */}
-//         <Card className="bg-muted/30 border-0 shadow-lg">
-//           <CardContent className="p-6 sm:p-8">
-//             <h3 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8">Join Thousands of Satisfied Patients</h3>
-            
-//             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 mb-6 sm:mb-8">
-//               {finalStats.map((stat, index) => (
-//                 <div key={index} className="text-center">
-//                   <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-1 sm:mb-2">{stat.number}</div>
-//                   <div className="text-sm sm:text-base text-muted-foreground">{stat.label}</div>
-//                 </div>
-//               ))}
-//             </div>
-
-//             <div className="text-center">
-//               <p className="text-base sm:text-lg text-muted-foreground mb-4 sm:mb-6 leading-relaxed">
-//                 Ready to take the next step? Our medical experts are standing by.
-//               </p>
-//               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-//                 <Button asChild size="lg" className="bg-primary hover:bg-primary/90 w-full sm:w-auto">
-//                   <a href="tel:+1-800-APOLLO-PARTNERS">Call Now: +1-800-APOLLO-PARTNERS</a>
-//                 </Button>
-//                 <Button asChild size="lg" variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground w-full sm:w-auto">
-//                   <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
-//                     WhatsApp Chat
-//                   </a>
-//                 </Button>
-//               </div>
-//             </div>
-//           </CardContent>
-//         </Card>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default CTASection;
 // CTASection.tsx - Updated with translations
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -228,8 +76,29 @@ const CTASection = () => {
             <Button size="lg" className="bg-accent hover:bg-accent/90 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto">
               <Link to="/book">{t('getFreeQuote')}</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground w-full sm:w-auto">
-              <Link to="/book">{t('bookConsultation')}</Link>
+            <Button 
+              asChild 
+              size="lg" 
+              variant="outline" 
+              className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground w-full sm:w-auto"
+            >
+              <a 
+                href="https://api.whatsapp.com/send?phone=919971616131&text=Hello,%20please%20contact%20me%20regarding%20https://www.vaidam.com?source=wpchat_HPCL,%20Thank%20you!" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2"
+              >
+                <img 
+                  loading="lazy" 
+                  src="https://d3lclm53tbcdw6.cloudfront.net/v2/new-home/images/whatsaap-icon01.webp" 
+                  alt="Chat with Us" 
+                  width="24" 
+                  height="24" 
+                  className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" 
+                  title="Chat with Us"
+                />
+                <span>{t('whatsappChat')}</span>
+              </a>
             </Button>
           </div>
         </div>
