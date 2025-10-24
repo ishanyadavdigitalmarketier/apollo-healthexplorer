@@ -130,23 +130,8 @@ const Footer = () => {
               Contact Us
             </h4>
             <ul className="space-y-3 text-xs sm:text-sm text-muted-foreground">
-              {/* <li className="flex flex-col sm:flex-row sm:items-center gap-2">
-                <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 text-primary" />
-                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 flex-1 min-w-0">
-                  <a href="tel:+91 81307 95394" className="font-medium hover:text-primary transition-colors text-xs sm:text-sm truncate">Call Now</a>
-                  <span className="text-xs sm:text-sm">+91 81307 95394</span>
-                </div>
-                <Button 
-                  asChild 
-                  size="sm" 
-                  className="mt-2 sm:mt-0 bg-primary hover:bg-primary/90 text-primary-foreground text-xs w-full sm:w-auto whitespace-nowrap"
-                >
-                  <a href="tel:+91 81307 95394">Call</a>
-                </Button>
-              </li> */}
               <li className="flex flex-col sm:flex-row sm:items-center gap-2">
-                {/* <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 text-primary" /> */}
-                <MessageCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-600 flex-shrink-0" />
+                <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 text-primary" />
                 <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 flex-1 min-w-0">
                   <a
                     href="tel:+91 81307 95394"
@@ -161,7 +146,13 @@ const Footer = () => {
                     className="flex items-center gap-1 font-medium hover:text-primary transition-colors text-xs sm:text-sm truncate"
                   >
                     <span>+91 81307 95394</span>
-                    {/* <MessageCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-600 flex-shrink-0" /> */}
+                    <img
+                      src="https://www.vaidam.com/assets/v2/static_page/images/whatsaap-icon.webp"
+                      alt="WhatsApp"
+                      title="Message on WhatsApp"
+                      className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 ml-1"
+                      loading="lazy"
+                    />
                   </a>
                 </div>
                 <Button
