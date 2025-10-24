@@ -141,13 +141,13 @@ const Footer = () => {
                 />
                 <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 flex-1 min-w-0">
                   <a
-                    href="tel:+91 81307 95394"
+                    href="https://wa.me/918130795394"
                     className="font-medium hover:text-primary transition-colors text-xs sm:text-sm truncate"
                   >
-                    Call Now
+                    Whatsapp
                   </a>
                   <a
-                    href="https://wa.me/918130795394"
+                  href="tel:+91 81307 95394"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1 font-medium hover:text-primary transition-colors text-xs sm:text-sm truncate"
