@@ -145,7 +145,8 @@ const Footer = () => {
                 </Button>
               </li> */}
               <li className="flex flex-col sm:flex-row sm:items-center gap-2">
-                <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 text-primary" />
+                {/* <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 text-primary" /> */}
+                <MessageCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-600 flex-shrink-0" />
                 <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 flex-1 min-w-0">
                   <a
                     href="tel:+91 81307 95394"
@@ -160,7 +161,7 @@ const Footer = () => {
                     className="flex items-center gap-1 font-medium hover:text-primary transition-colors text-xs sm:text-sm truncate"
                   >
                     <span>+91 81307 95394</span>
-                    <MessageCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-600 flex-shrink-0" />
+                    {/* <MessageCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-600 flex-shrink-0" /> */}
                   </a>
                 </div>
                 <Button
