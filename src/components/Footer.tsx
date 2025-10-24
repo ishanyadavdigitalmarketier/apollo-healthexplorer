@@ -71,7 +71,7 @@ const Footer = () => {
                   size="sm" 
                   className="mt-2 sm:mt-0 bg-primary hover:bg-primary/90 text-primary-foreground text-xs w-full sm:w-auto whitespace-nowrap"
                 >
-                  <a href="tel:+911066502502">Call</a>
+                  <a href="tel:+91 81307 95394">Call</a>
                 </Button>
               </li>
               <li className="flex flex-col sm:flex-row sm:items-center gap-2">
