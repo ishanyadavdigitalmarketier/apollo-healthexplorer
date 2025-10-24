@@ -73,8 +73,13 @@ const CTASection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-16">
-            <Button size="lg" className="bg-accent hover:bg-accent/90 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto">
-              <Link to="/book">{t('getFreeQuote')}</Link>
+            <Button 
+              size="lg" 
+              className="bg-red-500 hover:bg-red-600 text-white text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto flex items-center justify-center border border-red-500"
+            >
+              <Link to="/book" className="flex items-center justify-center gap-2">
+                <span>{t('getFreeQuote')}</span>
+              </Link>
             </Button>
             <Button 
               asChild 
