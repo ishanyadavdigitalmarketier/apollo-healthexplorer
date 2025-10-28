@@ -359,7 +359,7 @@ const Read = () => {
           </div>
 
           <div className="space-y-4 mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold leading-tight">{article.title}</h1>
+            <p className="text-3xl md:text-4xl font-bold leading-tight">{article.title}</p>
             <p className="text-muted-foreground text-lg leading-relaxed">{article.description}</p>
           </div>
 

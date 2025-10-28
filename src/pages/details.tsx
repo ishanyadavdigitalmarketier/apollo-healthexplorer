@@ -272,7 +272,7 @@ const TreatmentDetails = () => {
               <Badge variant="secondary">{treatment.category}</Badge>
               <Badge className="bg-accent text-accent-foreground">{treatment.savings}</Badge>
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold">{treatment.title}</h1>
+            <p className="text-3xl md:text-4xl font-bold">{treatment.title}</p>
             <p className="text-muted-foreground text-lg leading-relaxed">{treatment.description}</p>
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
