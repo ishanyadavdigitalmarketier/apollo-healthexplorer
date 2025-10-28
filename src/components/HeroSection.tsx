@@ -188,13 +188,14 @@
 // };
 
 // export default HeroSection;
-// HeroSection.tsx - Updated with translations
+// HeroSection.tsx - Updated with translations and functional search
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
-import { Search, Stethoscope, Building2, UserCheck, MapPin, Calendar, DollarSign } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Search, Stethoscope, Building2, UserCheck, MapPin, ArrowRight, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import heroImage from '@/assets/hero-medical.jpg';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -206,7 +207,67 @@ const HeroSection = () => {
   const [searchTriggered, setSearchTriggered] = useState(false);
   const { t } = useLanguage();
 
-  // ... (keep all your existing dataByLocation and other logic)
+  // Sample data for locations and tabs (mock data - replace with API in production)
+  const dataByLocation = {
+    india: {
+      hospitals: [
+        { id: '1', name: 'Apollo Hospitals Chennai', description: 'World-class multi-specialty hospital with advanced cardiac care.', specialty: 'Cardiology, Oncology' },
+        { id: '2', name: 'Fortis Hospital Mumbai', description: 'Leading facility for orthopedic and neurology treatments.', specialty: 'Orthopedics, Neurology' },
+        { id: '3', name: 'Max Super Speciality Delhi', description: 'Premier hospital for cosmetic and fertility services.', specialty: 'Cosmetic, Fertility' },
+      ],
+      treatments: [
+        { id: '1', name: 'Heart Bypass Surgery', description: 'Advanced cardiac procedure with 70% cost savings.', price: '$4,000', duration: '7-10 days' },
+        { id: '2', name: 'Knee Replacement', description: 'Robotic-assisted orthopedic surgery.', price: '$950', duration: '5-7 days' },
+        { id: '3', name: 'LASIK Eye Surgery', description: 'Bladeless vision correction.', price: '$1,200', duration: '1 day' },
+      ],
+      doctors: [
+        { id: '1', name: 'Dr. Rajesh Kumar', specialty: 'Cardiologist', experience: '20+ years', rating: 4.9 },
+        { id: '2', name: 'Dr. Priya Sharma', specialty: 'Orthopedic Surgeon', experience: '15+ years', rating: 4.8 },
+        { id: '3', name: 'Dr. Amit Patel', specialty: 'Ophthalmologist', experience: '18+ years', rating: 4.7 },
+      ],
+    },
+    thailand: {
+      hospitals: [
+        { id: '4', name: 'Bumrungrad International Hospital', description: 'Top-rated for dental and cosmetic procedures.', specialty: 'Dentistry, Cosmetic' },
+        { id: '5', name: 'Samitivej Sukhumvit Hospital', description: 'Excellent for fertility and wellness treatments.', specialty: 'Fertility, Wellness' },
+      ],
+      treatments: [
+        { id: '4', name: 'Dental Implants', description: 'Premium dental solutions with 80% savings.', price: '$800', duration: '2-3 days' },
+        { id: '5', name: 'IVF Treatment', description: 'Advanced fertility care.', price: '$3,500', duration: '4-6 weeks' },
+      ],
+      doctors: [
+        { id: '4', name: 'Dr. Somchai Lee', specialty: 'Dentist', experience: '12+ years', rating: 4.9 },
+        { id: '5', name: 'Dr. Nida Wong', specialty: 'Fertility Specialist', experience: '14+ years', rating: 4.8 },
+      ],
+    },
+    singapore: {
+      hospitals: [
+        { id: '6', name: 'Mount Elizabeth Hospital', description: 'Premium care for complex surgeries.', specialty: 'Cardiology, Oncology' },
+      ],
+      treatments: [
+        { id: '6', name: 'Cancer Treatment', description: 'Cutting-edge oncology therapies.', price: '$15,000', duration: 'Varies' },
+      ],
+      doctors: [
+        { id: '6', name: 'Dr. Lim Wei', specialty: 'Oncologist', experience: '22+ years', rating: 4.9 },
+      ],
+    },
+    // Add more locations as needed (turkey, mexico, malaysia)
+    turkey: {
+      hospitals: [{ id: '7', name: 'Acibadem Hospital Istanbul', description: 'Specialized in hair transplants and eye surgery.', specialty: 'Cosmetic, Ophthalmology' }],
+      treatments: [{ id: '7', name: 'Hair Transplant', description: 'Advanced FUE technique.', price: '$2,500', duration: '3 days' }],
+      doctors: [{ id: '7', name: 'Dr. Ahmet Oz', specialty: 'Plastic Surgeon', experience: '16+ years', rating: 4.8 }],
+    },
+    mexico: {
+      hospitals: [{ id: '8', name: 'Hospital Angeles Tijuana', description: 'Affordable dental and bariatric care.', specialty: 'Dentistry, Bariatric' }],
+      treatments: [{ id: '8', name: 'Gastric Sleeve Surgery', description: 'Weight loss procedure.', price: '$4,500', duration: '2 days' }],
+      doctors: [{ id: '8', name: 'Dr. Maria Gonzalez', specialty: 'Bariatric Surgeon', experience: '10+ years', rating: 4.7 }],
+    },
+    malaysia: {
+      hospitals: [{ id: '9', name: 'Gleneagles Hospital Kuala Lumpur', description: 'Comprehensive wellness and check-up programs.', specialty: 'Wellness, General' }],
+      treatments: [{ id: '9', name: 'Full Body Health Checkup', description: 'Executive screening package.', price: '$500', duration: '1 day' }],
+      doctors: [{ id: '9', name: 'Dr. Tan Lee', specialty: 'General Physician', experience: '13+ years', rating: 4.6 }],
+    },
+  };
 
   const handleSearch = () => {
     if (selectedLocation) {
@@ -225,7 +286,77 @@ const HeroSection = () => {
       );
     }
 
-    // ... (keep your existing renderTabContent logic)
+    const locationData = dataByLocation[selectedLocation] || { hospitals: [], treatments: [], doctors: [] };
+    let results = [];
+
+    switch (activeTab) {
+      case 'hospitals':
+        results = locationData.hospitals.filter(hospital =>
+          hospital.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          hospital.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          hospital.specialty.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        break;
+      case 'treatments':
+        results = locationData.treatments.filter(treatment =>
+          treatment.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          treatment.description.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        break;
+      case 'doctors':
+        results = locationData.doctors.filter(doctor =>
+          doctor.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          doctor.specialty.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        break;
+      default:
+        results = [];
+    }
+
+    if (results.length === 0) {
+      return (
+        <div className="text-center py-6 sm:py-8 text-muted-foreground">
+          No results found for "{searchQuery}" in {selectedLocation}. Try adjusting your search.
+        </div>
+      );
+    }
+
+    return (
+      <div className="mt-6 space-y-4">
+        <p className="text-sm text-muted-foreground">
+          Showing {results.length} results for "{searchQuery}" in {selectedLocation}:
+        </p>
+        {results.map((item) => (
+          <Card key={item.id} className="hover:shadow-md transition-shadow">
+            <CardHeader className="pb-2">
+              <CardTitle className="flex items-start justify-between">
+                <span className="text-lg font-semibold">{item.name}</span>
+                {activeTab === 'treatments' && <Badge variant="outline">${item.price}</Badge>}
+                {activeTab === 'doctors' && <Badge variant="outline">⭐ {item.rating}</Badge>}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground mb-3">{item.description}</p>
+              {activeTab === 'hospitals' && <Badge variant="secondary">{item.specialty}</Badge>}
+              {activeTab === 'treatments' && (
+                <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2">
+                  <Calendar className="w-3 h-3" />
+                  <span>{item.duration}</span>
+                </div>
+              )}
+              {activeTab === 'doctors' && (
+                <div className="text-xs text-muted-foreground mt-2">
+                  <span>{item.experience}</span>
+                </div>
+              )}
+              <Button variant="ghost" size="sm" className="mt-2 flex items-center gap-1">
+                View Details <ArrowRight className="w-3 h-3" />
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    );
   };
 
   return (
@@ -363,6 +494,7 @@ const HeroSection = () => {
                       key={index} 
                       variant="secondary" 
                       className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors text-xs sm:text-sm px-2 sm:px-3 py-1"
+                      onClick={() => setSearchQuery(treatment)}
                     >
                       {treatment}
                     </Badge>
