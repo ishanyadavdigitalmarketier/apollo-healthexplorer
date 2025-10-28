@@ -195,7 +195,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Search, Stethoscope, Building2, UserCheck, MapPin, ArrowRight, Calendar } from 'lucide-react';
+import { Search, Stethoscope, Building2, UserCheck, MapPin, Calendar, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import heroImage from '@/assets/hero-medical.jpg';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -277,6 +277,19 @@ const HeroSection = () => {
     }
   };
 
+  const getDetailsLink = (tab: string, id: string) => {
+    switch (tab) {
+      case 'hospitals':
+        return `/hospitals/${id}`;
+      case 'treatments':
+        return `/details/${id}`;
+      case 'doctors':
+        return `/doctors/${id}`;
+      default:
+        return '/';
+    }
+  };
+
   const renderTabContent = () => {
     if (!selectedLocation || !searchTriggered) {
       return (
@@ -349,8 +362,10 @@ const HeroSection = () => {
                   <span>{item.experience}</span>
                 </div>
               )}
-              <Button variant="ghost" size="sm" className="mt-2 flex items-center gap-1">
-                View Details <ArrowRight className="w-3 h-3" />
+              <Button asChild variant="ghost" size="sm" className="mt-2 flex items-center gap-1">
+                <Link to={getDetailsLink(activeTab, item.id)}>
+                  View Details <ArrowRight className="w-3 h-3" />
+                </Link>
               </Button>
             </CardContent>
           </Card>
