@@ -335,7 +335,7 @@
 // };
 
 // export default HeroSection;
-// HeroSection.tsx - Updated with translations, functional search, and complete mock data with full details
+// HeroSection.tsx - Updated with translations, functional search, and inline modal for details (no 404)
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -355,7 +355,7 @@ const HeroSection = () => {
   const [selectedItem, setSelectedItem] = useState(null); // For modal
   const { t } = useLanguage();
 
-  // Complete sample data with fullDetails for all items (no blank pages)
+  // Sample data for locations and tabs (mock data - replace with API in production)
   const dataByLocation = {
     india: {
       hospitals: [
@@ -837,6 +837,21 @@ const HeroSection = () => {
         results = [];
     }
 
+    // If no query, show all results
+    if (searchQuery.trim() === '') {
+      switch (activeTab) {
+        case 'hospitals':
+          results = locationData.hospitals;
+          break;
+        case 'treatments':
+          results = locationData.treatments;
+          break;
+        case 'doctors':
+          results = locationData.doctors;
+          break;
+      }
+    }
+
     if (results.length === 0) {
       return (
         <div className="text-center py-6 sm:py-8 text-muted-foreground">
@@ -848,7 +863,7 @@ const HeroSection = () => {
     return (
       <div className="mt-6 space-y-4">
         <p className="text-sm text-muted-foreground">
-          Showing {results.length} results for "{searchQuery}" in {selectedLocation}:
+          Showing {results.length} results for "{searchQuery || 'all'}" in {selectedLocation}:
         </p>
         {results.map((item) => (
           <Card key={item.id} className="hover:shadow-md transition-shadow">
@@ -885,7 +900,7 @@ const HeroSection = () => {
 
   // Details Modal
   if (selectedItem) {
-    const { name, fullDetails, tab } = selectedItem;
+    const { name, fullDetails, tab, rating } = selectedItem;
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
         <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
@@ -896,74 +911,66 @@ const HeroSection = () => {
             </Button>
           </div>
           <div className="p-6 space-y-4">
+            <img src={fullDetails.image} alt={name} className="w-full h-48 object-cover rounded mb-4" />
+            <div className="flex items-center gap-2 mb-4">
+              <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+              <span className="text-lg font-bold">{rating || fullDetails.rating}</span>
+            </div>
             {tab === 'hospitals' && (
-              <div>
-                <img src={fullDetails.image} alt={name} className="w-full h-48 object-cover rounded mb-4" />
-                <div className="flex items-center gap-2 mb-4">
-                  <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                  <span className="text-lg font-bold">{fullDetails.rating}</span>
+              <div className="space-y-2 text-sm">
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4 text-muted-foreground" />
+                  <span>{fullDetails.address}</span>
                 </div>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-muted-foreground" />
-                    <span>{fullDetails.address}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Phone className="h-4 w-4 text-muted-foreground" />
-                    <a href={`tel:${fullDetails.phone}`} className="hover:underline">{fullDetails.phone}</a>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Mail className="h-4 w-4 text-muted-foreground" />
-                    <a href={`mailto:${fullDetails.email}`} className="hover:underline">{fullDetails.email}</a>
-                  </div>
-                  <div className="grid grid-cols-2 gap-2 mt-4">
-                    {fullDetails.facilities.map((facility, index) => (
-                      <Badge key={index} variant="secondary">{facility}</Badge>
-                    ))}
-                  </div>
+                <div className="flex items-center gap-2">
+                  <Phone className="h-4 w-4 text-muted-foreground" />
+                  <a href={`tel:${fullDetails.phone}`} className="hover:underline">{fullDetails.phone}</a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Mail className="h-4 w-4 text-muted-foreground" />
+                  <a href={`mailto:${fullDetails.email}`} className="hover:underline">{fullDetails.email}</a>
+                </div>
+                <div className="grid grid-cols-2 gap-2 mt-4">
+                  {fullDetails.facilities.map((facility, index) => (
+                    <Badge key={index} variant="secondary">{facility}</Badge>
+                  ))}
                 </div>
                 <Button className="w-full mt-4 bg-primary text-primary-foreground">Book Appointment</Button>
               </div>
             )}
             {tab === 'treatments' && (
-              <div>
-                <img src={fullDetails.image} alt={name} className="w-full h-48 object-cover rounded mb-4" />
-                <div className="space-y-3">
-                  <h3 className="font-semibold">Overview</h3>
-                  <p>{fullDetails.overview}</p>
-                  <h3 className="font-semibold">Benefits</h3>
-                  <ul className="list-disc pl-5 space-y-1">
-                    {fullDetails.benefits.split('. ').map((benefit, index) => benefit && <li key={index}>{benefit}.</li>)}
-                  </ul>
-                  <h3 className="font-semibold">Inclusions</h3>
-                  <ul className="list-disc pl-5 space-y-1">
-                    {fullDetails.inclusions.split('. ').map((inclusion, index) => inclusion && <li key={index}>{inclusion}.</li>)}
-                  </ul>
-                  <div className="flex justify-between items-center pt-4 border-t">
-                    <Badge variant="outline" className="text-lg">Success Rate: {fullDetails.successRate}</Badge>
-                    <Button variant="outline" size="sm">Book Now</Button>
-                  </div>
+              <div className="space-y-3">
+                <h3 className="font-semibold">Overview</h3>
+                <p>{fullDetails.overview}</p>
+                <h3 className="font-semibold">Benefits</h3>
+                <ul className="list-disc pl-5 space-y-1">
+                  {fullDetails.benefits.split('. ').filter(b => b.trim()).map((benefit, index) => (
+                    <li key={index}>{benefit.trim()}.</li>
+                  ))}
+                </ul>
+                <h3 className="font-semibold">Inclusions</h3>
+                <ul className="list-disc pl-5 space-y-1">
+                  {fullDetails.inclusions.split('. ').filter(i => i.trim()).map((inclusion, index) => (
+                    <li key={index}>{inclusion.trim()}.</li>
+                  ))}
+                </ul>
+                <div className="flex justify-between items-center pt-4 border-t">
+                  <Badge variant="outline" className="text-lg">Success Rate: {fullDetails.successRate}</Badge>
+                  <Button variant="outline" size="sm">Book Now</Button>
                 </div>
                 <Button className="w-full mt-4 bg-primary text-primary-foreground">Get Quote</Button>
               </div>
             )}
             {tab === 'doctors' && (
-              <div>
-                <img src={fullDetails.image} alt={name} className="w-full h-48 object-cover rounded mb-4" />
-                <div className="flex items-center gap-2 mb-4">
-                  <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                  <span className="text-lg font-bold">{selectedItem.rating}</span>
-                </div>
-                <div className="space-y-3">
-                  <h3 className="font-semibold">Bio</h3>
-                  <p>{fullDetails.bio}</p>
-                  <h3 className="font-semibold">Qualifications</h3>
-                  <p>{fullDetails.qualifications}</p>
-                  <h3 className="font-semibold">Affiliated Hospital</h3>
-                  <p>{fullDetails.hospital}</p>
-                  <h3 className="font-semibold">Languages Spoken</h3>
-                  <p>{fullDetails.languages}</p>
-                </div>
+              <div className="space-y-3">
+                <h3 className="font-semibold">Bio</h3>
+                <p>{fullDetails.bio}</p>
+                <h3 className="font-semibold">Qualifications</h3>
+                <p>{fullDetails.qualifications}</p>
+                <h3 className="font-semibold">Affiliated Hospital</h3>
+                <p>{fullDetails.hospital}</p>
+                <h3 className="font-semibold">Languages Spoken</h3>
+                <p>{fullDetails.languages}</p>
                 <div className="flex gap-2 pt-4 border-t">
                   <Button variant="outline" size="sm">Book Appointment</Button>
                   <Button variant="ghost" size="sm">View Profile</Button>
