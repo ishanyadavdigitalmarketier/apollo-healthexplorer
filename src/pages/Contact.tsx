@@ -176,28 +176,28 @@ const Contact = () => {
                     </p>
                     <form onSubmit={handleSubmit} className="space-y-4">
                       <div>
-                        <label htmlFor="full-name" className="block text-sm font-medium text-primary mb-2">
+                        <label htmlFor="name" className="block text-sm font-medium text-primary mb-2">
                           Full Name
                         </label>
                         <Input
                           type="text"
-                          id="full-name"
-                          name="full-name"
-                          value={formData.fullName}
+                          id="name"
+                          name="name"
+                          value={formData.name}
                           onChange={handleChange}
                           required
                           className="w-full"
                         />
                       </div>
                       <div>
-                        <label htmlFor="phone-number" className="block text-sm font-medium text-primary mb-2">
+                        <label htmlFor="phone" className="block text-sm font-medium text-primary mb-2">
                           Phone Number
                         </label>
                         <Input
                           type="tel"
-                          id="phone-number"
-                          name="phone-number"
-                          value={formData.phoneNumber}
+                          id="phone"
+                          name="phone"
+                          value={formData.phone}
                           onChange={handleChange}
                           required
                           className="w-full"
